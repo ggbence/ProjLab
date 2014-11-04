@@ -28,6 +28,15 @@
           <property Id="ffc2eeec-cb34-41ed-852c-3e6a1c953997" name="jogkor_id" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="71adb7a0-635a-4901-b8d0-8a106b467ad7" />
           </property>
+          <property Id="f1c6f3f4-be8f-4bd4-8c30-26168366deed" name="aktiv" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="63cdc68d-4dab-4741-af4f-2cf7bc1a64a4" />
+          </property>
+          <property Id="b15f644f-1d25-43e6-a4ce-4b1c3ec18745" name="koncertre_jar" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="812b590f-8db1-4670-b004-13ae05ed6536" />
+          </property>
+          <property Id="a685e9c3-2c27-48ba-8066-1c18158565d5" name="users_password" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="96ec0de5-4a69-443e-b941-5e10dc3fabd6" />
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
