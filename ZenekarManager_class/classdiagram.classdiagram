@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9cff606a-b1f3-4e32-9bcf-f2a7ef1e89fa" name="classdiagram" linkedPackageId="d84d8650-325b-4a1e-94a8-bf0fb96fcdae" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="4b41d852-75ad-473d-a432-d61bba838e95">
+      <profileInstance Id="c81a93b6-c8b0-4e8e-8842-34985cb2af7d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="fb8ba81c-b994-4144-8b01-62d04fc773e6">
+      <profileInstance Id="86c3779f-d74e-4d4b-a3c2-353ea66c8718" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="92e4ccf9-4af7-4170-9c0a-ae482acaf7ba" name="User" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5340422b-cc3c-4be4-a720-64659338609f" />
+        <ownedAttributesInternal>
+          <property Id="ef1b99ef-6e30-41f0-892a-0acd9a366747" name="users_id" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6aa430ef-1be2-4970-888f-2b065178091a" />
+          </property>
+          <property Id="9f2a5920-07cd-4aa6-be9d-51f93eec88b0" name="users_email" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ccb5c3e9-6543-41e4-ad31-9706471b09f1" />
+          </property>
+          <property Id="ffc2eeec-cb34-41ed-852c-3e6a1c953997" name="jogkor_id" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="71adb7a0-635a-4901-b8d0-8a106b467ad7" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="10ce04ea-4252-4c66-9276-72584212a3b7" name="Manager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="42d80922-db53-42ad-ab47-072dfd71491b" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f2829ec2-c704-4002-8676-942200b79249" name="Concert" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b8d4a367-d5b2-4f6c-aa58-1983fa93bf53" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="37c744f4-c243-4db7-98d2-eab449d18f4b" name="Rehearsal" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6e1bd998-a782-479d-90d2-437032e018cb" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5e7086d4-5b50-4382-9cfe-adfcc0bc7dc1" name="Message" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="33efe2c5-21e9-4245-a236-fc66ea916daf" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4a3d6d56-a212-4cc8-978d-be4c6c8b9ed3" name="Sheet" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="44f95e67-3afb-489b-9379-bbfef9c45c49" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d3a70613-2c8d-4250-8a40-84b604517067" name="Log" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fd706df3-a35e-4b49-a039-06ccdb154ec5" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fdfee910-3ba0-4f9f-9d15-efd662c35662" name="RehearsalMaterial" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="74c64b09-7601-4213-8a2a-b40018f24c33" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9bd56e6a-d7ad-45bd-b1c0-1b7f0a53c20e" name="ConcertMaterial" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b21fbf93-4195-404d-aef1-bb3904ef3a0f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c4e0aa80-d4de-43f5-acba-5400f97218ce" name="Piece" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="726d467b-ac6d-491a-8d98-c8baaf50a940" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="401950a1-f68e-456e-afaa-dc373e106eaf" name="Movement" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="21a929a2-437d-48db-9589-5a4cfebf6151" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e3f755b6-bd1e-47d2-a53c-95a17cd800b9" name="Part" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3628fec1-b8d1-42de-a1b7-90251900e9d0" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="41500c60-d2f4-4f88-bb36-8d0cf4cbefcf" name="UserDaO" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="bf736985-4cfd-4948-bbde-21643347dd48" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="d84d8650-325b-4a1e-94a8-bf0fb96fcdae" name="ZenekarManager_class">
+    <elementDefinition Id="7747c550-2848-4970-b2ed-0bc3cde4298b" />
+  </package>
+</logicalClassDesignerModel>
