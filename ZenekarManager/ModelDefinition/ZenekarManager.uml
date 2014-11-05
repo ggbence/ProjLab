@@ -173,7 +173,7 @@
             <classMoniker
               Id="bf736985-4cfd-4948-bbde-21643347dd48"
               LastKnownName="UserDaO"
-              LastKnownLocation="ZenekarManager_class.uml" />
+              LastKnownLocation="ZenekarManager.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -278,7 +278,7 @@
               <primitiveTypeMoniker
                 Id="220a3521-e091-4221-bae9-3ef9018e845c"
                 LastKnownName="Integer"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -354,7 +354,7 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -430,7 +430,7 @@
               <primitiveTypeMoniker
                 Id="220a3521-e091-4221-bae9-3ef9018e845c"
                 LastKnownName="Integer"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -506,7 +506,7 @@
               <primitiveTypeMoniker
                 Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
                 LastKnownName="Boolean"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -582,7 +582,7 @@
               <primitiveTypeMoniker
                 Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
                 LastKnownName="Boolean"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -658,7 +658,7 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -734,7 +734,7 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -858,6 +858,21 @@
                 </propertyInstances>
               </stereotypeInstance>
             </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="334a7cdb-715a-4ff3-8a5a-773f9d5bf77e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="2f4d7e94-5b8e-48d2-9ba2-fe3160ad2389"
+                      LastKnownName="vector&lt;Message&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation
             Id="7797a15d-193e-46c8-a303-670c2bee0a1c"
@@ -929,7 +944,7 @@
                     <primitiveTypeMoniker
                       Id="220a3521-e091-4221-bae9-3ef9018e845c"
                       LastKnownName="Integer"
-                      LastKnownLocation="ZenekarManager_class.uml" />
+                      LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -960,7 +975,7 @@
             <classMoniker
               Id="5340422b-cc3c-4be4-a720-64659338609f"
               LastKnownName="User"
-              LastKnownLocation="ZenekarManager_class.uml" />
+              LastKnownLocation="ZenekarManager.uml" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
@@ -1072,7 +1087,23 @@
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false" />
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a810639e-33f3-4486-8383-87a141b32944"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
           <operation
             Id="b44f0bad-7016-4ab0-997c-e718cc9abbc2"
             name="readUserdata"
@@ -1081,7 +1112,23 @@
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false" />
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5b229682-92e5-4006-b5bd-6f3f16d8be10"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1116,7 +1163,7 @@
             <classMoniker
               Id="8dfc31b1-ad90-491f-8a99-5dd9ca10a666"
               LastKnownName="GuestDaO"
-              LastKnownLocation="ZenekarManager_class.uml" />
+              LastKnownLocation="ZenekarManager.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1156,7 +1203,7 @@
             <classMoniker
               Id="5340422b-cc3c-4be4-a720-64659338609f"
               LastKnownName="User"
-              LastKnownLocation="ZenekarManager_class.uml" />
+              LastKnownLocation="ZenekarManager.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1203,7 +1250,7 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -1222,7 +1269,7 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
-                LastKnownLocation="ZenekarManager_class.uml" />
+                LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -1254,7 +1301,40 @@
         name="GuestDaO"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="b82353da-3088-4c72-8e80-40a4ac7d637b"
+            name="checkUser"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3b009d0e-5eab-43ec-95db-43384265557b"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2f4d7e94-5b8e-48d2-9ba2-fe3160ad2389"
+        name="vector&lt;Message&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

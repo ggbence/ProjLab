@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5fb0a9eb-538c-4f35-aa63-dd9b96c59c76}</ProjectGuid>
     <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
-    <Name>ZenekarManager_class</Name>
+    <Name>ZenekarManager</Name>
     <RootNamespace>ZenekarManager_class</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,7 +30,7 @@
       <SubType>Content</SubType>
       <DependentUpon>classdiagram.classdiagram</DependentUpon>
     </Content>
-    <Content Include="ModelDefinition\ZenekarManager_class.uml">
+    <Content Include="ModelDefinition\ZenekarManager.uml">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

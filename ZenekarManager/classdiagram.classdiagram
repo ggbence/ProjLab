@@ -610,6 +610,16 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
             <elementDefinition Id="71d38150-fd50-45a1-ad2e-1a0f48aa1e8e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3b5b7c57-fe42-49b6-83b3-536678d80d39" direction="Return" isUnique="false">
+                  <elementDefinition Id="334a7cdb-715a-4ff3-8a5a-773f9d5bf77e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="451ff0dd-fc05-4972-a114-989d4d231034" LastKnownName="vector&lt;Message&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="3caa53d9-6464-4a55-864c-8f1e7aba502d" name="readMessage" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <appliedStereotypesInternal>
@@ -745,9 +755,29 @@
         <ownedOperationsInternal>
           <operation Id="1901e282-e0b9-4773-ad2f-893526cb6842" name="writeUserdata" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="730c8d96-40c8-4053-aa91-6b9810998be3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a713325b-81a1-4703-9c34-1c35374640e1" direction="Return" isUnique="false">
+                  <elementDefinition Id="a810639e-33f3-4486-8383-87a141b32944" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="0c8696f3-ed40-4d34-a9b9-801bb038c875" name="readUserdata" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="b44f0bad-7016-4ab0-997c-e718cc9abbc2" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9fbd4532-52c9-4619-bb06-76156d88a35b" direction="Return" isUnique="false">
+                  <elementDefinition Id="5b229682-92e5-4006-b5bd-6f3f16d8be10" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="649b63ce-cf2b-4489-989c-b6f0182af73d" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -856,8 +886,33 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="ddf0b7bb-12a3-46d9-b598-4aab69407b4a" name="GuestDaO" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8dfc31b1-ad90-491f-8a99-5dd9ca10a666" />
+        <ownedOperationsInternal>
+          <operation Id="808edda8-e26a-4e8a-ac76-59f4e95a17c4" name="checkUser" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b82353da-3088-4c72-8e80-40a4ac7d637b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="69e0fc11-01fb-47bf-8059-9b5229919399" direction="Return" isUnique="false">
+                  <elementDefinition Id="3b009d0e-5eab-43ec-95db-43384265557b" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="649b63ce-cf2b-4489-989c-b6f0182af73d" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="451ff0dd-fc05-4972-a114-989d4d231034" name="vector&lt;Message&gt;" isAbstract="false" isLeaf="false" cachedFullName="vector&lt;Message&gt;">
+        <elementDefinition Id="2f4d7e94-5b8e-48d2-9ba2-fe3160ad2389" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="d84d8650-325b-4a1e-94a8-bf0fb96fcdae" name="ZenekarManager_class">
     <elementDefinition Id="7747c550-2848-4970-b2ed-0bc3cde4298b" />
