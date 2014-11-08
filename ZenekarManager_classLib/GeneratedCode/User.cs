@@ -15,9 +15,6 @@ public class User
     public int Users_id
     {
         get { return users_id; }
-    }
-    protected int Users_id
-    {
         set { users_id = value; }
     }
 
@@ -26,9 +23,6 @@ public class User
     public string Users_email
     {
         get { return users_email; }
-    }
-    protected string Users_email
-    {
         set { users_email = value; }
     }
 
@@ -36,9 +30,6 @@ public class User
     public int Jogkor_id
     {
         get { return jogkor_id; }
-    }
-    protected int Jogkor_id
-    {
         set { jogkor_id = value; }
     }
 
@@ -46,9 +37,6 @@ public class User
     public bool Aktiv
     {
         get { return aktiv; }
-    }
-    protected bool Aktiv
-    {
         set { aktiv = value; }
     }
 
@@ -57,9 +45,6 @@ public class User
     public bool Koncertre_jar
     {
         get { return koncertre_jar; }
-    }
-    protected bool Koncertre_jar
-    {
         set { koncertre_jar = value; }
     }
 
@@ -67,9 +52,6 @@ public class User
     public string Users_password
     {
         get { return users_password; }
-    }
-    protected string Users_password
-    {
         set { users_password = value; }
     }
 
@@ -78,17 +60,20 @@ public class User
     public string Users_nev
     {
         get { return users_nev; }
-    }
-    protected string Users_nev
-    {
         set { users_nev = value; }
     }
 
-	private virtual UserDaO UserDaO
+	public virtual UserDaO UserDaO
 	{
 		get;
 		set;
 	}
+
+    public User()
+    {
+        users_password = "123";
+        users_id = 2;
+    }
 
 	public bool profileModify()
 	{
@@ -107,7 +92,28 @@ public class User
 
 	public bool createProfile()
 	{
-        return UserDaO.writeUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+
+        Console.WriteLine("Próba adatok: ");
+
+        Console.WriteLine(users_email);
+        Console.WriteLine(users_nev);
+        Console.WriteLine(users_password);
+        Console.WriteLine(aktiv);
+        Console.WriteLine(koncertre_jar);
+        Console.WriteLine(jogkor_id);
+
+        
+
+        try
+        {
+            return UserDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception. Number: "+ ex.ToString());
+            return false;
+        }
+        
 	}
 
     public bool readProfile(string email)

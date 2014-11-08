@@ -12,35 +12,47 @@ using MySql.Data.MySqlClient;
 
 public class UserDaO : DaO
 {
-	internal bool writeUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
+	internal bool writeUserdata(string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
 	{
-
-        // Query string 
-        string strSQL = "INSERT INTO Users (users_nev, users_email, jogkor_id, aktiv, " +
-        "koncertre_jar, users_password) VALUES (@nev, @email, @jogkor, @_aktiv, " +
-        "@_koncertre_jar, @password) ";
-
-        // Add query text
-        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-        // Prepare the query
-        cmd.Prepare();
-
-        // Add parameter
-        cmd.Parameters.AddWithValue("@nev", users_nev);
-        cmd.Parameters.AddWithValue("@email", users_email);
-        cmd.Parameters.AddWithValue("@jogkor", jogkor_id);
-        cmd.Parameters.AddWithValue("@_aktiv", aktiv);
-        cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
-        cmd.Parameters.AddWithValue("@password", users_password);
-
-        // Execute query
-        if (cmd.ExecuteNonQuery() == 1)
+        try
         {
-            return true;
+             // Query string 
+            string strSQL = "INSERT INTO Users (users_nev, users_email, jogkor_id, aktiv, " +
+            "koncertre_jar, users_password) VALUES (@nev, @email, @jogkor, @_aktiv, " +
+            "@_koncertre_jar, @password) ";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@nev", users_nev.ToString());
+            cmd.Parameters.AddWithValue("@email", users_email.ToString());
+            cmd.Parameters.AddWithValue("@jogkor", jogkor_id.ToString());
+            cmd.Parameters.AddWithValue("@_aktiv", aktiv.ToString());
+            cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar.ToString());
+            cmd.Parameters.AddWithValue("@password", users_password.ToString());
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+            return false;
         }
-        return false;
-        
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+            return false;
+        }
+        catch (Exception ex2)
+        {
+            Console.WriteLine("Nagy a baj vazze: " + ex2.ToString());
+            return false;
+        }
+
 	}
 
 	internal String[] readUserdata(string email)

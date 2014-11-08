@@ -49,6 +49,7 @@
     <Compile Include="GeneratedCode\Message.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
