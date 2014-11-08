@@ -8,17 +8,105 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MySql.Data.MySqlClient;
 
-public class UserDaO
+public class UserDaO : DaO
 {
-	private bool writeUserdata()
+	internal bool writeUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
 	{
-		throw new System.NotImplementedException();
+
+        // Query string 
+        string strSQL = "INSERT INTO Users (users_nev, users_email, jogkor_id, aktiv, " +
+        "koncertre_jar, users_password) VALUES (@nev, @email, @jogkor, @_aktiv, " +
+        "@_koncertre_jar, @password) ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@nev", users_nev);
+        cmd.Parameters.AddWithValue("@email", users_email);
+        cmd.Parameters.AddWithValue("@jogkor", jogkor_id);
+        cmd.Parameters.AddWithValue("@_aktiv", aktiv);
+        cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
+        cmd.Parameters.AddWithValue("@password", users_password);
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            return true;
+        }
+        return false;
+        
 	}
 
-	private bool readUserdata()
+	internal String[] readUserdata(string email)
 	{
-		throw new System.NotImplementedException();
+
+        // Query string 
+        string strSQL = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
+        "koncertre_jar, users_password FROM Users where users_email=@email";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+        
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@email", email);
+
+        // Execute query
+        MySqlDataReader dbread = cmd.ExecuteReader();
+
+        string[] result = new string[7];
+        
+        // Put the result into an string array
+        while (dbread.Read())
+        {
+            int i = 0;
+            foreach (Object ob in dbread)
+            {
+                result[i] = ob.ToString();
+                i++;
+            }
+        }
+
+        // Return with the result string
+        return result;
+	}
+
+	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
+	{
+        // Query string 
+        string strSQL = "UPDATE Users SET users_nev=@nev, " +
+        "users_email=@email, jogkor_id=@jogkor, aktiv=@_aktiv, " +
+        "koncertre_jar=@_koncertre_jar, users_password=@password WHERE users_id=@id";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@id", users_id);
+        cmd.Parameters.AddWithValue("@nev", users_nev);
+        cmd.Parameters.AddWithValue("@email", users_email);
+        cmd.Parameters.AddWithValue("@jogkor", jogkor_id);
+        cmd.Parameters.AddWithValue("@_aktiv", aktiv);
+        cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
+        cmd.Parameters.AddWithValue("@password", users_password);
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            return true;
+        }
+        return false;
 	}
 
 }

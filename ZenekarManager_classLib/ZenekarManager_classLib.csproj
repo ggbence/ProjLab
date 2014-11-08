@@ -7,8 +7,8 @@
     <ProjectGuid>{E4732157-00F5-41B7-909F-44D54BA23F68}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZenekarManager_classLib</RootNamespace>
-    <AssemblyName>ZenekarManager_classLib</AssemblyName>
+    <RootNamespace>ZenekarManagerLib</RootNamespace>
+    <AssemblyName>ZenekarManagerLib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web.v20, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedCode\DaO.cs" />
     <Compile Include="GeneratedCode\Guest.cs" />
     <Compile Include="GeneratedCode\GuestDaO.cs" />
     <Compile Include="GeneratedCode\Manager.cs" />
+    <Compile Include="GeneratedCode\Message.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

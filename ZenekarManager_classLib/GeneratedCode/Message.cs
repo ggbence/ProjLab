@@ -9,35 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Guest
+public class Message
 {
-	private string email
-	{
-		get;
-		set;
-	}
-
-	private string password
-	{
-		get;
-		set;
-	}
-
-	public virtual GuestDaO GuestDaO
-	{
-		get;
-		set;
-	}
-
-	private void signUp()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	private void signIn()
-	{
-		throw new System.NotImplementedException();
-	}
-
 }
 

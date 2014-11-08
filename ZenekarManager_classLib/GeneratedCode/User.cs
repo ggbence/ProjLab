@@ -11,67 +11,120 @@ using System.Text;
 
 public class User
 {
-	private int users_id
+    private int users_id;
+    public int Users_id
+    {
+        get { return users_id; }
+    }
+    protected int Users_id
+    {
+        set { users_id = value; }
+    }
+
+
+    private string users_email;
+    public string Users_email
+    {
+        get { return users_email; }
+    }
+    protected string Users_email
+    {
+        set { users_email = value; }
+    }
+
+    private int jogkor_id;
+    public int Jogkor_id
+    {
+        get { return jogkor_id; }
+    }
+    protected int Jogkor_id
+    {
+        set { jogkor_id = value; }
+    }
+
+    private bool aktiv;
+    public bool Aktiv
+    {
+        get { return aktiv; }
+    }
+    protected bool Aktiv
+    {
+        set { aktiv = value; }
+    }
+
+
+    private bool koncertre_jar;
+    public bool Koncertre_jar
+    {
+        get { return koncertre_jar; }
+    }
+    protected bool Koncertre_jar
+    {
+        set { koncertre_jar = value; }
+    }
+
+    private string users_password;
+    public string Users_password
+    {
+        get { return users_password; }
+    }
+    protected string Users_password
+    {
+        set { users_password = value; }
+    }
+
+
+    private string users_nev;
+    public string Users_nev
+    {
+        get { return users_nev; }
+    }
+    protected string Users_nev
+    {
+        set { users_nev = value; }
+    }
+
+	private virtual UserDaO UserDaO
 	{
 		get;
 		set;
 	}
 
-	private string users_email
+	public bool profileModify()
 	{
-		get;
-		set;
+        return UserDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
 	}
 
-	private int jogkor_id
-	{
-		get;
-		set;
-	}
-
-	private bool aktiv
-	{
-		get;
-		set;
-	}
-
-	private bool koncertre_jar
-	{
-		get;
-		set;
-	}
-
-	private string users_password
-	{
-		get;
-		set;
-	}
-
-	private string users_nev
-	{
-		get;
-		set;
-	}
-
-	private void profileModify()
+	public Message[] getMessages()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	private Message[] getMessages()
+	public bool readMessage(Message uzenet)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	private void readMessage(Message uzenet)
+	public bool createProfile()
 	{
-		throw new System.NotImplementedException();
+        return UserDaO.writeUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
 	}
 
-	public virtual void createUser()
-	{
-		throw new System.NotImplementedException();
-	}
+    public bool readProfile(string email)
+    {
+        string []data;
+        data = UserDaO.readUserdata(email);
+
+        this.users_id = Int32.Parse(data[0]);
+        this.users_nev = data[1];
+        this.users_email = data[2];
+        this.jogkor_id = Int32.Parse(data[3]);
+        this.aktiv = (data[4]=="true"?true:false);
+        this.koncertre_jar = (data[5] == "true" ? true : false);
+        this.users_password = data[6];
+
+        return true;
+    }
 
 }
 
