@@ -12,14 +12,15 @@ using MySql.Data.MySqlClient;
 
 public class UserDaO : DaO
 {
-	internal bool writeUserdata(string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
+	internal bool writeUserdata(string users_nev, string users_email, int jogkor_id, 
+        bool aktiv, bool koncertre_jar, string users_password)
 	{
         try
         {
-             // Query string 
-            string strSQL = "INSERT INTO Users (users_nev, users_email, jogkor_id, aktiv, " +
+            // Query string 
+            string strSQL = "INSERT INTO USERS (users_nev, users_email, jogkor_id, aktiv, " +
             "koncertre_jar, users_password) VALUES (@nev, @email, @jogkor, @_aktiv, " +
-            "@_koncertre_jar, @password) ";
+            "@_koncertre_jar, @password); ";
 
             // Add query text
             MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -47,20 +48,16 @@ public class UserDaO : DaO
             Console.WriteLine("MySQL error. Number: " + ex.Number);
             return false;
         }
-        catch (Exception ex2)
-        {
-            Console.WriteLine("Nagy a baj vazze: " + ex2.ToString());
-            return false;
-        }
-
+        //return true;
 	}
+
 
 	internal String[] readUserdata(string email)
 	{
-
+        
         // Query string 
         string strSQL = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
-        "koncertre_jar, users_password FROM Users where users_email=@email";
+        "koncertre_jar, users_password FROM USERS where users_email='@email';";
 
         // Add query text
         MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -72,21 +69,21 @@ public class UserDaO : DaO
         cmd.Parameters.AddWithValue("@email", email);
 
         // Execute query
-        MySqlDataReader dbread = cmd.ExecuteReader();
-
+      //  MySqlDataReader dbread = cmd.ExecuteReader();
+        
         string[] result = new string[7];
         
         // Put the result into an string array
-        while (dbread.Read())
-        {
-            int i = 0;
-            foreach (Object ob in dbread)
-            {
-                result[i] = ob.ToString();
-                i++;
-            }
-        }
-
+        //while (dbread.Read())
+        //{
+        //    int i = 0;
+        //    foreach (Object ob in dbread)
+        //    {
+        //        result[i] = ob.ToString();
+        //        i++;
+        //    }
+        //}
+        
         // Return with the result string
         return result;
 	}

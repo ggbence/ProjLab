@@ -63,21 +63,19 @@ public class User
         set { users_nev = value; }
     }
 
-	public virtual UserDaO UserDaO
-	{
-		get;
-		set;
-	}
+    private UserDaO userDaO;
+	
 
     public User()
     {
-        users_password = "123";
-        users_id = 2;
+        userDaO = new UserDaO();
     }
 
 	public bool profileModify()
 	{
-        return UserDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+       // return UserDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+
+        return false;
 	}
 
 	public Message[] getMessages()
@@ -93,24 +91,12 @@ public class User
 	public bool createProfile()
 	{
 
-        Console.WriteLine("Próba adatok: ");
-
-        Console.WriteLine(users_email);
-        Console.WriteLine(users_nev);
-        Console.WriteLine(users_password);
-        Console.WriteLine(aktiv);
-        Console.WriteLine(koncertre_jar);
-        Console.WriteLine(jogkor_id);
-
-        
-
-        try
+        if (userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password))
         {
-            return UserDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+            return readProfile("gorogbence@gmail.com");
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine("Exception. Number: "+ ex.ToString());
             return false;
         }
         
@@ -119,7 +105,7 @@ public class User
     public bool readProfile(string email)
     {
         string []data;
-        data = UserDaO.readUserdata(email);
+        data = userDaO.readUserdata(email);
 
         this.users_id = Int32.Parse(data[0]);
         this.users_nev = data[1];
