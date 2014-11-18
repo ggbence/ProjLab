@@ -52,38 +52,51 @@ public class UserDaO : DaO
 	}
 
 
-	internal String[] readUserdata(string email)
+	internal string[] readUserdata(string email)
 	{
-        
-        // Query string 
-        string strSQL = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
-        "koncertre_jar, users_password FROM USERS where users_email='@email';";
+       
+        MySqlDataReader rdr = null;
 
-        // Add query text
-        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-        
-        // Prepare the query
-        cmd.Prepare();
+        var result = new string[7];
 
-        // Add parameter
-        cmd.Parameters.AddWithValue("@email", email);
+        try
+        {
+            
+            string stm = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
+             "koncertre_jar, users_password FROM USERS where users_email=@email";
+           
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
-        // Execute query
-      //  MySqlDataReader dbread = cmd.ExecuteReader();
-        
-        string[] result = new string[7];
-        
-        // Put the result into an string array
-        //while (dbread.Read())
-        //{
-        //    int i = 0;
-        //    foreach (Object ob in dbread)
-        //    {
-        //        result[i] = ob.ToString();
-        //        i++;
-        //    }
-        //}
-        
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@email", email);
+
+            rdr = cmd.ExecuteReader();
+
+            
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result[i] = rdr.GetString(i);
+                }
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
         // Return with the result string
         return result;
 	}
@@ -91,9 +104,9 @@ public class UserDaO : DaO
 	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
 	{
         // Query string 
-        string strSQL = "UPDATE Users SET users_nev=@nev, " +
-        "users_email=@email, jogkor_id=@jogkor, aktiv=@_aktiv, " +
-        "koncertre_jar=@_koncertre_jar, users_password=@password WHERE users_id=@id";
+        string strSQL = "UPDATE USERS SET users_nev=@_nev, " +
+        "users_email=@_email, jogkor_id=@_jogkor, aktiv=@_aktiv, " +
+        "koncertre_jar=@_koncertre_jar, users_password=@_password WHERE users_id=@_id";
 
         // Add query text
         MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -102,13 +115,13 @@ public class UserDaO : DaO
         cmd.Prepare();
 
         // Add parameter
-        cmd.Parameters.AddWithValue("@id", users_id);
-        cmd.Parameters.AddWithValue("@nev", users_nev);
-        cmd.Parameters.AddWithValue("@email", users_email);
-        cmd.Parameters.AddWithValue("@jogkor", jogkor_id);
+        cmd.Parameters.AddWithValue("@_id", users_id);
+        cmd.Parameters.AddWithValue("@_nev", users_nev);
+        cmd.Parameters.AddWithValue("@_email", users_email);
+        cmd.Parameters.AddWithValue("@_jogkor", jogkor_id);
         cmd.Parameters.AddWithValue("@_aktiv", aktiv);
         cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
-        cmd.Parameters.AddWithValue("@password", users_password);
+        cmd.Parameters.AddWithValue("@_password", users_password);
 
         // Execute query
         if (cmd.ExecuteNonQuery() == 1)

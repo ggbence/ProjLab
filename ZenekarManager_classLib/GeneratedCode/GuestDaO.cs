@@ -8,13 +8,144 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MySql.Data.MySqlClient;
 
-public class GuestDaO
+
+public class GuestDaO : DaO
 {
-	private bool checkUser()
+
+	internal bool checkUserdata(string email, string password)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        string result;
+
+        try
+        {
+
+            string stm = "SELECT users_id FROM USERS where users_email=@_email AND users_password=@_password";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_email", email);
+            cmd.Parameters.AddWithValue("@_password", password);
+
+            rdr = cmd.ExecuteReader();
+
+
+            int j = 0;
+            while (rdr.Read())
+            {
+                result = rdr.GetString(0);
+                j++;
+            }
+
+            if (j == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+            return false;
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
 	}
+
+
+	internal bool writeNewPass(string email, string password)
+	{
+        string strSQL = "UPDATE USERS SET users_password=@_password WHERE users_email=@_email";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@_email", email);
+        cmd.Parameters.AddWithValue("@_password", password);
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            return true;
+        }
+        return false;
+	}
+
+
+    internal bool checkEmailaddr(string email)
+    {
+
+        MySqlDataReader rdr = null;
+
+        string result;
+
+        try
+        {
+
+            string stm = "SELECT users_id FROM USERS where users_email=@_email";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_email", email);
+
+            rdr = cmd.ExecuteReader();
+
+
+            int j = 0;
+            while (rdr.Read())
+            {
+                result = rdr.GetString(0);
+                j++;
+            }
+
+            if (j == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+            return false;
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+    }
 
 }
 

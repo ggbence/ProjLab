@@ -8,35 +8,138 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 
 public class Guest
 {
-	private string email
+	private string email;
+
+    public string Email
+    {
+      get { return email; }
+      set { email = value; }
+    }
+
+
+    private string password;
+
+    public string Password
+    {
+        get { return password; }
+        set { password = value; }
+    }
+
+
+    private GuestDaO guestDaO;
+
+    public GuestDaO GuestDaO
+    {
+        get { return guestDaO; }
+    }
+
+    public Guest()
+    {
+        guestDaO = new GuestDaO();
+        password = "";
+        email = "";
+    }
+
+    public string getHash(string data)
+    {
+        //create new instance of md5
+        SHA1 sha1 = SHA1.Create();
+
+        //convert the input text to array of bytes
+        byte[] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(data));
+
+        //create new instance of StringBuilder to save hashed data
+        StringBuilder returnValue = new StringBuilder();
+
+        //loop for each byte and add it to StringBuilder
+        for (int i = 0; i < hashData.Length; i++)
+        {
+            returnValue.Append(hashData[i].ToString());
+        }
+
+        // return hexadecimal string
+        return returnValue.ToString();
+    }
+
+
+    public bool checkEmail()
+    {
+        return guestDaO.checkEmailaddr(email);
+    }
+
+	public User signUp(string email, string nev, string password)
 	{
-		get;
-		set;
+        if (!checkEmail())
+        {
+            User user = new User();
+            user.Users_email = email;
+            user.Users_nev = nev;
+            user.Users_password = password;
+            user.Jogkor_id = 1;
+            if (user.createProfile())
+            {
+                return user;
+            }
+        }
+        return null;
 	}
 
-	private string password
+	public User signIn()
 	{
-		get;
-		set;
+        if (guestDaO.checkUserdata(email, password))
+        {
+            User user = new User();
+            user.readProfile(email);
+
+            if (user.Jogkor_id == 3)
+            {
+                Manager manager = new Manager();
+                manager.readProfile(email);
+                return manager;
+
+            }
+            else
+            {
+                return user;
+            }
+            
+        }
+        else
+        {
+            return null;
+        }
 	}
 
-	public virtual GuestDaO GuestDaO
+	public bool checkUser()
 	{
-		get;
-		set;
+        return guestDaO.checkUserdata(email, password);
 	}
 
-	private void signUp()
+	public string newPass()
 	{
-		throw new System.NotImplementedException();
-	}
+        var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var random = new Random();
+        var result = new string(
+            Enumerable.Repeat(chars, 8)
+                      .Select(s => s[random.Next(s.Length)])
+                      .ToArray());
 
-	private void signIn()
-	{
-		throw new System.NotImplementedException();
+        password = this.getHash(result);
+
+        if (email.Length!=0)
+        {
+            if (guestDaO.writeNewPass(email, password))
+            {
+                return result;
+            }
+        }
+
+        return null;
+
 	}
 
 }

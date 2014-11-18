@@ -8,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 
 public class User
 {
-    private int users_id;
+    protected int users_id;
     public int Users_id
     {
         get { return users_id; }
@@ -19,21 +20,21 @@ public class User
     }
 
 
-    private string users_email;
+    protected string users_email;
     public string Users_email
     {
         get { return users_email; }
         set { users_email = value; }
     }
 
-    private int jogkor_id;
+    protected int jogkor_id;
     public int Jogkor_id
     {
         get { return jogkor_id; }
         set { jogkor_id = value; }
     }
 
-    private bool aktiv;
+    protected bool aktiv;
     public bool Aktiv
     {
         get { return aktiv; }
@@ -41,14 +42,14 @@ public class User
     }
 
 
-    private bool koncertre_jar;
+    protected bool koncertre_jar;
     public bool Koncertre_jar
     {
         get { return koncertre_jar; }
         set { koncertre_jar = value; }
     }
 
-    private string users_password;
+   protected string users_password;
     public string Users_password
     {
         get { return users_password; }
@@ -56,49 +57,56 @@ public class User
     }
 
 
-    private string users_nev;
+    protected string users_nev;
     public string Users_nev
     {
         get { return users_nev; }
         set { users_nev = value; }
     }
 
-    private UserDaO userDaO;
+    protected UserDaO userDaO;
 	
 
     public User()
     {
         userDaO = new UserDaO();
+        aktiv = true;
+        koncertre_jar = true;
+        
+    }
+
+
+    public string getHash(string data)
+    {
+        //create new instance of md5
+        SHA1 sha1 = SHA1.Create();
+
+        //convert the input text to array of bytes
+        byte[] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(data));
+
+        //create new instance of StringBuilder to save hashed data
+        StringBuilder returnValue = new StringBuilder();
+
+        //loop for each byte and add it to StringBuilder
+        for (int i = 0; i < hashData.Length; i++)
+        {
+            returnValue.Append(hashData[i].ToString());
+        }
+
+        // return hexadecimal string
+        return returnValue.ToString();
     }
 
 	public bool profileModify()
 	{
-       // return UserDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+        return userDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
 
-        return false;
-	}
-
-	public Message[] getMessages()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public bool readMessage(Message uzenet)
-	{
-		throw new System.NotImplementedException();
 	}
 
 	public bool createProfile()
 	{
 
-        if (userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password))
-        {
-            return readProfile("gorogbence@gmail.com");
-        }
-        else
-        {
-            return false;
-        }
+        return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
         
 	}
 
@@ -106,17 +114,36 @@ public class User
     {
         string []data;
         data = userDaO.readUserdata(email);
+        try
+        {
+            this.users_id = Convert.ToInt32(data[0]);
+            this.users_nev = data[1];
+            this.users_email = data[2];
+            this.jogkor_id = Convert.ToInt32(data[3]);
+            this.aktiv = (data[4] == "True" ? true : false);
+            this.koncertre_jar = (data[5] == "True" ? true : false);
+            this.users_password = data[6];
+            
+            return true;
 
-        this.users_id = Int32.Parse(data[0]);
-        this.users_nev = data[1];
-        this.users_email = data[2];
-        this.jogkor_id = Int32.Parse(data[3]);
-        this.aktiv = (data[4]=="true"?true:false);
-        this.koncertre_jar = (data[5] == "true" ? true : false);
-        this.users_password = data[6];
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error " + ex.Message.ToString());
+            return false;
+        }
 
-        return true;
+        
     }
 
+    public Message[] getMessages()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool readMessage(Message uzenet)
+    {
+        throw new System.NotImplementedException();
+    }
 }
 
