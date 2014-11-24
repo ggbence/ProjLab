@@ -75,6 +75,19 @@ public class User
         
     }
 
+    public User(int users_id, string users_nev, string users_email, int jogkor_id, string users_password, bool aktiv, bool koncertre_jar)
+    {
+        userDaO = new UserDaO();
+
+        this.users_id = users_id;
+        this.users_email = users_email;
+        this.users_nev = users_nev;
+        this.jogkor_id = jogkor_id;
+        this.users_password = users_password;
+        this.aktiv = aktiv;
+        this.koncertre_jar = koncertre_jar;
+    }
+
 
     public string getHash(string data)
     {
@@ -97,11 +110,13 @@ public class User
         return returnValue.ToString();
     }
 
+
 	public bool profileModify()
 	{
         return userDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
 
 	}
+
 
 	public bool createProfile()
 	{
@@ -109,6 +124,7 @@ public class User
         return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
         
 	}
+
 
     public bool readProfile(string email)
     {
@@ -136,14 +152,29 @@ public class User
         
     }
 
-    public Message[] getMessages()
+
+    public List<Message> getMessages()
     {
-        throw new System.NotImplementedException();
+        return userDaO.getAllMsg(users_id);
     }
 
-    public bool readMessage(Message uzenet)
+
+    public Message readMessage(int uzenet_id)
     {
-        throw new System.NotImplementedException();
+        return userDaO.getMsg(uzenet_id);
     }
+   
+
+    public bool sendMessage(Message msg)
+    {
+        return userDaO.sendMsg(msg.Kuldo, msg.Uzenet, msg.Datum, msg.Ervenyesseg, msg.Cimzett);
+    }
+
+
+    public bool deleteMessage(int uzenet_id)
+    {
+        return userDaO.deleteMsg(uzenet_id, users_id);
+    }
+
 }
 

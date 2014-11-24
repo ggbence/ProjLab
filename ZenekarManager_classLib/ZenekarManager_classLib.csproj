@@ -46,6 +46,7 @@
     <Compile Include="GeneratedCode\Guest.cs" />
     <Compile Include="GeneratedCode\GuestDaO.cs" />
     <Compile Include="GeneratedCode\Manager.cs" />
+    <Compile Include="GeneratedCode\ManagerDaO.cs" />
     <Compile Include="GeneratedCode\Message.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />

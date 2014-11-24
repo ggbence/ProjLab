@@ -101,6 +101,7 @@ public class UserDaO : DaO
         return result;
 	}
 
+
 	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
 	{
         // Query string 
@@ -130,6 +131,276 @@ public class UserDaO : DaO
         }
         return false;
 	}
+
+
+    internal bool deleteMsg(int uzenet_id, int users_id)
+    {
+        // Query string 
+        string strSQL = "DELETE FROM FOGADOTT_UZENET WHERE users_id=@_users_id AND uzenet_id=@_uzenet_id";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@_users_id", users_id);
+        cmd.Parameters.AddWithValue("@_uzenet_id", uzenet_id);
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+
+    internal List<Message> getAllMsg(int cimzett)
+    {
+
+        MySqlDataReader rdr = null;
+
+        var msg_ids = new List<int>();
+
+        try
+        {
+
+            string stm = "SELECT uzenet_id FROM FOGADOTT_UZENET where users_id=@_users_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_users_id", cimzett);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                msg_ids.Add(rdr.GetInt32(0));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        
+
+       rdr = null;
+
+        var result = new List<Message>();
+
+        try
+        {
+
+            string stm = "SELECT uzenet_id, users_id, uzenet, datum, ervenyesseg FROM UZENET where uzenet_id=@_uzenet_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            for (int i = 0; i < msg_ids.Count; i++)
+            {
+                cmd.Parameters.AddWithValue("@_uzenet_id", msg_ids[i]);
+                rdr = cmd.ExecuteReader();
+
+                Message row = new Message();
+
+                while (rdr.Read())
+                {
+                    row.Uzenet_id = rdr.GetInt32(0);
+                    row.Kuldo = rdr.GetInt32(1);
+                    row.Uzenet = rdr.GetString(2);
+                    row.Datum = rdr.GetString(3);
+                    row.Ervenyesseg = rdr.GetString(4);
+                }
+                result.Add(row);
+            } 
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+
+    internal Message getMsg(int uzenet_id)
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new Message();
+
+        try
+        {
+
+            string stm = "SELECT uzenet_id, users_id, uzenet, datum, ervenyesseg FROM UZENET where uzenet_id=@_uzenet_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_uzenet_id", uzenet_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result.Uzenet_id = rdr.GetInt32(0);
+                result.Kuldo = rdr.GetInt32(1);
+                result.Uzenet = rdr.GetString(2);
+                result.Datum = rdr.GetString(3);
+                result.Ervenyesseg = rdr.GetString(4);
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
+    }
+
+    internal bool sendMsg(int sender, string uzenet, string datum, string ervenyesseg, List<int> cimzettek)
+    {
+        bool ok = false;
+
+    // uzenet adatbazisba toltese
+        string strSQL = "INSERT INTO UZENET (users_id, uzenet, datum, ervenyesseg) " +
+        "VALUES (@_users_id, @_uzenet, @_datum, @_ervenyesseg); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@_users_id", sender.ToString());
+        cmd.Parameters.AddWithValue("@_uzenet", uzenet.ToString());
+        cmd.Parameters.AddWithValue("@_datum", datum.ToString());
+        cmd.Parameters.AddWithValue("@_ervenyesseg", ervenyesseg.ToString());
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            ok = true;
+        }
+        else 
+        {
+            throw new MySqlException(); 
+        }
+
+
+    // feltoltott uzenet id-janak lekerdezese
+        MySqlDataReader rdr = null;
+
+        int result;
+
+        try
+        {
+            string stm = "SELECT uzenet_id FROM UZENET where users_id=@_users_id AND uzenet=@_uzenet AND datum=@_datum AND ervenyesseg=@_ervenyesseg";
+
+            cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_users_id", sender.ToString());
+            cmd.Parameters.AddWithValue("@_uzenet", uzenet.ToString());
+            cmd.Parameters.AddWithValue("@_datum", datum.ToString());
+            cmd.Parameters.AddWithValue("@_ervenyesseg", ervenyesseg.ToString());
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetInt32(0);
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+    //cimzettek feltoltese a megkapott uzenet id-val
+
+        // Query string 
+        strSQL = "INSERT INTO FOGADOTT_UZENET (uzenet_id, users_id) VALUES (@_uzenet_id, @_users_id); ";
+
+        // Add query text
+        cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        for (int i = 0; i < cimzettek.Count; i++)
+        {
+            cmd.Parameters.AddWithValue("@_uzenet_id", result.ToString());
+            cmd.Parameters.AddWithValue("@_users_id", cimzettek[i].ToString());
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                ok = true;
+            }
+            else
+            {
+                throw new MySqlException();
+            }
+        }
+
+        return ok;
+    }
 
 }
 

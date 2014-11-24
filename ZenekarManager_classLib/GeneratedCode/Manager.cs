@@ -11,9 +11,36 @@ using System.Text;
 
 public class Manager : User
 {
-	private void sendMessage()
+	protected ManagerDaO managerDaO;
+	
+
+	public bool deleteUser(int users_id)
 	{
-		throw new System.NotImplementedException();
+        return managerDaO.deleteUserdata(users_id);
+	}
+
+
+	public bool changeUserRole(int users_id, int jogkod_id)
+	{
+        return managerDaO.changeRole(users_id, jogkor_id);
+	}
+
+
+	public List<User> getUserList()
+	{
+        return managerDaO.getUsers();
+	}
+
+
+	public List<KeyValuePair<int, string>> getRoles()
+	{
+        return managerDaO.getAllRole();
+	}
+
+
+	public bool changeUser(User user)
+	{
+        return user.profileModify();
 	}
 
 }
