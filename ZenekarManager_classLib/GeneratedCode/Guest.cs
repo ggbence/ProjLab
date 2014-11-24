@@ -26,7 +26,7 @@ public class Guest
     public string Password
     {
         get { return password; }
-        set { password = value; }
+        set { password = getHash(value); }
     }
 
 
@@ -128,7 +128,7 @@ public class Guest
                       .Select(s => s[random.Next(s.Length)])
                       .ToArray());
 
-        password = this.getHash(result);
+        this.Password = result;
 
         if (email.Length!=0)
         {

@@ -24,7 +24,7 @@ namespace ZenekarManagerWebApp
             Guest guest = new Guest();
 
             guest.Email = "gorogbence@gmail.com";
-            guest.Password = "mukodj";
+            guest.Password = "WbsNA51M";
             string nev = "Görög G Bence";
 
             //if (guest.checkEmail()) 
