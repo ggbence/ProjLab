@@ -62,7 +62,7 @@ public class Message
 
     public Message()
     {
-
+        cimzett = new List<int>();
     }
 
 	public bool addRecipient(int rcp)
