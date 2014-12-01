@@ -73,6 +73,26 @@ namespace ZenekarManagerWebApp
             else
             {
                 tesztLabel.Text += " Guest bejelentkezett <br>";
+                var message = new Message();
+                message.addRecipient(21);
+                message.Kuldo = 21;
+                message.Datum = "2014-11-24 23:49:00";
+                message.Ervenyesseg = "2015-11-24 23:49:00";
+                message.Uzenet = "Az alvás jó.";
+
+                if (user.sendMessage(message))
+                {
+                    tesztLabel.Text += " üzenet elküldve <br>";
+                    message = user.readMessage(3);
+                    tesztLabel.Text += message.Uzenet + " <br>";
+                }
+                else
+                {
+                    tesztLabel.Text += " nem sikerült elküldeni az üzenetet <br>";
+                }
+                
+
+
 
             }
 

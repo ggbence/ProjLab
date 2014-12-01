@@ -327,14 +327,14 @@ public class UserDaO : DaO
         }
         else 
         {
-            throw new MySqlException(); 
+            return false; 
         }
 
 
     // feltoltott uzenet id-janak lekerdezese
         MySqlDataReader rdr = null;
 
-        int result;
+        int result = 0;
 
         try
         {
@@ -395,7 +395,7 @@ public class UserDaO : DaO
             }
             else
             {
-                throw new MySqlException();
+                return false;
             }
         }
 
