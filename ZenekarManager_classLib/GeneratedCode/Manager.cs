@@ -54,5 +54,18 @@ public class Manager : User
     {
         return managerDaO.newInstrumentTypes(tipuslista);
     }
+
+
+    public bool deleteInstrument(int hangszer_id)
+    {
+        return managerDaO.delInstrument(hangszer_id);
+    }
+
+
+    public bool deleteInstrumentType(int hangszertipus_id)
+    {
+        return managerDaO.delInstrumentType(hangszertipus_id);
+    }
+
 }
 

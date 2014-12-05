@@ -1822,14 +1822,21 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7462932d-b4b8-4c67-8fb2-cd1e89aa20f0"
-                  name="List&lt;KeyValuePair&lt; String"
+                  Id="5158ad5c-3f38-40c3-bead-43bf75126501"
+                  name="List&lt;KeyValuePair&lt; hangszerlista"
                   direction="In"
-                  isUnique="false" />
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bf1c21ee-a6e3-4c1d-89d2-87bb37382508"
+                  Id="4c9d295b-a3bd-4d3e-b777-f8d5ff7b60d0"
                   name="Integer&gt;&gt;"
                   direction="In"
                   isUnique="false" />
@@ -1847,14 +1854,97 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8493adc2-30ac-4300-ae47-605f3209dd6f"
-                  name="List&lt;String&gt;"
-                  direction="In"
-                  isUnique="false" />
+                  Id="8f6ea06d-853d-4e96-8bf8-b40a99ebde15"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8f6ea06d-853d-4e96-8bf8-b40a99ebde15"
+                  Id="7dbe1c0f-f980-4fc0-ab12-4db136f44698"
+                  name="tipuslista"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="2bfd182d-9cfa-45e4-98f3-88d8cb43532d"
+                      LastKnownName="List&lt;String&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f406bc92-9600-424b-b351-9877aab4a7bd"
+            name="deleteInstrument"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="01022f90-b7b2-482b-a320-1ec811d1665d"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="77968b44-01b8-4998-acb7-f081c77a96e5"
+                  name="hangszer_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="76b9ee96-a8a7-4e00-9424-71ab60a0b154"
+            name="deleteInstrumentType"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3d3d4ca0-ec13-4efa-8c1c-58a2dbe88696"
+                  name="hangszertipus_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="52821d92-5d48-4ae8-b1b1-ae5d35d145f5"
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
@@ -2757,7 +2847,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f6739c1a-a4ac-4b1c-a465-7fcff3a33bb6"
+                  Id="696dcbd9-0ba4-4507-b5e0-ca00c2054850"
                   name="users_id"
                   direction="In"
                   isUnique="false">
@@ -2771,7 +2861,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="2a0e65c1-bb15-44bb-9d81-7fb9662eff7b"
+                  Id="45f9500c-3801-4cdc-945e-a4177f9cbaf1"
                   name="users_nev"
                   direction="In"
                   isUnique="false">
@@ -2785,7 +2875,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="dedcb89e-c966-45b3-a5d1-7f49e674e1a6"
+                  Id="dc01e1cf-fb0d-4167-8fd4-27ec1aa9bda3"
                   name="users_email"
                   direction="In"
                   isUnique="false">
@@ -2799,7 +2889,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="654f9eab-b26e-4217-b392-8a3b5752effc"
+                  Id="d56ca282-8628-491f-849e-12c14a41bd4c"
                   name="jogkor_id"
                   direction="In"
                   isUnique="false">
@@ -2813,7 +2903,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b84b01aa-f186-46ea-8755-8dc371cdffa2"
+                  Id="d7d8f6d8-3666-4f9d-ae81-558c7632e605"
                   name="aktiv"
                   direction="In"
                   isUnique="false">
@@ -2827,7 +2917,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f4f3ec39-e9fd-4d52-bc08-9e9bd11f94cd"
+                  Id="b652356c-40c8-4fbc-842a-98fe1cbda52c"
                   name="koncertre_jar"
                   direction="In"
                   isUnique="false">
@@ -2841,7 +2931,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3a3b35c5-9c7d-4e0e-9068-4ef766b7e744"
+                  Id="e62e6488-46e5-462f-ab68-4a11c2c82152"
                   name="users_password"
                   direction="In"
                   isUnique="false">
@@ -2852,6 +2942,27 @@
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fa4c175c-1aa1-4f10-b6d1-401cabffeb86"
+                  name="hangszerek"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="06579ac2-f6e1-4c6f-8bd8-b6c7e955da53"
+                      LastKnownName="List&lt;KeyValuePair&lt;int"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a911fdb6-392e-4e28-a443-1974b6509096"
+                  name="string&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -2930,7 +3041,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0f3ae166-b206-42c2-beae-14df8c6c5479"
+                  Id="ca83f7b7-a3a0-4096-884f-e4d091a107a3"
                   name="email"
                   direction="In"
                   isUnique="false">
@@ -2941,6 +3052,27 @@
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="79981884-5347-4f39-8bf2-5006d1dae14f"
+                  name="hangszerek"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="06579ac2-f6e1-4c6f-8bd8-b6c7e955da53"
+                      LastKnownName="List&lt;KeyValuePair&lt;int"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e8220765-6f8c-4cff-a24a-ebae96ad7bc9"
+                  name="string&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -3019,7 +3151,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e24daecd-fc4b-44f3-91a7-a416a64ee1de"
+                  Id="0c007a5f-2a6a-4d62-b117-7946033b2b33"
                   name="users_id"
                   direction="In"
                   isUnique="false">
@@ -3033,7 +3165,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8e12c3bb-816d-4f0e-a1b1-00defd9b4507"
+                  Id="c0231ed2-b69e-4d59-b8ea-9e89b289f081"
                   name="users_nev"
                   direction="In"
                   isUnique="false">
@@ -3047,7 +3179,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="03e3d155-526c-4929-9b19-3c1b7d4a8049"
+                  Id="e47be522-d346-4271-93da-a1d483215617"
                   name="users_email"
                   direction="In"
                   isUnique="false">
@@ -3061,7 +3193,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="96a7946c-0374-4f17-9ad0-5a8e29c6b3e9"
+                  Id="2fe5896a-4984-47c4-9a58-28759cd4e1e7"
                   name="jogkor_id"
                   direction="In"
                   isUnique="false">
@@ -3075,7 +3207,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e00a8394-5b42-467b-b086-07d37475e0b2"
+                  Id="5129bbfd-79ec-4c57-94ea-ecbe07d9576c"
                   name="aktiv"
                   direction="In"
                   isUnique="false">
@@ -3089,7 +3221,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0fbf22f8-62b1-4b30-b13d-1e2102daa437"
+                  Id="0d311b14-f88f-4af3-9c43-cd08ebf7b139"
                   name="koncertre_jar"
                   direction="In"
                   isUnique="false">
@@ -3103,7 +3235,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="9de2516c-7161-4b77-b51f-4eda13096442"
+                  Id="b38f4460-817e-4289-94ca-15323b6f372e"
                   name="users_password"
                   direction="In"
                   isUnique="false">
@@ -3114,6 +3246,27 @@
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9c09a26e-3d9c-49e5-8f70-64c0d5726c7d"
+                  name="hangszerek"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="06579ac2-f6e1-4c6f-8bd8-b6c7e955da53"
+                      LastKnownName="List&lt;KeyValuePair&lt;int"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c32adced-b78d-4279-aa75-b525ad3ed081"
+                  name="string&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -5440,14 +5593,21 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1a475454-f9ec-4b08-b121-15cc353df7e8"
-                  name="List&lt;KeyValuePair&lt;String"
+                  Id="e13fa3e6-88bb-45fc-9b16-90bb6e7c81e0"
+                  name="hangszerlista"
                   direction="In"
-                  isUnique="false" />
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="fabf4dfb-0697-4e60-88ab-d205abae4bbb"
+                      LastKnownName="List&lt;KeyValuePair&lt;String"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="219ceb2e-a90c-45b1-b9ff-65b54d6b89bd"
+                  Id="99a345b2-eaf8-4d0e-9ee3-146f7056ae11"
                   name="Integer&gt;&gt;"
                   direction="In"
                   isUnique="false" />
@@ -5479,10 +5639,95 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0e77323b-398c-485f-b814-3271aa52716a"
-                  name="List&lt;String&gt;"
+                  Id="7b309783-efc4-4340-b20c-dbd8b7f8f972"
+                  name="tipuslista"
                   direction="In"
-                  isUnique="false" />
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="2bfd182d-9cfa-45e4-98f3-88d8cb43532d"
+                      LastKnownName="List&lt;String&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7897a546-9323-47c9-a927-d1930610c95b"
+            name="delInstrument"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b60a6aab-aa82-4842-9bf2-46a0eb6ee582"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f45e8c30-c27e-49e8-8d22-ac026eb8f6af"
+                  name="hangszer_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d150fd88-a334-4fae-98ad-3894afe4e461"
+            name="delInstrumentType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f31d5e1d-fc3b-4fc3-b5fb-bc6bd749c228"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bfadcbb6-2415-4d8e-9194-1c3a1a059392"
+                  name="hangszertipus_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -5547,6 +5792,21 @@
       <undefinedType
         Id="05eb405a-befa-4a9b-b9cf-6815c1d49fa4"
         name="List&lt;KeyValuePairs&lt;Integer" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2bfd182d-9cfa-45e4-98f3-88d8cb43532d"
+        name="List&lt;String&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="fabf4dfb-0697-4e60-88ab-d205abae4bbb"
+        name="List&lt;KeyValuePair&lt;String" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="06579ac2-f6e1-4c6f-8bd8-b6c7e955da53"
+        name="List&lt;KeyValuePair&lt;int" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

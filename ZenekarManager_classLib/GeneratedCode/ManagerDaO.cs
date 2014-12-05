@@ -215,6 +215,141 @@ public class ManagerDaO : DaO
 
         return ok;
     }
+
+
+    internal bool delInstrument(int hangszer_id)
+    {
+
+       
+        try
+        {
+
+            // a torlendo hangszer id-jat tartalmazo sorok torlese az user hangszerei tablabol
+            // Query string 
+            string strSQL = "DELETE FROM USERS_HANGSZER WHERE hangszer_id=@_hangszer_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_hangszer_id", hangszer_id);
+
+            // Execute query
+            cmd.ExecuteNonQuery();
+
+
+            // a torlendo hangszer torlese a hangszer tablabol
+            // Query string 
+            strSQL = "DELETE FROM HANGSZER WHERE hangszer_id=@_hangszer_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_hangszer_id", hangszer_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+            
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+       
+
+        // Return with the result string
+        return false;
+
+       
+    }
+
+
+    internal bool delInstrumentType(int hangszertipus_id)
+    {
+        
+
+        try
+        {
+
+            // a torlendo hangszertipus id-jat tartalmazo sorok torlese az users_hangszer tablabol
+            // Query string 
+            string strSQL = "DELETE UH.* FROM HANGSZER H INNER JOIN USERS_HANGSZER UH ON H.hangszer_id=UH.hangszer_id WHERE H.hangszertipus_id=@_hangszertipus_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszertipus_id);
+
+            // Execute query
+            cmd.ExecuteNonQuery();
+
+            
+            // a torlendo hangszertipus torlese a hangszer tablabol
+            // Query string 
+            strSQL = "DELETE FROM HANGSZER WHERE hangszertipus_id=@_hangszertipus_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszertipus_id);
+
+            // Execute query
+            cmd.ExecuteNonQuery();
+
+           
+            // a torlendo hangszertipus torlese a hangszertipus tablabol
+            // Query string 
+            strSQL = "DELETE FROM HANGSZERTIPUS WHERE hangszertipus_id=@_hangszertipus_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszertipus_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+
+
+        // Return with the result string
+        return false;
+
+
+    }
 }
 
 

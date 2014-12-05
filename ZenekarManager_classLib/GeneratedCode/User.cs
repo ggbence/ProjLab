@@ -140,7 +140,7 @@ public class User
     public bool readProfile(string email)
     {
         string []data;
-        data = userDaO.readUserdata(email, hangszerek);
+        data = userDaO.readUserdata(email, this.hangszerek);
         try
         {
             this.users_id = Convert.ToInt32(data[0]);

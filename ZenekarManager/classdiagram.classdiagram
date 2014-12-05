@@ -1259,13 +1259,16 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2b415dd4-e7cb-4117-b426-8ec0369ce2b6" name="List&lt;KeyValuePair&lt; String" direction="In" isUnique="false">
-                  <elementDefinition Id="7462932d-b4b8-4c67-8fb2-cd1e89aa20f0" />
+                <parameter Id="f22cf74b-7491-4bff-99bc-bf38bcf7dd1e" name="List&lt;KeyValuePair&lt; hangszerlista" direction="In" isUnique="false">
+                  <elementDefinition Id="5158ad5c-3f38-40c3-bead-43bf75126501" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="6f45d50b-df87-4d82-a698-d38e32073d25" name="Integer&gt;&gt;" direction="In" isUnique="false">
-                  <elementDefinition Id="bf1c21ee-a6e3-4c1d-89d2-87bb37382508" />
+                <parameter Id="13cb0ff1-d338-48ff-a4ce-ef922a34e103" name="Integer&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="4c9d295b-a3bd-4d3e-b777-f8d5ff7b60d0" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -1274,13 +1277,58 @@
             <elementDefinition Id="d97967a1-6d10-46d3-98c0-92240bb6b5e9" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="f3d0df6c-ec84-4f19-b4ab-90b1dc572314" name="List&lt;String&gt;" direction="In" isUnique="false">
-                  <elementDefinition Id="8493adc2-30ac-4300-ae47-605f3209dd6f" />
+                <parameter Id="a97d5ca1-e3ef-4f34-a65d-b79eb98c2ab6" direction="Return" isUnique="false">
+                  <elementDefinition Id="8f6ea06d-853d-4e96-8bf8-b40a99ebde15" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="a97d5ca1-e3ef-4f34-a65d-b79eb98c2ab6" direction="Return" isUnique="false">
-                  <elementDefinition Id="8f6ea06d-853d-4e96-8bf8-b40a99ebde15" />
+                <parameter Id="2b057ab9-084c-4dac-bb9f-80326d3ca8e5" name="tipuslista" direction="In" isUnique="false">
+                  <elementDefinition Id="7dbe1c0f-f980-4fc0-ab12-4db136f44698" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="219a49fe-cf29-4b3b-812e-930364f2de0f" LastKnownName="List&lt;String&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="07401760-0af4-4505-ba50-ce48b586d905" name="deleteInstrument" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f406bc92-9600-424b-b351-9877aab4a7bd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="468209e2-35e7-43ba-98aa-c9e1a8636225" direction="Return" isUnique="false">
+                  <elementDefinition Id="01022f90-b7b2-482b-a320-1ec811d1665d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2a649c08-903b-461c-b97d-b78d86eb3e60" name="hangszer_id" direction="In" isUnique="false">
+                  <elementDefinition Id="77968b44-01b8-4998-acb7-f081c77a96e5" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="3ae52e0a-11ef-4b96-9520-487eff85218b" name="deleteInstrumentType" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="76b9ee96-a8a7-4e00-9424-71ab60a0b154" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="934b5748-6f74-4cea-aeb2-8c721509e5ff" name="hangszertipus_id" direction="In" isUnique="false">
+                  <elementDefinition Id="3d3d4ca0-ec13-4efa-8c1c-58a2dbe88696" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9662f2ee-7223-4b5f-9260-8406c4d9d950" direction="Return" isUnique="false">
+                  <elementDefinition Id="52821d92-5d48-4ae8-b1b1-ae5d35d145f5" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
                   </type_NamedElement>
@@ -1899,59 +1947,72 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2b8914c9-ffb7-4e85-b31d-60ed4657fc27" name="users_id" direction="In" isUnique="false">
-                  <elementDefinition Id="f6739c1a-a4ac-4b1c-a465-7fcff3a33bb6" />
+                <parameter Id="2aa638c2-a303-4a03-b702-41b8eda52e93" name="users_id" direction="In" isUnique="false">
+                  <elementDefinition Id="696dcbd9-0ba4-4507-b5e0-ca00c2054850" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="a65d523d-c2c7-41b5-8767-6844377fd4ef" name="users_nev" direction="In" isUnique="false">
-                  <elementDefinition Id="2a0e65c1-bb15-44bb-9d81-7fb9662eff7b" />
+                <parameter Id="26807b09-4ad4-49d0-935c-cd5ad8b24840" name="users_nev" direction="In" isUnique="false">
+                  <elementDefinition Id="45f9500c-3801-4cdc-945e-a4177f9cbaf1" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="fd82e5af-f275-46ae-8a98-673c6af5388b" name="users_email" direction="In" isUnique="false">
-                  <elementDefinition Id="dedcb89e-c966-45b3-a5d1-7f49e674e1a6" />
+                <parameter Id="ae0b9b51-9f99-439e-b9bc-27b70e5aa225" name="users_email" direction="In" isUnique="false">
+                  <elementDefinition Id="dc01e1cf-fb0d-4167-8fd4-27ec1aa9bda3" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="f8bfec5d-6585-47a9-92a7-5a5a504e49c8" name="jogkor_id" direction="In" isUnique="false">
-                  <elementDefinition Id="654f9eab-b26e-4217-b392-8a3b5752effc" />
+                <parameter Id="b880f306-39b1-447b-b99b-e6d6e8a530c6" name="jogkor_id" direction="In" isUnique="false">
+                  <elementDefinition Id="d56ca282-8628-491f-849e-12c14a41bd4c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="6b92363d-0419-41cc-919d-70798cc002d5" name="aktiv" direction="In" isUnique="false">
-                  <elementDefinition Id="b84b01aa-f186-46ea-8755-8dc371cdffa2" />
+                <parameter Id="7ec207b3-6aac-489e-976e-6d74f64a3646" name="aktiv" direction="In" isUnique="false">
+                  <elementDefinition Id="d7d8f6d8-3666-4f9d-ae81-558c7632e605" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="8dbf7c4b-c8b4-4dc0-875d-dc0bd18d16b5" name="koncertre_jar" direction="In" isUnique="false">
-                  <elementDefinition Id="f4f3ec39-e9fd-4d52-bc08-9e9bd11f94cd" />
+                <parameter Id="04a3576c-1441-4045-a41e-7d58fc5bfaf5" name="koncertre_jar" direction="In" isUnique="false">
+                  <elementDefinition Id="b652356c-40c8-4fbc-842a-98fe1cbda52c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="4819eaa3-cf90-4f61-9819-3cdc586388ff" name="users_password" direction="In" isUnique="false">
-                  <elementDefinition Id="3a3b35c5-9c7d-4e0e-9068-4ef766b7e744" />
+                <parameter Id="a2bcb144-26d4-4455-a2a1-7fbea434314a" name="users_password" direction="In" isUnique="false">
+                  <elementDefinition Id="e62e6488-46e5-462f-ab68-4a11c2c82152" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="07d99bac-e13d-43ca-9690-fbade164c16e" name="hangszerek" direction="In" isUnique="false">
+                  <elementDefinition Id="fa4c175c-1aa1-4f10-b6d1-401cabffeb86" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6a93277c-2880-42dc-864a-7394a5bd1445" LastKnownName="List&lt;KeyValuePair&lt;int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="aee2e95e-d6dc-4d0c-96d1-e7482598bce0" name="string&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="a911fdb6-392e-4e28-a443-1974b6509096" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -2011,11 +2072,24 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="cba46c31-fcfd-45cc-8589-acba1b1ca681" name="email" direction="In" isUnique="false">
-                  <elementDefinition Id="0f3ae166-b206-42c2-beae-14df8c6c5479" />
+                <parameter Id="f8c91ba8-4207-401b-a098-883a70af08f0" name="email" direction="In" isUnique="false">
+                  <elementDefinition Id="ca83f7b7-a3a0-4096-884f-e4d091a107a3" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8f398933-f663-4b0f-8cbc-1e315890d3a4" name="hangszerek" direction="In" isUnique="false">
+                  <elementDefinition Id="79981884-5347-4f39-8bf2-5006d1dae14f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6a93277c-2880-42dc-864a-7394a5bd1445" LastKnownName="List&lt;KeyValuePair&lt;int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d27b119f-8bbb-4156-8ad0-3d6893bc0a5f" name="string&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="e8220765-6f8c-4cff-a24a-ebae96ad7bc9" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -2075,59 +2149,72 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="9588b42a-a51b-4f83-8fd6-ee17a09877a1" name="users_id" direction="In" isUnique="false">
-                  <elementDefinition Id="e24daecd-fc4b-44f3-91a7-a416a64ee1de" />
+                <parameter Id="46f0d2b0-a8fa-4038-a5a7-8fbe5d8cdd65" name="users_id" direction="In" isUnique="false">
+                  <elementDefinition Id="0c007a5f-2a6a-4d62-b117-7946033b2b33" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d871ab4d-9d3d-4028-9ffd-147213de93b9" name="users_nev" direction="In" isUnique="false">
-                  <elementDefinition Id="8e12c3bb-816d-4f0e-a1b1-00defd9b4507" />
+                <parameter Id="498d3691-771a-4646-b5df-63ace7cbd69d" name="users_nev" direction="In" isUnique="false">
+                  <elementDefinition Id="c0231ed2-b69e-4d59-b8ea-9e89b289f081" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="93152fa7-841a-4d3b-a534-d6fa66bb69fb" name="users_email" direction="In" isUnique="false">
-                  <elementDefinition Id="03e3d155-526c-4929-9b19-3c1b7d4a8049" />
+                <parameter Id="2e005e80-8773-4ae3-8ef8-f359c2b948ad" name="users_email" direction="In" isUnique="false">
+                  <elementDefinition Id="e47be522-d346-4271-93da-a1d483215617" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="4407722d-5af8-4b4d-b481-112b8421cb4d" name="jogkor_id" direction="In" isUnique="false">
-                  <elementDefinition Id="96a7946c-0374-4f17-9ad0-5a8e29c6b3e9" />
+                <parameter Id="bb25cdaa-6724-443c-ad3e-4b93c81cbcd1" name="jogkor_id" direction="In" isUnique="false">
+                  <elementDefinition Id="2fe5896a-4984-47c4-9a58-28759cd4e1e7" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="eb48b8bd-fa8f-4544-aef2-9c570d8f7ae4" name="aktiv" direction="In" isUnique="false">
-                  <elementDefinition Id="e00a8394-5b42-467b-b086-07d37475e0b2" />
+                <parameter Id="9c5b175f-279c-434b-b17d-398c6409d828" name="aktiv" direction="In" isUnique="false">
+                  <elementDefinition Id="5129bbfd-79ec-4c57-94ea-ecbe07d9576c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="e81bb851-ac9d-42d2-b9e1-55fc660d2009" name="koncertre_jar" direction="In" isUnique="false">
-                  <elementDefinition Id="0fbf22f8-62b1-4b30-b13d-1e2102daa437" />
+                <parameter Id="048fac04-e231-490b-ba6e-2c526c8656de" name="koncertre_jar" direction="In" isUnique="false">
+                  <elementDefinition Id="0d311b14-f88f-4af3-9c43-cd08ebf7b139" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7d6eed90-1fac-442d-9cdd-3c01edd2d200" name="users_password" direction="In" isUnique="false">
-                  <elementDefinition Id="9de2516c-7161-4b77-b51f-4eda13096442" />
+                <parameter Id="d260db7a-3437-45c5-b6ee-4d21c34c0322" name="users_password" direction="In" isUnique="false">
+                  <elementDefinition Id="b38f4460-817e-4289-94ca-15323b6f372e" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0b96cb7b-e6b7-4ef2-869d-0ae811fdbdfa" name="hangszerek" direction="In" isUnique="false">
+                  <elementDefinition Id="9c09a26e-3d9c-49e5-8f70-64c0d5726c7d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6a93277c-2880-42dc-864a-7394a5bd1445" LastKnownName="List&lt;KeyValuePair&lt;int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1d4e9b2f-8863-4aae-ab5d-11c9f0f06088" name="string&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="c32adced-b78d-4279-aa75-b525ad3ed081" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -3717,13 +3804,16 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="5fd86e04-1413-4f91-a48e-6d16b93bedbb" name="List&lt;KeyValuePair&lt;String" direction="In" isUnique="false">
-                  <elementDefinition Id="1a475454-f9ec-4b08-b121-15cc353df7e8" />
+                <parameter Id="d48f04be-c255-4814-8f9c-a04f4fee67ef" name="hangszerlista" direction="In" isUnique="false">
+                  <elementDefinition Id="e13fa3e6-88bb-45fc-9b16-90bb6e7c81e0" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="45f0af31-5eac-42a2-bdd6-6a43b2ded83b" LastKnownName="List&lt;KeyValuePair&lt;String" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="4af07058-1bfc-44da-ad9a-170adb107a49" name="Integer&gt;&gt;" direction="In" isUnique="false">
-                  <elementDefinition Id="219ceb2e-a90c-45b1-b9ff-65b54d6b89bd" />
+                <parameter Id="23e56917-ad25-4b17-bdaf-f126daa6fdd0" name="Integer&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="99a345b2-eaf8-4d0e-9ee3-146f7056ae11" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -3740,8 +3830,53 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="0b3670f2-f2ad-49fc-8362-536cccb0edf8" name="List&lt;String&gt;" direction="In" isUnique="false">
-                  <elementDefinition Id="0e77323b-398c-485f-b814-3271aa52716a" />
+                <parameter Id="d268901f-938c-4d37-af55-9a63f8fb3627" name="tipuslista" direction="In" isUnique="false">
+                  <elementDefinition Id="7b309783-efc4-4340-b20c-dbd8b7f8f972" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="219a49fe-cf29-4b3b-812e-930364f2de0f" LastKnownName="List&lt;String&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="af018f4c-b46f-4f1d-9b9e-f3564b3b2a38" name="delInstrument" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7897a546-9323-47c9-a927-d1930610c95b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ca857631-fe6a-4f10-9941-404af86924c5" direction="Return" isUnique="false">
+                  <elementDefinition Id="b60a6aab-aa82-4842-9bf2-46a0eb6ee582" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bd4c2256-352e-4828-86d6-b2cee9c58475" name="hangszer_id" direction="In" isUnique="false">
+                  <elementDefinition Id="f45e8c30-c27e-49e8-8d22-ac026eb8f6af" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="c65db7a1-df52-4a13-9435-9ce35542dcb9" name="delInstrumentType" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d150fd88-a334-4fae-98ad-3894afe4e461" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9ceababa-d72e-440a-8d00-6f458de9b53e" direction="Return" isUnique="false">
+                  <elementDefinition Id="f31d5e1d-fc3b-4fc3-b5fb-bc6bd749c228" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1396ec34-1502-4084-a814-663541f3f182" name="hangszertipus_id" direction="In" isUnique="false">
+                  <elementDefinition Id="bfadcbb6-2415-4d8e-9194-1c3a1a059392" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -3832,6 +3967,21 @@
     <packageHasNamedElement>
       <referencedType Id="d24ed504-a355-4e5b-aa60-50ffb0206316" name="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;">
         <elementDefinition Id="78f7b982-2ef5-4a08-a72b-18a286910b70" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="219a49fe-cf29-4b3b-812e-930364f2de0f" name="List&lt;String&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;String&gt;">
+        <elementDefinition Id="2bfd182d-9cfa-45e4-98f3-88d8cb43532d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="45f0af31-5eac-42a2-bdd6-6a43b2ded83b" name="List&lt;KeyValuePair&lt;String" isAbstract="false" isLeaf="false" cachedFullName="List&lt;KeyValuePair&lt;String">
+        <elementDefinition Id="fabf4dfb-0697-4e60-88ab-d205abae4bbb" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6a93277c-2880-42dc-864a-7394a5bd1445" name="List&lt;KeyValuePair&lt;int" isAbstract="false" isLeaf="false" cachedFullName="List&lt;KeyValuePair&lt;int">
+        <elementDefinition Id="06579ac2-f6e1-4c6f-8bd8-b6c7e955da53" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
