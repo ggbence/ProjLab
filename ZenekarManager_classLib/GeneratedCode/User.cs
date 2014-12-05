@@ -64,6 +64,16 @@ public class User
         set { users_nev = value; }
     }
 
+
+    protected List<KeyValuePair<int, string>> hangszerek;
+   
+    public List<KeyValuePair<int, string>> Hangszerek
+    {
+        get { return hangszerek; }
+        set { hangszerek = value; }
+    } 
+
+
     protected UserDaO userDaO;
 	
 
@@ -72,6 +82,7 @@ public class User
         userDaO = new UserDaO();
         aktiv = true;
         koncertre_jar = true;
+        hangszerek = new List<KeyValuePair<int, string>>();
         
     }
 
@@ -113,7 +124,7 @@ public class User
 
 	public bool profileModify()
 	{
-        return userDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+        return userDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek);
 
 	}
 
@@ -121,7 +132,7 @@ public class User
 	public bool createProfile()
 	{
 
-        return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password);
+        return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek);
         
 	}
 
@@ -129,7 +140,7 @@ public class User
     public bool readProfile(string email)
     {
         string []data;
-        data = userDaO.readUserdata(email);
+        data = userDaO.readUserdata(email, hangszerek);
         try
         {
             this.users_id = Convert.ToInt32(data[0]);
@@ -139,7 +150,7 @@ public class User
             this.aktiv = (data[4] == "True" ? true : false);
             this.koncertre_jar = (data[5] == "True" ? true : false);
             this.users_password = data[6];
-            
+            // hangszerek listajat kozvetlenul parameterkent kapta meg
             return true;
 
         }
@@ -174,6 +185,19 @@ public class User
     public bool deleteMessage(int uzenet_id)
     {
         return userDaO.deleteMsg(uzenet_id, users_id);
+    }
+
+    // hangszer_id, hangszer_nev, hangszertipus_id
+    public List<KeyValuePair<int, KeyValuePair<string, int>>> getInstruments()
+    {
+        // hangszer_id, hangszer_nev, hangszertipus_id
+        return userDaO.getAllInstrument();
+    }
+
+
+    public List<KeyValuePair<int, string>> getInstrumentTypes()
+    {
+        return userDaO.getAllInstrumentType();
     }
 
 }

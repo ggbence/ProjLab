@@ -154,5 +154,67 @@ public class ManagerDaO : DaO
 
         
     }
+
+    internal bool newInstruments(List<KeyValuePair<string, int>> hangszerek) 
+    {
+        // uj hangszerek irasa
+
+        // Query string 
+        string strSQL = "INSERT INTO HANGSZER (hangszer_nev, hangszertipus_id) VALUES (@_hangszernev, @_hangszertipus_id); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        bool ok = true;
+
+        for (int i = 0; i < hangszerek.Count; i++)
+        {
+            cmd.Parameters.AddWithValue("@_hangszernev", hangszerek[i].Key);
+            cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszerek[i].Value);
+            // Execute query
+
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                ok = false;
+            }
+        }
+
+        return ok;
+        
+    }
+
+
+    internal bool newInstrumentTypes(List<String> tipuslista)
+    {
+        // hangszertipusok adatbazisba irasa
+
+        // Query string 
+        string strSQL = "INSERT INTO HANGSZERTIPUS (hangszertipus_nev) VALUES (@_hangszertipus_nev); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        bool ok = true;
+
+        for (int i = 0; i < tipuslista.Count; i++)
+        {
+            cmd.Parameters.AddWithValue("@_hangszertipus_nev", tipuslista[i]);
+            // Execute query
+
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                ok = false;
+            }
+        }
+
+        return ok;
+    }
 }
+
 

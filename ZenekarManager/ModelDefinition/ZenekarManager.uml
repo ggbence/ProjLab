@@ -736,6 +736,25 @@
                 LastKnownLocation="ZenekarManager.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="c00d9247-2a8e-40fb-b2a5-58658815411e"
+            name="hangszerek"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                LastKnownLocation="ZenekarManager.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1200,6 +1219,54 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="980eed59-2b85-474b-93cd-12a003dbcfb4"
+            name="getInstruments"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f097a470-f6da-4a5f-82dc-9b81dc38353c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+                      LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5af75b90-d60f-43d2-b681-d039594cea7b"
+            name="getInstrumentTypes"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ef010b5d-c38c-4a19-a60a-b97914ad4c8e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1561,8 +1628,8 @@
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="6af92ad6-f6d4-411a-a94c-600f01a1def1"
-                      LastKnownName="List&lt;User&gt;"
+                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -1719,6 +1786,75 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="87834e88-a785-4208-97e7-1789e553da34"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="aafa12cc-033f-4a15-b3de-46baab68cd6b"
+            name="addInstruments"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1da1eaf9-aa3b-4bd5-b70d-8b57419a9649"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7462932d-b4b8-4c67-8fb2-cd1e89aa20f0"
+                  name="List&lt;KeyValuePair&lt; String"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bf1c21ee-a6e3-4c1d-89d2-87bb37382508"
+                  name="Integer&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d97967a1-6d10-46d3-98c0-92240bb6b5e9"
+            name="addInstrumentTypes"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8493adc2-30ac-4300-ae47-605f3209dd6f"
+                  name="List&lt;String&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8f6ea06d-853d-4e96-8bf8-b40a99ebde15"
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
@@ -3207,6 +3343,56 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="535112f1-5897-4589-8d71-46bfddbaa941"
+            name="getAllInstrument"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a4f8910f-0c0a-4cab-8da8-c4f3279b84ac"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+                      LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="16e93bfb-b2a2-4c3e-8562-240d2da82808"
+            name="getAllInstrumentType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cbc2c1f1-be6e-4a9a-b138-41c5bfcc83c1"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -3910,6 +4096,54 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="5e7fc40d-fe8a-4fc7-9bcd-2874353ba14b"
+            name="getInstruments"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d9584a8d-2324-4b0a-aee1-53c983f0b688"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+                      LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8774c0b4-ae3c-4143-87b0-c6dadc1f9916"
+            name="getInstrumentTypes"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7f7c07c9-b0d4-462d-ad18-29968e736af3"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -4213,6 +4447,56 @@
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                       LastKnownName="String"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fbbef677-4927-49d4-bd9d-84a1660943de"
+            name="getAllInstrument"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6f3175dd-c5fd-4e2c-b610-e9583851b86a"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+                      LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0bb06820-a7b3-499d-90b8-9e0ec84d8856"
+            name="getAllInstrumentType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="59b69858-36eb-49ff-8011-8026daf033fb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -5131,6 +5415,77 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="c51e5178-5101-4327-a4cd-580217c956a2"
+            name="newInstruments"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8df3aac6-2499-4a91-99e4-bc85f545beca"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1a475454-f9ec-4b08-b121-15cc353df7e8"
+                  name="List&lt;KeyValuePair&lt;String"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="219ceb2e-a90c-45b1-b9ff-65b54d6b89bd"
+                  name="Integer&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="baf52dce-a0a7-47c1-85e5-29d8733d8c62"
+            name="newInstrumentTypes"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="464e982d-123d-4d9a-8618-dcb6b2e222bd"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0e77323b-398c-485f-b814-3271aa52716a"
+                  name="List&lt;String&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -5172,6 +5527,26 @@
       <undefinedType
         Id="2a166a10-6ef2-4845-b195-eada2fa273c1"
         name="List&lt;Message&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b1d41028-c1bf-403d-becc-392bb0e9fc42"
+        name="List&lt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d96bca1a-82d9-48f4-a391-1374503f4a0c"
+        name="List&lt;KeyValuePair&lt;Integer" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+        name="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="05eb405a-befa-4a9b-b9cf-6815c1d49fa4"
+        name="List&lt;KeyValuePairs&lt;Integer" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

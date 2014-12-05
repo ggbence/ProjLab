@@ -12,9 +12,13 @@ using MySql.Data.MySqlClient;
 
 public class UserDaO : DaO
 {
-	internal bool writeUserdata(string users_nev, string users_email, int jogkor_id, 
-        bool aktiv, bool koncertre_jar, string users_password)
+	internal bool writeUserdata(string users_nev, string users_email, int jogkor_id,
+        bool aktiv, bool koncertre_jar, string users_password, List< KeyValuePair<int, string> > hangszerek)
 	{
+        
+        MySqlDataReader rdr = null;
+        int userid = 0;
+
         try
         {
             // Query string 
@@ -37,31 +41,87 @@ public class UserDaO : DaO
             cmd.Parameters.AddWithValue("@password", users_password.ToString());
 
             // Execute query
-            if (cmd.ExecuteNonQuery() == 1)
+            if (cmd.ExecuteNonQuery() != 1)
             {
-                return true;
+                return false;
             }
-            return false;
+
+
+
+            // adatbazisba felvett user ID-janak lekerdezese
+
+            string stm = "SELECT users_id FROM USERS where users_email=@email";
+
+            cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@email", users_email);
+
+            rdr = cmd.ExecuteReader();
+            
+            while (rdr.Read())
+            {
+               userid = rdr.GetInt32(0);
+            }
+
+            
+            // user hangszereinek adatbazisba irasa
+
+            // Query string 
+            strSQL = "INSERT INTO USERS_HANGSZER (users_id, hangszer_id) VALUES (@usersid, @hangszerid); ";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            
+            for (int i = 0; i < hangszerek.Count; i++)
+            {
+                cmd.Parameters.AddWithValue("@usersid", userid);
+                cmd.Parameters.AddWithValue("@hangszerid", hangszerek[i].Key);
+                // Execute query
+               
+                if (cmd.ExecuteNonQuery() != 1)
+                
+                {
+                    return false;
+                }
+            }
+
+
+            return true;
         }
         catch (MySqlException ex)
         {
             Console.WriteLine("MySQL error. Number: " + ex.Number);
             return false;
         }
-        //return true;
+
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
 	}
 
 
-	internal string[] readUserdata(string email)
+	internal string[] readUserdata(string email, List<KeyValuePair<int, string>> hangszerek)
 	{
        
         MySqlDataReader rdr = null;
 
-        var result = new string[7];
+        var result = new string[8];
 
         try
         {
             
+            // user adatok lekerdezese
+
             string stm = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
              "koncertre_jar, users_password FROM USERS where users_email=@email";
            
@@ -81,6 +141,34 @@ public class UserDaO : DaO
                     result[i] = rdr.GetString(i);
                 }
             }
+
+
+
+            //hangszerek listajanak lekerdezese
+
+            var hangszerei = new List<KeyValuePair<int, string>>();
+
+            stm = "SELECT H.hangszer_id, H.hangszer_nev FROM HANGSZER H INNER JOIN USERS_HANGSZER UH ON H.hangszer_id=UH.hangszer_id " 
+                + "WHERE UH.users_id=@_users_id ORDER BY H.hangszer_id ASC";
+
+            cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@users_id", result[0]);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int key = rdr.GetInt32(0);
+                string value = rdr.GetString(1);
+
+                hangszerei.Add(new KeyValuePair<int, string>(key, value));
+            }
+
+            // user hangszerek listajanak atadasa parameterben
+            hangszerek = hangszerei;
+       
 
         }
         catch (MySqlException ex)
@@ -102,9 +190,11 @@ public class UserDaO : DaO
 	}
 
 
-	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, bool aktiv, bool koncertre_jar, string users_password)
+	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, 
+        bool aktiv, bool koncertre_jar, string users_password, List<KeyValuePair<int, string>> hangszerek)
 	{
-        // Query string 
+        // user adatok frissitese az adatbazisban
+ 
         string strSQL = "UPDATE USERS SET users_nev=@_nev, " +
         "users_email=@_email, jogkor_id=@_jogkor, aktiv=@_aktiv, " +
         "koncertre_jar=@_koncertre_jar, users_password=@_password WHERE users_id=@_id";
@@ -125,11 +215,60 @@ public class UserDaO : DaO
         cmd.Parameters.AddWithValue("@_password", users_password);
 
         // Execute query
-        if (cmd.ExecuteNonQuery() == 1)
+        if (cmd.ExecuteNonQuery() != 1)
         {
-            return true;
+            return false;
         }
-        return false;
+
+
+        // user hangszereinek torlese az adatbazisbol, hogy aztan a frissitett listat be lehessen irni
+
+        strSQL = "DELETE FROM USERS_HANGSZER WHERE users_id=@_id";
+
+        // Add query text
+        cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@_id", users_id);
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() != 1)
+        {
+            return false;
+        }
+
+
+        // user hangszereinek adatbazisba irasa
+
+        // Query string 
+        strSQL = "INSERT INTO USERS_HANGSZER (users_id, hangszer_id) VALUES (@usersid, @hangszerid); ";
+
+        // Add query text
+        cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+
+        for (int i = 0; i < hangszerek.Count; i++)
+        {
+            cmd.Parameters.AddWithValue("@usersid", users_id);
+            cmd.Parameters.AddWithValue("@hangszerid", hangszerek[i].Key);
+            // Execute query
+
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }
+        }
+
+
+        return true;
+
+
 	}
 
 
@@ -402,5 +541,93 @@ public class UserDaO : DaO
         return ok;
     }
 
+    // hangszer_id, hangszer_nev, hangszertipus_id
+    internal List<KeyValuePair<int, KeyValuePair<string, int> > > getAllInstrument()
+    {
+
+        MySqlDataReader rdr = null;
+
+        // hangszer_id, hangszer_nev, hangszertipus_id
+        var result = new List<KeyValuePair<int, KeyValuePair<string, int> > >();
+
+        try
+        {
+
+            // hangszerek listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT hangszer_id, hangszer_nev, hangszertipus_id FROM HANGSZER ORDER BY hangszer_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int hangszer_id= rdr.GetInt32(0);
+                string hangszer_nev = rdr.GetString(1);
+                int tipus_id = rdr.GetInt32(2);
+
+                result.Add(new KeyValuePair<int, KeyValuePair<string, int> >(hangszer_id, new KeyValuePair<string, int>(hangszer_nev, tipus_id) ) );
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+    internal List<KeyValuePair<int, string>> getAllInstrumentType()
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<KeyValuePair<int, string>>();
+
+        try
+        {
+
+            string stm = "SELECT hangszertipus_id, hangszertipus_nev FROM HANGSZERTIPUS ORDER BY hangszertipus_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int key = rdr.GetInt32(0);
+                string value = rdr.GetString(1);
+
+                result.Add(new KeyValuePair<int, string>(key, value));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
 }
 

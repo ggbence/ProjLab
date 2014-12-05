@@ -141,6 +141,18 @@ public class Guest
         return null;
 
 	}
+    
+
+    public List<KeyValuePair<int, KeyValuePair<string, int>>> getInstruments()
+    {
+        return guestDaO.getAllInstrument();
+    }
+
+
+    public List<KeyValuePair<int, string>> getInstrumentTypes()
+    {
+        return guestDaO.getAllInstrumentType();
+    }
 
 }
 

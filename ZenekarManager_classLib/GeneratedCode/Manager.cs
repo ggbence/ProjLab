@@ -43,5 +43,16 @@ public class Manager : User
         return user.profileModify();
 	}
 
+
+    public bool addInstruments(List<KeyValuePair< string, int>> hangszerlista) 
+    {
+        return managerDaO.newInstruments(hangszerlista);
+    }
+
+
+    public bool addInstrumentTypes(List<String> tipuslista)
+    {
+        return managerDaO.newInstrumentTypes(tipuslista);
+    }
 }
 
