@@ -61,6 +61,12 @@
     <Compile Include="GeneratedCode\Manager.cs" />
     <Compile Include="GeneratedCode\ManagerDaO.cs" />
     <Compile Include="GeneratedCode\Message.cs" />
+    <Compile Include="GeneratedCode\Movement.cs" />
+    <Compile Include="GeneratedCode\MovementDaO.cs" />
+    <Compile Include="GeneratedCode\Part.cs" />
+    <Compile Include="GeneratedCode\PartDaO.cs" />
+    <Compile Include="GeneratedCode\Piece.cs" />
+    <Compile Include="GeneratedCode\PieceDaO.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

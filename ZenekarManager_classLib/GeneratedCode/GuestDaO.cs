@@ -147,5 +147,92 @@ public class GuestDaO : DaO
 
     }
 
+    internal List<KeyValuePair<int, KeyValuePair<string, int>>> getAllInstrument()
+    {
+
+        MySqlDataReader rdr = null;
+
+        // hangszer_id, hangszer_nev, hangszertipus_id
+        var result = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
+
+        try
+        {
+
+            // hangszerek listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT hangszer_id, hangszer_nev, hangszertipus_id FROM HANGSZER ORDER BY hangszer_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int hangszer_id = rdr.GetInt32(0);
+                string hangszer_nev = rdr.GetString(1);
+                int tipus_id = rdr.GetInt32(2);
+
+                result.Add(new KeyValuePair<int, KeyValuePair<string, int>>(hangszer_id, new KeyValuePair<string, int>(hangszer_nev, tipus_id)));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+    internal List<KeyValuePair<int, string>> getAllInstrumentType()
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<KeyValuePair<int, string>>();
+
+        try
+        {
+
+            string stm = "SELECT hangszertipus_id, hangszertipus_nev FROM HANGSZERTIPUS ORDER BY hangszertipus_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int key = rdr.GetInt32(0);
+                string value = rdr.GetString(1);
+
+                result.Add(new KeyValuePair<int, string>(key, value));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
 }
 
