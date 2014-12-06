@@ -21,12 +21,12 @@ public class MovementDaO : DaO
 		throw new System.NotImplementedException();
 	}
 
-	private List<Integer[]> getAllPartdata(int tetel_id)
+	private List<int[]> getAllPartdata(int tetel_id)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	private Integer[] getPart(int szolam_id)
+	private int[] getPart(int szolam_id)
 	{
 		throw new System.NotImplementedException();
 	}
@@ -41,7 +41,7 @@ public class MovementDaO : DaO
 		throw new System.NotImplementedException();
 	}
 
-	private Integer[] readMovementdata(int tetel_id)
+	private int[] readMovementdata(int tetel_id)
 	{
 		throw new System.NotImplementedException();
 	}

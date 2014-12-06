@@ -17,7 +17,11 @@ namespace ZenekarManagerWebApp.Account
             PasswordBox.Text = "WbsNA51M";*/
             var ctx = Request.GetOwinContext();
             var currUser = ctx.Authentication.User;
-            IEnumerable<Claim> claims2 = currUser.Claims;            
+            IEnumerable<Claim> claims2 = currUser.Claims;
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("~/Account/Index");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -136,9 +140,8 @@ namespace ZenekarManagerWebApp.Account
                             tesztLabel.Text += " siekrtelen";
                         }
             */
-            
         }
-
+        
         
     }
 }

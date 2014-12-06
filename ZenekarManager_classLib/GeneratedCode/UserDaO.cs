@@ -194,75 +194,83 @@ public class UserDaO : DaO
         bool aktiv, bool koncertre_jar, string users_password, List<KeyValuePair<int, string>> hangszerek)
 	{
         // user adatok frissitese az adatbazisban
- 
-        string strSQL = "UPDATE USERS SET users_nev=@_nev, " +
-        "users_email=@_email, jogkor_id=@_jogkor, aktiv=@_aktiv, " +
-        "koncertre_jar=@_koncertre_jar, users_password=@_password WHERE users_id=@_id";
-
-        // Add query text
-        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-        // Prepare the query
-        cmd.Prepare();
-
-        // Add parameter
-        cmd.Parameters.AddWithValue("@_id", users_id);
-        cmd.Parameters.AddWithValue("@_nev", users_nev);
-        cmd.Parameters.AddWithValue("@_email", users_email);
-        cmd.Parameters.AddWithValue("@_jogkor", jogkor_id);
-        cmd.Parameters.AddWithValue("@_aktiv", aktiv);
-        cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
-        cmd.Parameters.AddWithValue("@_password", users_password);
-
-        // Execute query
-        if (cmd.ExecuteNonQuery() != 1)
+        try
         {
-            return false;
-        }
+            string strSQL = "UPDATE USERS SET users_nev=@_nev, " +
+            "users_email=@_email, jogkor_id=@_jogkor, aktiv=@_aktiv, " +
+            "koncertre_jar=@_koncertre_jar, users_password=@_password WHERE users_id=@_id";
 
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
 
-        // user hangszereinek torlese az adatbazisbol, hogy aztan a frissitett listat be lehessen irni
+            // Prepare the query
+            cmd.Prepare();
 
-        strSQL = "DELETE FROM USERS_HANGSZER WHERE users_id=@_id";
-
-        // Add query text
-        cmd = new MySqlCommand(strSQL, this.Conn);
-
-        // Prepare the query
-        cmd.Prepare();
-
-        // Add parameter
-        cmd.Parameters.AddWithValue("@_id", users_id);
-
-        // Execute query
-        if (cmd.ExecuteNonQuery() != 1)
-        {
-            return false;
-        }
-
-
-        // user hangszereinek adatbazisba irasa
-
-        // Query string 
-        strSQL = "INSERT INTO USERS_HANGSZER (users_id, hangszer_id) VALUES (@usersid, @hangszerid); ";
-
-        // Add query text
-        cmd = new MySqlCommand(strSQL, this.Conn);
-
-        // Prepare the query
-        cmd.Prepare();
-
-
-        for (int i = 0; i < hangszerek.Count; i++)
-        {
-            cmd.Parameters.AddWithValue("@usersid", users_id);
-            cmd.Parameters.AddWithValue("@hangszerid", hangszerek[i].Key);
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_id", users_id);
+            cmd.Parameters.AddWithValue("@_nev", users_nev);
+            cmd.Parameters.AddWithValue("@_email", users_email);
+            cmd.Parameters.AddWithValue("@_jogkor", jogkor_id);
+            cmd.Parameters.AddWithValue("@_aktiv", aktiv);
+            cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
+            cmd.Parameters.AddWithValue("@_password", users_password);
+            cmd.ExecuteNonQuery();
             // Execute query
-
-            if (cmd.ExecuteNonQuery() != 1)
+            /*if (cmd.ExecuteNonQuery() != 1)
             {
                 return false;
+            }*/
+
+
+            // user hangszereinek torlese az adatbazisbol, hogy aztan a frissitett listat be lehessen irni
+
+            strSQL = "DELETE FROM USERS_HANGSZER WHERE users_id=@_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_id", users_id);
+
+            // Execute query
+            /*if (cmd.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }*/
+            cmd.ExecuteNonQuery();
+
+            // user hangszereinek adatbazisba irasa
+
+            // Query string 
+            strSQL = "INSERT INTO USERS_HANGSZER (users_id, hangszer_id) VALUES (@usersid, @hangszerid); ";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+
+            for (int i = 0; i < hangszerek.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@usersid", users_id);
+                cmd.Parameters.AddWithValue("@hangszerid", hangszerek[i].Key);
+                // Execute query
+
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    return false;
+                }
             }
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+            return false;
         }
 
 
@@ -338,9 +346,9 @@ public class UserDaO : DaO
 
         }
 
-        
 
-       rdr = null;
+
+        rdr = null;
 
         var result = new List<Message>();
 
@@ -354,6 +362,7 @@ public class UserDaO : DaO
             cmd.Prepare();
             for (int i = 0; i < msg_ids.Count; i++)
             {
+                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@_uzenet_id", msg_ids[i]);
                 rdr = cmd.ExecuteReader();
 
@@ -368,7 +377,8 @@ public class UserDaO : DaO
                     row.Ervenyesseg = rdr.GetString(4);
                 }
                 result.Add(row);
-            } 
+                rdr.Close();
+            }
 
         }
         catch (MySqlException ex)
@@ -609,6 +619,54 @@ public class UserDaO : DaO
                 string value = rdr.GetString(1);
 
                 result.Add(new KeyValuePair<int, string>(key, value));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+    internal List<User> getUsers()
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<User>();
+
+        try
+        {
+
+            string stm = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
+             "koncertre_jar, users_password FROM USERS";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int users_id = rdr.GetInt32(0);
+                string users_email = rdr.GetString(2);
+                string users_nev = rdr.GetString(1);
+                int jogkor_id = rdr.GetInt32(3);
+                string users_password = rdr.GetString(6);
+                bool aktiv = rdr.GetBoolean(4);
+                bool koncertre_jar = rdr.GetBoolean(5);
+
+                result.Add(new User(users_id, users_nev, users_email, jogkor_id, users_password, aktiv, koncertre_jar));
             }
 
         }

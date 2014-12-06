@@ -78,7 +78,7 @@ public class Guest
             User user = new User();
             user.Users_email = email;
             user.Users_nev = nev;
-            user.Users_password = password;
+            user.Users_password = getHash(password);
             user.Jogkor_id = 1;
             if (user.createProfile())
             {

@@ -55,7 +55,7 @@ public class Part
     }
 
 
-    protected virtual PartDaO partDaO;
+    protected virtual PartDaO partDaO { get; set; }
 
 
     public Part()
@@ -108,7 +108,7 @@ public class Part
 		throw new System.NotImplementedException();
 	}
 
-	public virtual List<KeyValuePair<Integer, String>> getPartList()
+	public virtual List<KeyValuePair<int, String>> getPartList()
 	{
 		throw new System.NotImplementedException();
 	}
