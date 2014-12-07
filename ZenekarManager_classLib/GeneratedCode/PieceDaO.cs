@@ -8,42 +8,384 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MySql.Data.MySqlClient;
 
 public class PieceDaO : DaO
 {
-	private bool writePiecedata(string darab_cim, int darab_id, string darab_szerzo, int tetelszam)
+    internal int writePiecedata(string darab_cim, int darab_id, string darab_szerzo, int tetelszam)
 	{
-		throw new System.NotImplementedException();
+        
+        MySqlDataReader rdr = null;
+        int pieceid = -1;
+
+        try
+        {
+            // darab adatainak irasa
+            // Query string 
+            string strSQL = "INSERT INTO DARAB (darab_szerzo, darab_cim, tetelszam) VALUES (@_darab_szerzo, " +
+                "@_darab_cim, @_tetelszam); ";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_darab_szerzo", darab_szerzo);
+            cmd.Parameters.AddWithValue("@_darab_cim", darab_cim);
+            cmd.Parameters.AddWithValue("@_tetelszam", tetelszam);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return pieceid;
+            }
+
+
+            // adatbazisba felvett darab ID-janak lekerdezese
+
+            string stm = "SELECT darab_id FROM DARAB where darab_szerzo=@_darab_szerzo AND darab_cim=@_darab_cim " +
+                "AND tetelszam=@_tetelszam;";
+
+            cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_darab_szerzo", darab_szerzo);
+            cmd.Parameters.AddWithValue("@_darab_cim", darab_cim);
+            cmd.Parameters.AddWithValue("@_tetelszam", tetelszam);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                pieceid = rdr.GetInt32(0);
+            }
+
+
+            return pieceid;
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+            return -1;
+        }
+
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+
 	}
 
-	private bool deleteMovementdata(int tetel_id)
+
+    internal int deleteMovementdata(int tetel_id, int darab_id)
 	{
-		throw new System.NotImplementedException();
+        MySqlDataReader rdr = null;
+
+        int result = -1;
+
+        try
+        {
+            // Query string 
+            string strSQL = "DELETE FROM TETEL WHERE tetel_id=@_tetel_id;";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_tetel_id", tetel_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return -1;
+            }
+            
+            // tetel adatok lekerdezese
+
+            string stm = "SELECT COUNT(tetel_id) FROM TETEL where darab_id=@_darab_id;";
+
+            cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_darab_id", darab_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetInt32(0);
+            }
+
+        }
+
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return result;
+        
 	}
 
-	private List<String[]> getAllMovementsdata(int darab_id)
+
+    internal List<string[]> getAllMovementsdata(int darab_id)
 	{
-		throw new System.NotImplementedException();
+        MySqlDataReader rdr = null;
+
+        var result = new List<string[]>();
+
+        try
+        {
+
+            // user adatok lekerdezese
+            string stm = "SELECT tetel_id, darab_id, tetel_cim, tetel_szama FROM SZOLAM where darab_id=@_darab_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_tetel_id", darab_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                var sor = new string[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    sor[i] = rdr.GetString(i);
+                }
+                result.Add(sor);
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
 	}
 
-	private int getCountMovements(int darab_id)
+
+    internal int getCountMovements(int darab_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        int result = -1;
+
+        try
+        {
+
+            // user adatok lekerdezese
+
+            string stm = "SELECT COUNT(tetel_id) FROM TETEL where darab_id=@_darab_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_darab_id", darab_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetInt32(0);
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
 
-	private String[] getMovementdata(int darab_id)
+
+    internal string[] getMovementdata(int tetel_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        var result = new string[4];
+
+        try
+        {
+
+            // user adatok lekerdezese
+
+            string stm = "SELECT tetel_id, darab_id, tetel_cim, tetel_szama " +
+             "FROM TETEL where tetel_id=@_tetel_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_tetel_id", tetel_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result[i] = rdr.GetString(i);
+                }
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
 
-	private bool modifyPiecedata(string darab_cim, int darab_id, string darab_szerzo, int tetelszam)
+
+    internal bool modifyPiecedata(string darab_cim, int darab_id, string darab_szerzo, int tetelszam)
 	{
-		throw new System.NotImplementedException();
+
+        try
+        {
+
+            // user adatok frissitese az adatbazisban
+
+            string strSQL = "UPDATE DARAB SET darab_szerzo=@_darab_szerzo, darab_cim=@_darab_cim, tetelszam=@_tetelszam WHERE darab_id=@_darab_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_darab_szerzo", darab_szerzo);
+            cmd.Parameters.AddWithValue("@_darab_cim", darab_cim);
+            cmd.Parameters.AddWithValue("@_tetelszam", tetelszam);
+            cmd.Parameters.AddWithValue("@_darab_id", darab_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+
+        return false;
+
 	}
 
-	private String[] readPiecedata(int darab_id)
+
+	internal string[] readPiecedata(int darab_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        var result = new string[4];
+
+        try
+        {
+
+            // Tetel adatok lekerdezese
+
+            string stm = "SELECT darab_id, darab_szerzo, darab_cim, tetelszam FROM DARAB where darab_id=@_darab_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_darab_id", darab_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result[i] = rdr.GetString(i);
+                }
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
 
 }

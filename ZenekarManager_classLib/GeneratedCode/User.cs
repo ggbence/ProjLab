@@ -50,7 +50,7 @@ public class User
         set { koncertre_jar = value; }
     }
 
-    protected string users_password;
+   protected string users_password;
     public string Users_password
     {
         get { return users_password; }
@@ -67,16 +67,16 @@ public class User
 
 
     protected List<KeyValuePair<int, string>> hangszerek;
-
+   
     public List<KeyValuePair<int, string>> Hangszerek
     {
         get { return hangszerek; }
         set { hangszerek = value; }
-    }
+    } 
 
 
     protected UserDaO userDaO;
-
+	
 
     public User()
     {
@@ -84,7 +84,7 @@ public class User
         aktiv = true;
         koncertre_jar = true;
         hangszerek = new List<KeyValuePair<int, string>>();
-
+        
     }
 
     public User(int users_id, string users_nev, string users_email, int jogkor_id, string users_password, bool aktiv, bool koncertre_jar)
@@ -98,6 +98,7 @@ public class User
         this.users_password = users_password;
         this.aktiv = aktiv;
         this.koncertre_jar = koncertre_jar;
+        this.hangszerek = new List<KeyValuePair<int, string>>();
     }
 
 
@@ -123,19 +124,25 @@ public class User
     }
 
 
-    public bool profileModify()
-    {
+	public bool profileModify()
+	{
         return userDaO.modifyUserdata(users_id, users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek);
 
-    }
+	}
 
 
-    public bool createProfile()
-    {
+	public bool createProfile()
+	{
 
-        return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek);
-
-    }
+        if (userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek))
+        {
+            return this.readProfile(this.users_email);
+        }
+        else
+        {
+            return false;
+        }
+	}
 
 
     public bool readProfile(string email)
@@ -161,7 +168,7 @@ public class User
             return false;
         }
 
-
+        
     }
 
 
@@ -171,16 +178,11 @@ public class User
     }
 
 
-    public List<User> getUserList()
-    {
-        return userDaO.getUsers();
-    }
-
     public Message readMessage(int uzenet_id)
     {
         return userDaO.getMsg(uzenet_id);
     }
-
+   
 
     public bool sendMessage(Message msg)
     {
@@ -206,4 +208,22 @@ public class User
         return userDaO.getAllInstrumentType();
     }
 
+
+    public List<Part> getPaperList()
+    {
+
+        var papers = new List<int>();
+        var result = new List<Part>();
+
+        papers = userDaO.getPaperListdata(hangszerek);
+
+        for (int i = 0; i < papers.Count; i++)
+        {
+            var part = new Part();
+            part.readPart(papers[i]);
+            result.Add(part);
+        }
+
+        return result;
+    }
 }

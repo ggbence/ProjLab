@@ -36,10 +36,6 @@ public class Guest
 
     private GuestDaO guestDaO;
 
-    public GuestDaO GuestDaO
-    {
-        get { return guestDaO; }
-    }
 
     public Guest()
     {

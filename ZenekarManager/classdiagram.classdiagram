@@ -867,6 +867,19 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="ec2899c6-b196-4910-9e43-ca92668ce711" name="getPaperList" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7b816f36-ccc2-4410-85ab-7df4666d20e5" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="38b8ec2d-7e12-462a-9d63-757f3a0dc39b" direction="Return" isUnique="false">
+                  <elementDefinition Id="f8e75e88-082e-4c3b-9ba0-093c25c9ad0e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="162e0596-2a6f-4920-b003-d7d74e6812af" LastKnownName="List&lt;Part&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -3389,14 +3402,6 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="03a87200-3d27-48a8-96e8-c37970571fdb" name="tetel_id" direction="In" isUnique="false">
-                  <elementDefinition Id="3181643f-d4f2-4a6a-8cb5-53dc9a0b90c0" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation Id="4276d289-c363-4cc8-a630-c9cb66162be0" name="getPiece" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -4296,7 +4301,7 @@
                 <parameter Id="143042a0-4317-4b5a-a423-7d910cf6d321" direction="Return" isUnique="false">
                   <elementDefinition Id="5ffb9517-6a08-4de2-ab32-38264fbe54c0" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="6fb6d607-775b-4307-b029-4d063af78e2b" LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;" />
+                    <referencedTypeMoniker Id="d24ed504-a355-4e5b-aa60-50ffb0206316" LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -4885,6 +4890,32 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="1b502509-00b3-49b6-89ba-22a73ad086fb" name="getPaperListdata" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f64b6c95-1a41-4f51-b9e4-a206b1f2d080" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="36c31c0e-7d2a-4552-951c-a0fc9505828f" name="hangszerek" direction="In" isUnique="false">
+                  <elementDefinition Id="3c8e3a21-6571-4b55-bffd-06b669dee270" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="e1b4a536-2ba4-45cb-886e-88ca8dd587cc" LastKnownName="List&lt;KeyValuePair&lt;Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a1ae3bdd-780b-46c9-8b8e-a1db2a654e09" name="String&gt;&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="8f55a6f4-58f2-400f-acfb-1214db050a49" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="386b0689-6cd7-435e-9604-ac66224227da" direction="Return" isUnique="false">
+                  <elementDefinition Id="d9521377-612d-4232-8e05-113f2631fba7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="256477e1-680a-44ac-94ba-537de2ef2a57" LastKnownName="List&lt;Integer&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -5359,7 +5390,7 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="3d540f30-91b3-4c9b-a23a-76536e246757" name="checkEmail" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+          <operation Id="3d540f30-91b3-4c9b-a23a-76536e246757" name="checkEmail" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f9f0b145-570a-4065-8469-94ec609c28b0" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -7025,18 +7056,18 @@
             <elementDefinition Id="72382580-8f89-447e-b7ba-974573ff8ed5" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="adc4e3e4-e532-4f1f-819a-de8649e721ef" name="szolamlista_id" direction="In" isUnique="false">
-                  <elementDefinition Id="65545f91-5af6-4405-b47d-ea5fd5a96a2d" />
+                <parameter Id="c30fefe7-f724-4519-b029-a6bc87481b38" direction="Return" isUnique="false">
+                  <elementDefinition Id="da27d816-d887-4a88-8ab7-9c559d54003b" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="c30fefe7-f724-4519-b029-a6bc87481b38" direction="Return" isUnique="false">
-                  <elementDefinition Id="da27d816-d887-4a88-8ab7-9c559d54003b" />
+                <parameter Id="f6f673fc-d6de-4a1a-b989-28e976e2b857" name="szolamlista_id" direction="In" isUnique="false">
+                  <elementDefinition Id="589b2cfd-9a5f-4538-8c9b-67496ed94f0d" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -7089,18 +7120,26 @@
             <elementDefinition Id="a68fa698-16cb-4947-92a6-29163641a684" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="e520c52d-a08d-4fa1-adee-8d231c18d991" name="szolamkott_link" direction="In" isUnique="false">
-                  <elementDefinition Id="d361d014-039f-4a6d-bca7-61b9e8dd8ade" />
+                <parameter Id="580d0254-805a-4770-81e0-7dddb5037b9b" direction="Return" isUnique="false">
+                  <elementDefinition Id="20b89b2a-5b0f-494d-828d-8a97a5126c13" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="42224f78-9402-4578-8ca4-44bc305108bf" name="szolamkotta_link" direction="In" isUnique="false">
+                  <elementDefinition Id="07cc5f00-7399-44cb-ac31-8b8b3e896ebd" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="580d0254-805a-4770-81e0-7dddb5037b9b" direction="Return" isUnique="false">
-                  <elementDefinition Id="20b89b2a-5b0f-494d-828d-8a97a5126c13" />
+                <parameter Id="d1cc232f-14e2-473c-bec2-ed6f75cab7fc" name="szolamkotta_id" direction="In" isUnique="false">
+                  <elementDefinition Id="74f7f254-9425-4339-ae1f-d33a90fa55b8" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -7166,13 +7205,13 @@
                   </upperValueInternal>
                   <elementDefinition Id="169fd7f1-8f3d-443f-b999-3848d21cc7f7" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="8ce0bed2-d24e-42de-8cc9-7794f1fe470a" LastKnownName="String[]" />
+                    <referencedTypeMoniker Id="1e7f62d1-a707-4314-97e0-07ac2beff7f3" LastKnownName="Integer[]" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2110c578-9179-4fa9-bd74-32edec334a66" name="szolam_id" direction="In" isUnique="false">
-                  <elementDefinition Id="71fe8c27-6525-4605-813b-29d7c63ca9bf" />
+                <parameter Id="178059a7-9452-4fc7-be5f-d247a3770c07" name="szolam_id" direction="In" isUnique="false">
+                  <elementDefinition Id="bfb9972a-994f-4a44-8843-30cc6d9e5305" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -7280,37 +7319,37 @@
                 <parameter Id="9c08dd44-ea2d-42ee-aff6-f7a2ce5ab94e" direction="Return" isUnique="false">
                   <elementDefinition Id="0d2916cd-7a6a-4873-b7a5-ef024a111632" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7a8c0eb2-b871-4e28-aeba-4d40e395b63a" name="darab_id" direction="In" isUnique="false">
-                  <elementDefinition Id="8feeffc9-071e-45e4-b389-72d950ecf03c" />
+                <parameter Id="beed0858-3d29-4481-852f-a8607b3ba591" name="darab_id" direction="In" isUnique="false">
+                  <elementDefinition Id="75b4136e-5313-4b05-be39-3b1cb2d75fcc" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="59214dd2-5e3e-45ed-9636-ae3da3c05053" name="tetel_cim" direction="In" isUnique="false">
-                  <elementDefinition Id="97eada4b-99f9-4af7-8bb8-0078e5fa54d7" />
+                <parameter Id="fa470646-da09-45bc-a240-00fafdf853b6" name="tetel_cim" direction="In" isUnique="false">
+                  <elementDefinition Id="ef6ea2a0-b35d-48ac-b1de-10d6f11e86f3" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="5f1ff32e-163b-466a-a7ca-509ebc8a769c" name="tetel_id" direction="In" isUnique="false">
-                  <elementDefinition Id="5abc398e-dc77-4373-accc-72c6f19b817d" />
+                <parameter Id="516c5a6e-1909-4466-ac42-d312e5abd974" name="tetel_id" direction="In" isUnique="false">
+                  <elementDefinition Id="2a7f5a01-8777-4477-bb73-ef6be7065ec7" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="c7901ed9-5eaa-4a5a-8c33-c8d9c8327a72" name="tetel_szama" direction="In" isUnique="false">
-                  <elementDefinition Id="c2d2e9df-77ef-45be-8d58-18a8219fece5" />
+                <parameter Id="3d1bc72d-c3bc-424d-a5e4-e009fa5ddb39" name="tetel_szama" direction="In" isUnique="false">
+                  <elementDefinition Id="59aaaae6-c1d1-4cdc-a0aa-2fa79674c3e9" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -7373,16 +7412,8 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="0776b5ed-c1f7-46f2-bcf5-d6c6034e8574" name="szolam_id" direction="In" isUnique="false">
-                  <elementDefinition Id="e8d8cfbc-71d1-4fbe-8423-4f9bd3a1e195" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="f1590392-cf78-4a12-bc80-6e0deed8c77e" name="tetel_id" direction="In" isUnique="false">
-                  <elementDefinition Id="c2636837-140c-4a99-95e8-7ed359349822" />
+                <parameter Id="08e70ed8-3d8f-4e0c-8ae6-7fdffc645b77" name="szolam_id" direction="In" isUnique="false">
+                  <elementDefinition Id="2b271ae3-a5be-4639-bbbf-95ced7615d9d" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -7720,13 +7751,13 @@
                 <parameter Id="f7164d6b-cb5f-4ee2-8ce7-2ad3301e2cc9" direction="Return" isUnique="false">
                   <elementDefinition Id="361de9f5-0d6e-45cc-b5f6-377ca0829302" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="1e7f62d1-a707-4314-97e0-07ac2beff7f3" LastKnownName="Integer[]" />
+                    <referencedTypeMoniker Id="8ce0bed2-d24e-42de-8cc9-7794f1fe470a" LastKnownName="String[]" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="6bfe4a4f-60d0-4bc4-ac25-db81df596ecc" name="tetel_id" direction="In" isUnique="false">
-                  <elementDefinition Id="941667fc-fbd6-44e6-b58d-56e7fadf685f" />
+                <parameter Id="ad321578-85ac-47a0-84be-e35bf259ae90" name="tetel_id" direction="In" isUnique="false">
+                  <elementDefinition Id="bfe24e56-f58e-4643-98e9-7efa03d7d49e" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -7849,37 +7880,37 @@
                 <parameter Id="12e9f2a7-b369-4262-8abc-fa1936907b25" direction="Return" isUnique="false">
                   <elementDefinition Id="df3d2723-7709-4fde-922e-769783fbeb7e" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="857c9f8d-343c-4119-b00c-7e95b1aac37a" name="darab_cim" direction="In" isUnique="false">
-                  <elementDefinition Id="79f9e7dd-9eda-48e8-9f69-d22982f63241" />
+                <parameter Id="9cda27cb-e03f-40d9-b2a5-caf1e3aecb41" name="darab_cim" direction="In" isUnique="false">
+                  <elementDefinition Id="2f686b11-3dc0-49c1-b1f8-d534a56d175c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="c150ea8b-657a-45ff-b869-4dff4fc65c74" name="darab_id" direction="In" isUnique="false">
-                  <elementDefinition Id="10481d90-1854-4fad-86f4-6f17015745c4" />
+                <parameter Id="803ef425-e264-454c-8ae9-c213f47173fc" name="darab_id" direction="In" isUnique="false">
+                  <elementDefinition Id="33499cc5-3888-483e-8f54-8b9a501a1e8f" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="082e05a1-b93f-4fa0-8a4c-aabba2f48789" name="darab_szerzo" direction="In" isUnique="false">
-                  <elementDefinition Id="24d0e176-ba6b-4927-bdc9-3d1a9f99907d" />
+                <parameter Id="2e17a90a-a56d-4751-85d8-30f4eccfe140" name="darab_szerzo" direction="In" isUnique="false">
+                  <elementDefinition Id="293f2036-c653-45b7-94d1-407ca31c346e" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bbafb158-825f-463c-8f6d-6e2239ea01f1" LastKnownName="String" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="593a0a6a-2361-4616-8994-625f67032bb3" name="tetelszam" direction="In" isUnique="false">
-                  <elementDefinition Id="e026421a-38bb-42a4-b916-19de3928ce67" />
+                <parameter Id="dfdb2090-5004-478a-8ff0-d73964ee4dff" name="tetelszam" direction="In" isUnique="false">
+                  <elementDefinition Id="4c703abc-cdfd-42e5-96d8-ec5ff3885cda" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -7937,13 +7968,21 @@
                 <parameter Id="d5909d28-78ef-4eaa-9911-479f8dd07c27" direction="Return" isUnique="false">
                   <elementDefinition Id="817c3e59-2ca4-4c75-b956-a1453c2da295" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="c8f75e8c-bc9c-4b5e-9894-f2bff04f7067" LastKnownName="Boolean" />
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="95c27862-dedb-41d4-a13b-e165c1aa8c92" name="tetel_id" direction="In" isUnique="false">
-                  <elementDefinition Id="c59354c1-3a6c-4b61-b0f3-d861c1326b43" />
+                <parameter Id="046b0b79-255e-4664-a86b-cc5d708c40bd" name="tetel_id" direction="In" isUnique="false">
+                  <elementDefinition Id="830ce5e3-cfba-4dd6-baab-173ed3934f88" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f7b326dc-08ae-439a-83cd-f39eb15013c0" name="darab_id" direction="In" isUnique="false">
+                  <elementDefinition Id="3e036b33-1900-4249-8032-bb86f43b0c21" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
@@ -8126,18 +8165,18 @@
             <elementDefinition Id="fe09f09e-136a-48de-a70f-8244acd6f1f6" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="23cf7f0f-3897-41e4-b6cc-baefc7e82469" name="darab_id" direction="In" isUnique="false">
-                  <elementDefinition Id="bf6ed2b2-b9a3-4bf4-af1c-47491d74742c" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
                 <parameter Id="06ad2dbf-128b-4d47-96f7-ee43e8e78fc7" direction="Return" isUnique="false">
                   <elementDefinition Id="bb88633f-c9c4-48b3-ac9a-112621aad31e" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="8ce0bed2-d24e-42de-8cc9-7794f1fe470a" LastKnownName="String[]" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="665ef933-f0b0-436e-846a-8a54034bce24" name="tetel_id" direction="In" isUnique="false">
+                  <elementDefinition Id="ffe40618-58ad-4e85-9408-2299a49af43f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="b5d03930-c83f-46da-87f4-dffdb0dda808" LastKnownName="Integer" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -8301,6 +8340,11 @@
     <packageHasNamedElement>
       <referencedType Id="38ea2af1-3d38-44ed-81d0-90c7a21fcb61" name="List&lt;String[]&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;String[]&gt;">
         <elementDefinition Id="0da49140-8e8f-44ce-a22e-c00d00e436a9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e1b4a536-2ba4-45cb-886e-88ca8dd587cc" name="List&lt;KeyValuePair&lt;Integer" isAbstract="false" isLeaf="false" cachedFullName="List&lt;KeyValuePair&lt;Integer">
+        <elementDefinition Id="d96bca1a-82d9-48f4-a391-1374503f4a0c" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
