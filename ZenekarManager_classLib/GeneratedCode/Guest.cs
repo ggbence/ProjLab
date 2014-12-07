@@ -12,6 +12,10 @@ using System.Security.Cryptography;
 
 public class Guest
 {
+    public const int REGISZTRALT = 1;
+    public const int ZENÉSZ = 2;
+    public const int MANAGER = 3;
+
 	private string email;
 
     public string Email

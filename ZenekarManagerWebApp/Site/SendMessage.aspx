@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Üzenet Küldése" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SendMessage.aspx.cs" Inherits="ZenekarManagerWebApp.Account.SendMessage" %>
+﻿<%@ Page Title="Üzenet Küldése" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SendMessage.aspx.cs" Inherits="ZenekarManagerWebApp.Site.SendMessage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     Címzett:<br />
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Users_nev" DataValueField="Users_id">

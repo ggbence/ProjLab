@@ -26,11 +26,6 @@ public class Manager : User
 	}
 
 
-	public List<User> getUserList()
-	{
-        return managerDaO.getUsers();
-	}
-
 
 	public List<KeyValuePair<int, string>> getRoles()
 	{

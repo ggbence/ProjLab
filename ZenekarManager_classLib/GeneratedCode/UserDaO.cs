@@ -110,21 +110,21 @@ public class UserDaO : DaO
 	}
 
 
-	internal string[] readUserdata(string email, List<KeyValuePair<int, string>> hangszerek)
-	{
-       
+    internal string[] readUserdata(string email, ref List<KeyValuePair<int, string>> hangszerek)
+    {
+
         MySqlDataReader rdr = null;
 
         var result = new string[8];
 
         try
         {
-            
+
             // user adatok lekerdezese
 
             string stm = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
              "koncertre_jar, users_password FROM USERS where users_email=@email";
-           
+
             MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
@@ -132,7 +132,7 @@ public class UserDaO : DaO
 
             rdr = cmd.ExecuteReader();
 
-            
+
 
             while (rdr.Read())
             {
@@ -142,14 +142,14 @@ public class UserDaO : DaO
                 }
             }
 
-
+            rdr.Close();
 
             //hangszerek listajanak lekerdezese
 
             var hangszerei = new List<KeyValuePair<int, string>>();
 
-            stm = "SELECT H.hangszer_id, H.hangszer_nev FROM HANGSZER H INNER JOIN USERS_HANGSZER UH ON H.hangszer_id=UH.hangszer_id " 
-                + "WHERE UH.users_id=@_users_id ORDER BY H.hangszer_id ASC";
+            stm = "SELECT H.hangszer_id, H.hangszer_nev FROM HANGSZER H INNER JOIN USERS_HANGSZER UH ON H.hangszer_id=UH.hangszer_id "
+                + "WHERE UH.users_id=@users_id ORDER BY H.hangszer_id ASC";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
@@ -168,7 +168,7 @@ public class UserDaO : DaO
 
             // user hangszerek listajanak atadasa parameterben
             hangszerek = hangszerei;
-       
+
 
         }
         catch (MySqlException ex)
@@ -187,7 +187,7 @@ public class UserDaO : DaO
 
         // Return with the result string
         return result;
-	}
+    }
 
 
 	internal bool modifyUserdata(int users_id, string users_nev, string users_email, int jogkor_id, 

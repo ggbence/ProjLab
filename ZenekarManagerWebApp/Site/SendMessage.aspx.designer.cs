@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ZenekarManagerWebApp.Account {
+namespace ZenekarManagerWebApp.Site {
     
     
     public partial class SendMessage {

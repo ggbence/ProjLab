@@ -145,11 +145,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Index.aspx" />
-    <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Profile.aspx" />
-    <Content Include="Account\Register.aspx" />
-    <Content Include="Account\SendMessage.aspx" />
+    <Content Include="Site\Index.aspx" />
+    <Content Include="Site\Login.aspx" />
+    <Content Include="Site\Admin.aspx" />
+    <Content Include="Site\Profile.aspx" />
+    <Content Include="Site\Register.aspx" />
+    <Content Include="Site\SendMessage.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -204,39 +205,46 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Index.aspx.cs">
+    <Compile Include="Site\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Index.aspx.designer.cs">
+    <Compile Include="Site\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Login.aspx.cs">
+    <Compile Include="Site\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Login.aspx.designer.cs">
+    <Compile Include="Site\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Profile.aspx.cs">
+    <Compile Include="Site\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Profile.aspx.designer.cs">
+    <Compile Include="Site\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register.aspx.cs">
+    <Compile Include="Site\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Register.aspx.designer.cs">
+    <Compile Include="Site\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\SendMessage.aspx.cs">
+    <Compile Include="Site\SendMessage.aspx.cs">
       <DependentUpon>SendMessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\SendMessage.aspx.designer.cs">
+    <Compile Include="Site\SendMessage.aspx.designer.cs">
       <DependentUpon>SendMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />

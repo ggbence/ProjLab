@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ZenekarManagerWebApp.Account
+namespace ZenekarManagerWebApp.Site
 {
     public partial class LoginForm : System.Web.UI.Page
     {
@@ -20,7 +20,7 @@ namespace ZenekarManagerWebApp.Account
             IEnumerable<Claim> claims2 = currUser.Claims;
             if (User.Identity.IsAuthenticated)
             {
-                Response.Redirect("~/Account/Index");
+                Response.Redirect("~/Site/Index");
             }
         }
 
@@ -35,7 +35,6 @@ namespace ZenekarManagerWebApp.Account
             Guest guest = new Guest();
             guest.Email = EmailBox.Text;
             guest.Password = PasswordBox.Text;
-            string nev = "Görög G Bence";
 
             //if (guest.checkEmail()) 
             //{
@@ -103,11 +102,13 @@ namespace ZenekarManagerWebApp.Account
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, user.Users_nev));
                 claims.Add(new Claim(ClaimTypes.Email, user.Users_email));
+                claims.Add(new Claim(ClaimTypes.Role, user.Jogkor_id.ToString()));
                 var id = new ClaimsIdentity(claims,
                                             DefaultAuthenticationTypes.ApplicationCookie);
 
                 var authenticationManager = ctx.Authentication;
                 authenticationManager.SignIn(id);
+                Response.Redirect("~/Site/Index");
             }
 
 

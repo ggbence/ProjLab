@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ZenekarManagerWebApp.Account
+namespace ZenekarManagerWebApp.Site
 {
     public partial class Index : System.Web.UI.Page
     {
@@ -22,10 +22,24 @@ namespace ZenekarManagerWebApp.Account
             var currUser = ctx.Authentication.User;
             IEnumerable<Claim> claims2 = currUser.Claims;
             string email = "";
+            int role = 0;
             foreach (var claim in claims2){
-                if (claim.Type == ClaimTypes.Email){
+                if (claim.Type == ClaimTypes.Email)
+                {
                     email = claim.Value;
                 }
+                else if (claim.Type == ClaimTypes.Role)
+                {
+                    role = Convert.ToInt32(claim.Value);
+                }
+            }
+            if (role == Guest.REGISZTRALT)
+            {
+                Response.Redirect("~/Site/Profile");
+            }
+            else if (role == Guest.MANAGER)
+            {
+                Response.Redirect("~/Site/Admin");
             }
             if (email != "")
             {
@@ -40,7 +54,7 @@ namespace ZenekarManagerWebApp.Account
 
         protected void SendMessageButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Account/SendMessage");
+            Response.Redirect("~/Site/SendMessage");
         }
 
         protected void DeleteButton_Click(object sender, EventArgs e)

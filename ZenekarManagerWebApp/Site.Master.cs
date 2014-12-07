@@ -76,7 +76,7 @@ namespace ZenekarManagerWebApp
             var ctx = Request.GetOwinContext();
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignOut();
-            Response.Redirect(Request.RawUrl);
+            Response.Redirect("~/Site/Login");
         }
     }
 

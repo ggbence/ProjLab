@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ZenekarManagerWebApp.Account
+namespace ZenekarManagerWebApp.Site
 {
     public partial class SendMessage : System.Web.UI.Page
     {

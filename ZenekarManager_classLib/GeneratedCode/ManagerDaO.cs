@@ -100,60 +100,6 @@ public class ManagerDaO : DaO
 	}
 
 
-    internal List<User> getUsers()
-    {
-        MySqlDataReader rdr = null;
-
-        var result = new List<User>();
-
-        try
-        {
-            
-            string stm = "SELECT users_id, users_nev, users_email, jogkor_id, aktiv, " +
-             "koncertre_jar, users_password FROM USERS";
-           
-            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
-            
-            rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                int users_id = rdr.GetInt32(0);
-                string users_email = rdr.GetString(2);
-                string users_nev = rdr.GetString(1);
-                int jogkor_id = rdr.GetInt32(3);
-                string users_password = rdr.GetString(6);
-                bool aktiv = rdr.GetBoolean(4);
-                bool koncertre_jar = rdr.GetBoolean(5);
-
-                result.Add(new User(users_id, users_nev, users_email, jogkor_id, users_password, aktiv, koncertre_jar));
-            }
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
-        }
-        finally
-        {
-            if (rdr != null)
-            {
-                rdr.Close();
-            }
-
-        }
-
-        // Return with the result string
-        return result;
-
-
-
-
-
-
-        
-    }
 
     internal bool newInstruments(List<KeyValuePair<string, int>> hangszerek) 
     {
