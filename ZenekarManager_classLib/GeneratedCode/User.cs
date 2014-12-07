@@ -97,6 +97,7 @@ public class User
         this.users_password = users_password;
         this.aktiv = aktiv;
         this.koncertre_jar = koncertre_jar;
+        this.hangszerek = new List<KeyValuePair<int, string>>();
     }
 
 
@@ -132,8 +133,14 @@ public class User
 	public bool createProfile()
 	{
 
-        return userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek);
-        
+        if (userDaO.writeUserdata(users_nev, users_email, jogkor_id, aktiv, koncertre_jar, users_password, hangszerek))
+        {
+            return this.readProfile(this.users_email);
+        }
+        else
+        {
+            return false;
+        }
 	}
 
 

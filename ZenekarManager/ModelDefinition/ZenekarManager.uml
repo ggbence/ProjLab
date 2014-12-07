@@ -7760,7 +7760,6 @@
           <operation
             Id="f9f0b145-570a-4065-8469-94ec609c28b0"
             name="checkEmail"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"

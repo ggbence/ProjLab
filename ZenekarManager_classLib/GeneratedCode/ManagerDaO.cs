@@ -61,7 +61,26 @@ public class ManagerDaO : DaO
             cmd.Parameters.AddWithValue("@_id", users_id);
 
             // Execute query
-            if (cmd.ExecuteNonQuery() == 1)
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }
+
+
+            // Query string 
+            strSQL = "DELETE FROM USERS_HANGSZER WHERE users_id=@_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_id", users_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() >= 0)
             {
                 return true;
             }

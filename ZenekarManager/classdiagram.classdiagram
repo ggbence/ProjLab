@@ -5390,7 +5390,7 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="3d540f30-91b3-4c9b-a23a-76536e246757" name="checkEmail" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+          <operation Id="3d540f30-91b3-4c9b-a23a-76536e246757" name="checkEmail" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f9f0b145-570a-4065-8469-94ec609c28b0" />
             <ownedParameters>
               <operationHasOwnedParameters>

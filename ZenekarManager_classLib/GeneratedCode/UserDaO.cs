@@ -543,10 +543,10 @@ public class UserDaO : DaO
     }
 
 
-    // hangszer_id, hangszer_nev, hangszertipus_id
+    
     internal List<KeyValuePair<int, KeyValuePair<string, int> > > getAllInstrument()
     {
-
+        // hangszer_id, hangszer_nev, hangszertipus_id
         MySqlDataReader rdr = null;
 
         // hangszer_id, hangszer_nev, hangszertipus_id
