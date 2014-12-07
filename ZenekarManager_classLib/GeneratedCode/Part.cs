@@ -55,14 +55,16 @@ public class Part
     }
 
 
-    protected virtual PartDaO partDaO;
+    protected PartDaO partDaO;
 
 
     public Part()
     {
         partDaO = new PartDaO();
     }
-    public Part(int hangszer_id, int szolamkotta_id, int szolamlista_id, int szolam_id, int tetel_id)
+
+
+    public Part(int szolam_id, int tetel_id, int hangszer_id, int szolamlista_id, int szolamkotta_id)
     {
         partDaO = new PartDaO();
         this.hangszer_id = hangszer_id;
@@ -73,49 +75,84 @@ public class Part
     }
 
 
-	public virtual bool createPart()
+	public bool createPart()
 	{
-		throw new System.NotImplementedException();
+        szolam_id = partDaO.writePartdata(hangszer_id, szolamkotta_id, szolamlista_id, tetel_id);
+        if (szolam_id > -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
-	public virtual bool modifyPart()
+
+	public bool modifyPart()
 	{
-		throw new System.NotImplementedException();
+        return partDaO.modifyPartdata(hangszer_id, szolamkotta_id, szolamlista_id, szolam_id, tetel_id);
 	}
 
-	public virtual bool readPart(int szolam_id)
+
+	public bool readPart(int szolam_id)
 	{
-		throw new System.NotImplementedException();
+        var data = new int[5];
+        data = partDaO.readPartdata(szolam_id);
+
+        szolam_id =data[0];
+        tetel_id = data[1];
+        hangszer_id = data[2];
+        szolamlista_id = data[3];
+        szolamkotta_id = data[4];
+
+        return true;
 	}
 
-	public virtual bool addPartpaper(string szolamkotta_link)
+
+	public bool addPartpaper(string szolamkotta_link)
 	{
-		throw new System.NotImplementedException();
+        szolamkotta_id = partDaO.writePartpaper(szolamkotta_link);
+        if (szolamlista_id > -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
-	public virtual bool modifyPartpaper(string szolamkotta_link)
+
+	public bool modifyPartpaper(string szolamkotta_link)
 	{
-		throw new System.NotImplementedException();
+        return partDaO.modifyPartpaper(szolamkotta_link, this.szolamlista_id);
 	}
 
-	public virtual string getPartpaperlink()
+
+	public string getPartpaperlink()
 	{
-		throw new System.NotImplementedException();
+        return partDaO.getPartPaper(szolamkotta_id);
 	}
 
-	public virtual string getPartname()
+
+	public string getPartname()
 	{
-		throw new System.NotImplementedException();
+        return partDaO.getPartname(szolamlista_id);
 	}
 
-	public virtual List<KeyValuePair<Integer, String>> getPartList()
+
+    public List<KeyValuePair<int, KeyValuePair<string, int>>> getPartList()
 	{
-		throw new System.NotImplementedException();
+        return partDaO.getPartListData();
 	}
 
-	public virtual Movement getMovement()
+
+	public Movement getMovement()
 	{
-		throw new System.NotImplementedException();
+        var movement = new Movement();
+        movement.readMovement(this.tetel_id);
+        return movement;
 	}
 
 }

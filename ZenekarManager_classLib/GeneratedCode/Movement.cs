@@ -11,79 +11,138 @@ using System.Text;
 
 public class Movement
 {
-	private int tetel_id
+    private int tetel_id;
+
+    public int Tetel_id
+    {
+        get { return tetel_id; }
+        set { tetel_id = value; }
+    }
+
+
+    private int darab_id;
+
+    public int Darab_id
+    {
+        get { return darab_id; }
+        set { darab_id = value; }
+    }
+
+
+    private string tetel_cim;
+
+    public string Tetel_cim
+    {
+        get { return tetel_cim; }
+        set { tetel_cim = value; }
+    }
+
+
+    private int tetel_szama;
+
+    public int Tetel_szama
+    {
+        get { return tetel_szama; }
+        set { tetel_szama = value; }
+    }
+
+
+    private MovementDaO movementDaO;
+
+
+    public Movement()
+    {
+        movementDaO = new MovementDaO();
+    }
+
+   
+    public Movement(int tetel_id, int darab_id, string tetel_cim, int tetel_szama)
+    {
+        movementDaO = new MovementDaO();
+
+        this.tetel_id = tetel_id;
+        this.darab_id = darab_id;
+        this.tetel_cim = tetel_cim;
+        this.tetel_szama = tetel_szama;
+    }
+
+
+	public bool createMovement()
 	{
-		get;
-		set;
+        tetel_id = movementDaO.writeMovementdata(darab_id, tetel_cim, tetel_id, tetel_szama);
+        if (tetel_id > -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
-	private int darab_id
+
+	public bool modifyMovement()
 	{
-		get;
-		set;
+        return movementDaO.modifyMovementdata(darab_id, tetel_cim, tetel_id, tetel_szama);
 	}
 
-	private string tetel_cim
+	public bool readMovement(int tetel_id)
 	{
-		get;
-		set;
+		var data =new string[4];
+        data = movementDaO.readMovementdata(tetel_id);
+
+        this.tetel_id = Convert.ToInt32(data[0]);
+        this.darab_id = Convert.ToInt32(data[1]);
+        this.tetel_cim = data[2];
+        this.tetel_szama = Convert.ToInt32(data[3]);
+
+        return true;
 	}
 
-	private int tetel_szama
+	public bool addPart(Part part)
 	{
-		get;
-		set;
+        return part.createPart();
 	}
 
-	public virtual MovementDaO MovementDaO
+	public bool deletePart(int szolam_id)
 	{
-		get;
-		set;
+        return movementDaO.deletePart(szolam_id);
 	}
 
-	public virtual bool createMovement()
+	public List<Part> getAllParts()
 	{
-		throw new System.NotImplementedException();
+        var result = new List<Part>();
+        var data = new List<int[]>();
+
+        data = movementDaO.getAllPartdata(tetel_id);
+        for (int i = 0; i < data.Count; i++)
+        {
+            result.Add(new Part(data[i][0], data[i][1], data[i][2], data[i][3], data[i][5]));
+        }
+
+        return result;
 	}
 
-	public virtual bool modifyMovement()
+	public Part getPart(int szolam_id)
 	{
-		throw new System.NotImplementedException();
+        var data = new int[5];
+        data = movementDaO.getPart(szolam_id);
+
+        var result = new Part(data[0], data[1], data[2], data[3], data[5]);
+
+        return result;
 	}
 
-	public virtual bool readMovement(int tetel_id)
+	public int getCountPart()
 	{
-		throw new System.NotImplementedException();
+        return movementDaO.getCountPart(tetel_id);
 	}
 
-	public virtual bool addPart(Part part)
+	public Piece getPiece()
 	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual bool deletePart(int szolam_id)
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual List<Part> getAllParts()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual Part getPart(int szolam_id)
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual int getCountPart(int tetel_id)
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual Piece getPiece()
-	{
-		throw new System.NotImplementedException();
+        var piece = new Piece();
+        piece.readPiece(this.darab_id);
+        return piece;
 	}
 
 }

@@ -115,7 +115,7 @@ public class UserDaO : DaO
        
         MySqlDataReader rdr = null;
 
-        var result = new string[8];
+        var result = new string[7];
 
         try
         {
@@ -439,6 +439,7 @@ public class UserDaO : DaO
 
     }
 
+
     internal bool sendMsg(int sender, string uzenet, string datum, string ervenyesseg, List<int> cimzettek)
     {
         bool ok = false;
@@ -541,6 +542,7 @@ public class UserDaO : DaO
         return ok;
     }
 
+
     // hangszer_id, hangszer_nev, hangszertipus_id
     internal List<KeyValuePair<int, KeyValuePair<string, int> > > getAllInstrument()
     {
@@ -588,6 +590,7 @@ public class UserDaO : DaO
         return result;
     }
 
+
     internal List<KeyValuePair<int, string>> getAllInstrumentType()
     {
         MySqlDataReader rdr = null;
@@ -628,6 +631,57 @@ public class UserDaO : DaO
 
         // Return with the result string
         return result;
+    }
+
+
+    internal List<int> getPaperListdata(List<KeyValuePair<int, string>> hangszerek) 
+    {
+
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // user adatok lekerdezese
+
+            string stm = "SELECT szolam_id FROM SZOLAM where hangszer_id=@_hangszer_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            
+            for (int i=0; i<hangszerek.Count; i++) 
+            {
+                cmd.Parameters.AddWithValue("@_hangszer_id", hangszerek[i].Key);
+                rdr = cmd.ExecuteReader();
+                
+                while (rdr.Read())
+                {
+                    result.Add(rdr.GetInt32(0));
+                }
+
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
     }
 }
 

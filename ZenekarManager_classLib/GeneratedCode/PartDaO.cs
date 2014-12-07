@@ -46,7 +46,7 @@ public class PartDaO : DaO
             // adatbazisba felvett Part ID-janak lekerdezese
 
             string stm = "SELECT szolam_id FROM SZOLAM where hangszer_id=@_hangszer_id AND szolamkotta_id=@_szolamkotta_id " +
-                "AND szolamlista_id=@_szolamlista_id AND tetel_id=@_tetel_id";
+                "AND szolamlista_id=@_szolamlista_id AND tetel_id=@_tetel_id;";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
@@ -69,7 +69,7 @@ public class PartDaO : DaO
         catch (MySqlException ex)
         {
             Console.WriteLine("MySQL error. Number: " + ex.Number);
-            return 0;
+            return -1;
         }
 
         finally
@@ -121,38 +121,333 @@ public class PartDaO : DaO
 
         }
 
-        return true;
+        return false;
 
 	}
+
 
 	internal string getPartPaper(int szolamkotta_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        string result="";
+
+        try
+        {
+
+            // szolamkotta link lekerdezese
+
+            string stm = "SELECT szolamkotta_link FROM SZOLAMKOTTA where szolamkotta_id=@_szolamkotta_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_szolamkotta_id", szolamkotta_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetString(0);
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
+
 
 	internal List<KeyValuePair<int, KeyValuePair<string, int>>> getPartListData()
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        // hangszer_id, hangszer_nev, hangszertipus_id
+        var result = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
+
+        try
+        {
+
+            // hangszerek listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT szolamlista_id, szolamlista_nev, prioritas FROM SZOLAMLISTA ORDER BY szolamlista_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                int szolamlista_id = rdr.GetInt32(0);
+                string szolamlista_nev = rdr.GetString(1);
+                int prioritas = rdr.GetInt32(2);
+
+                result.Add(new KeyValuePair<int, KeyValuePair<string, int>>(szolamlista_id, new KeyValuePair<string, int>(szolamlista_nev, prioritas)));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
+
 	}
+
 
 	internal int writePartpaper(string szolamkotta_link)
 	{
-		throw new System.NotImplementedException();
+        MySqlDataReader rdr = null;
+        int szolamkotta_id = -1;
+
+        try
+        {
+
+            // adatbazisba felvett szolamkotta ID-janak lekerdezese
+
+            string stm = "SELECT szolamkotta_id FROM SZOLAMKOTTA where szolamkotta_link=@_szolamkotta_link";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_szolamkotta_link", szolamkotta_link);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                szolamkotta_id = rdr.GetInt32(0);
+            }
+
+            if (szolamkotta_id == -1)
+            {
+
+                // Query string 
+                string strSQL = "INSERT INTO SZOLAMKOTTA (szolamkotta_link) VALUES (@_szolamkotta_link); ";
+
+                // Add query text
+                cmd = new MySqlCommand(strSQL, this.Conn);
+
+                // Prepare the query
+                cmd.Prepare();
+
+                // Add parameter
+                cmd.Parameters.AddWithValue("@_szolamkotta_link", szolamkotta_link);
+
+                // Execute query
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    return -1;
+                }
+
+
+
+                // adatbazisba felvett szolamkotta ID-janak lekerdezese
+
+                stm = "SELECT szolamkotta_id FROM SZOLAMKOTTA where szolamkotta_link=@_szolamkotta_link";
+
+                cmd = new MySqlCommand(stm, this.Conn);
+
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@_szolamkotta_link", szolamkotta_link);
+
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    szolamkotta_id = rdr.GetInt32(0);
+                }
+
+            }
+
+           return szolamkotta_id;
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+            return -1;
+        }
+
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+
+
 	}
 
-	internal string getPartname(string szolamlista_id)
+
+	internal string getPartname(int szolamlista_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        string result = "";
+
+        try
+        {
+
+            // szolamkotta link lekerdezese
+
+            string stm = "SELECT szolamlista_nev FROM SZOLAMLISTA where szolamlista_id=@_szolamlista_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_szolamlista_id", szolamlista_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetString(0);
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
 
-	internal bool modifyPartpaper(string szolamkott_link)
+
+	internal bool modifyPartpaper(string szolamkotta_link, int szolamkotta_id)
 	{
-		throw new System.NotImplementedException();
+
+        try
+        {
+
+            // Query string 
+            string strSQL = "UPDATE SZOLAMKOTTA SET szolamkotta_link=@_szolamkotta_link WHERE szolamkotta_id=@_szolamkotta_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_szolamkotta_id", szolamkotta_id);
+            cmd.Parameters.AddWithValue("@_szolamkotta_link", szolamkotta_link);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return false;
+
+
 	}
 
-	internal string[] readPartdata(int szolam_id)
+
+	internal int[] readPartdata(int szolam_id)
 	{
-		throw new System.NotImplementedException();
+
+        MySqlDataReader rdr = null;
+
+        var result = new int[5];
+
+        try
+        {
+
+            // user adatok lekerdezese
+
+            string stm = "SELECT szolam_id, tetel_id, hangszer_id, szolamlista_id, szolamkotta_id " +
+             "FROM SZOLAM where szolam_id=@_szolam_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_szolam_id", szolam_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result[i] = rdr.GetInt32(i);
+                }
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+
 	}
 
 }

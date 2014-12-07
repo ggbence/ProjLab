@@ -1267,6 +1267,30 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="7b816f36-ccc2-4410-85ab-7df4666d20e5"
+            name="getPaperList"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f8e75e88-082e-4c3b-9ba0-093c25c9ad0e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="39f0f124-5593-4b67-a969-2fb13fff6874"
+                      LastKnownName="List&lt;Part&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -4846,20 +4870,6 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="3181643f-d4f2-4a6a-8cb5-53dc9a0b90c0"
-                  name="tetel_id"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ZenekarManager.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
@@ -6103,8 +6113,8 @@
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
-                      LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                      Id="78f7b982-2ef5-4a08-a72b-18a286910b70"
+                      LastKnownName="List&lt;KeyValuePair&lt;int, KeyValuePair&lt;string, int&gt;&gt;&gt;"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -7017,6 +7027,52 @@
                     <undefinedTypeMoniker
                       Id="6e142740-fa30-4aa2-a284-76c6d91e853f"
                       LastKnownName="List&lt;KeyValuePair&lt;Integer, String&gt;&gt;"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f64b6c95-1a41-4f51-b9e4-a206b1f2d080"
+            name="getPaperListdata"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3c8e3a21-6571-4b55-bffd-06b669dee270"
+                  name="hangszerek"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d96bca1a-82d9-48f4-a391-1374503f4a0c"
+                      LastKnownName="List&lt;KeyValuePair&lt;Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8f55a6f4-58f2-400f-acfb-1214db050a49"
+                  name="String&gt;&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d9521377-612d-4232-8e05-113f2631fba7"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="806e9422-7db8-4bf2-9d46-d8fc9bd7d47c"
+                      LastKnownName="List&lt;Integer&gt;"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -9961,9 +10017,8 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="65545f91-5af6-4405-b47d-ea5fd5a96a2d"
-                  name="szolamlista_id"
-                  direction="In"
+                  Id="da27d816-d887-4a88-8ab7-9c559d54003b"
+                  direction="Return"
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
@@ -9975,13 +10030,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="da27d816-d887-4a88-8ab7-9c559d54003b"
-                  direction="Return"
+                  Id="589b2cfd-9a5f-4538-8c9b-67496ed94f0d"
+                  name="szolamlista_id"
+                  direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -10050,8 +10106,21 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d361d014-039f-4a6d-bca7-61b9e8dd8ade"
-                  name="szolamkott_link"
+                  Id="20b89b2a-5b0f-494d-828d-8a97a5126c13"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="07cc5f00-7399-44cb-ac31-8b8b3e896ebd"
+                  name="szolamkotta_link"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
@@ -10064,13 +10133,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="20b89b2a-5b0f-494d-828d-8a97a5126c13"
-                  direction="Return"
+                  Id="74f7f254-9425-4339-ae1f-d33a90fa55b8"
+                  name="szolamkotta_id"
+                  direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -10156,15 +10226,15 @@
                   </upperValueInternal>
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="28089158-1c6e-4e2f-8a5b-3ad353b0dc76"
-                      LastKnownName="String[]"
+                      Id="02628c3e-d541-43e1-8539-3760d02d5412"
+                      LastKnownName="Integer[]"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="71fe8c27-6525-4605-813b-29d7c63ca9bf"
+                  Id="bfb9972a-994f-4a44-8843-30cc6d9e5305"
                   name="szolam_id"
                   direction="In"
                   isUnique="false">
@@ -10314,15 +10384,15 @@
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8feeffc9-071e-45e4-b389-72d950ecf03c"
+                  Id="75b4136e-5313-4b05-be39-3b1cb2d75fcc"
                   name="darab_id"
                   direction="In"
                   isUnique="false">
@@ -10336,7 +10406,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="97eada4b-99f9-4af7-8bb8-0078e5fa54d7"
+                  Id="ef6ea2a0-b35d-48ac-b1de-10d6f11e86f3"
                   name="tetel_cim"
                   direction="In"
                   isUnique="false">
@@ -10350,7 +10420,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5abc398e-dc77-4373-accc-72c6f19b817d"
+                  Id="2a7f5a01-8777-4477-bb73-ef6be7065ec7"
                   name="tetel_id"
                   direction="In"
                   isUnique="false">
@@ -10364,7 +10434,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c2d2e9df-77ef-45be-8d58-18a8219fece5"
+                  Id="59aaaae6-c1d1-4cdc-a0aa-2fa79674c3e9"
                   name="tetel_szama"
                   direction="In"
                   isUnique="false">
@@ -10453,22 +10523,8 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e8d8cfbc-71d1-4fbe-8423-4f9bd3a1e195"
+                  Id="2b271ae3-a5be-4639-bbbf-95ced7615d9d"
                   name="szolam_id"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ZenekarManager.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="c2636837-140c-4a99-95e8-7ed359349822"
-                  name="tetel_id"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
@@ -10946,15 +11002,15 @@
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="02628c3e-d541-43e1-8539-3760d02d5412"
-                      LastKnownName="Integer[]"
+                      Id="28089158-1c6e-4e2f-8a5b-3ad353b0dc76"
+                      LastKnownName="String[]"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="941667fc-fbd6-44e6-b58d-56e7fadf685f"
+                  Id="bfe24e56-f58e-4643-98e9-7efa03d7d49e"
                   name="tetel_id"
                   direction="In"
                   isUnique="false">
@@ -11109,15 +11165,15 @@
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="79f9e7dd-9eda-48e8-9f69-d22982f63241"
+                  Id="2f686b11-3dc0-49c1-b1f8-d534a56d175c"
                   name="darab_cim"
                   direction="In"
                   isUnique="false">
@@ -11131,7 +11187,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="10481d90-1854-4fad-86f4-6f17015745c4"
+                  Id="33499cc5-3888-483e-8f54-8b9a501a1e8f"
                   name="darab_id"
                   direction="In"
                   isUnique="false">
@@ -11145,7 +11201,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="24d0e176-ba6b-4927-bdc9-3d1a9f99907d"
+                  Id="293f2036-c653-45b7-94d1-407ca31c346e"
                   name="darab_szerzo"
                   direction="In"
                   isUnique="false">
@@ -11159,7 +11215,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e026421a-38bb-42a4-b916-19de3928ce67"
+                  Id="4c703abc-cdfd-42e5-96d8-ec5ff3885cda"
                   name="tetelszam"
                   direction="In"
                   isUnique="false">
@@ -11240,16 +11296,30 @@
                   isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c59354c1-3a6c-4b61-b0f3-d861c1326b43"
+                  Id="830ce5e3-cfba-4dd6-baab-173ed3934f88"
                   name="tetel_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3e036b33-1900-4249-8032-bb86f43b0c21"
+                  name="darab_id"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
@@ -11502,20 +11572,6 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bf6ed2b2-b9a3-4bf4-af1c-47491d74742c"
-                  name="darab_id"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ZenekarManager.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
                   Id="bb88633f-c9c4-48b3-ac9a-112621aad31e"
                   direction="Return"
                   isUnique="false">
@@ -11523,6 +11579,20 @@
                     <undefinedTypeMoniker
                       Id="28089158-1c6e-4e2f-8a5b-3ad353b0dc76"
                       LastKnownName="String[]"
+                      LastKnownLocation="ZenekarManager.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ffe40618-58ad-4e85-9408-2299a49af43f"
+                  name="tetel_id"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
                       LastKnownLocation="ZenekarManager.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -11756,6 +11826,16 @@
       <undefinedType
         Id="0da49140-8e8f-44ce-a22e-c00d00e436a9"
         name="List&lt;String[]&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c152a70a-1b39-4686-8fb8-dd6ceb310c83"
+        name="List" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="baea14f1-64ba-4f10-8883-74fa60663010"
+        name="Intege" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

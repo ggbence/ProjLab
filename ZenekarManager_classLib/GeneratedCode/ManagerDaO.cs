@@ -14,46 +14,64 @@ public class ManagerDaO : DaO
 {
 	internal bool changeRole(int users_id, int jogkor_id)
 	{
-        // Query string 
-        string strSQL = "UPDATE USERS SET jogkor_id=@_jogkor WHERE users_id=@_id";
-
-        // Add query text
-        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-        // Prepare the query
-        cmd.Prepare();
-
-        // Add parameter
-        cmd.Parameters.AddWithValue("@_id", users_id);
-        cmd.Parameters.AddWithValue("@_jogkor", jogkor_id);
-        
-        // Execute query
-        if (cmd.ExecuteNonQuery() == 1)
+        try
         {
-            return true;
+
+            // Query string 
+            string strSQL = "UPDATE USERS SET jogkor_id=@_jogkor WHERE users_id=@_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_id", users_id);
+            cmd.Parameters.AddWithValue("@_jogkor", jogkor_id);
+        
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
         }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+        
         return false;
 	}
 
 	internal bool deleteUserdata(int users_id)
 	{
-        // Query string 
-        string strSQL = "DELETE FROM USERS WHERE users_id=@_id";
+        try {
+            // Query string 
+            string strSQL = "DELETE FROM USERS WHERE users_id=@_id";
 
-        // Add query text
-        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
 
-        // Prepare the query
-        cmd.Prepare();
+            // Prepare the query
+            cmd.Prepare();
 
-        // Add parameter
-        cmd.Parameters.AddWithValue("@_id", users_id);
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_id", users_id);
 
-        // Execute query
-        if (cmd.ExecuteNonQuery() == 1)
-        {
-            return true;
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+        
         }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
         return false;
 	}
 

@@ -200,5 +200,23 @@ public class User
         return userDaO.getAllInstrumentType();
     }
 
+
+    public List<Part> getPaperList()
+    {
+
+        var papers = new List<int>();
+        var result = new List<Part>();
+
+        papers = userDaO.getPaperListdata(hangszerek);
+
+        for (int i = 0; i < papers.Count; i++)
+        {
+            var part = new Part();
+            part.readPart(papers[i]);
+            result.Add(part);
+        }
+
+        return result;
+    }
 }
 
