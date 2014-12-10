@@ -67,5 +67,30 @@ public class Manager : User
         return managerDaO.delInstrumentType(hangszertipus_id);
     }
 
+
+    public bool addConcert(Concert concert)
+    {
+        return concert.create();
+    }
+
+
+    public bool deleteConcert(int koncert_id)
+    {
+        var koncert = new Concert();
+        if (koncert.read(koncert_id))
+        {
+            if (koncert.deleteAllMaterial())
+            {
+                if (managerDaO.deleteConcertdata(koncert_id))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+
+    }
+
 }
 

@@ -110,7 +110,7 @@ public class UserDaO : DaO
 	}
 
 
-	internal string[] readUserdata(string email, List<KeyValuePair<int, string>> hangszerek)
+	internal string[] readUserdata(string email, ref List<KeyValuePair<int, string>> hangszerek)
 	{
        
         MySqlDataReader rdr = null;
@@ -682,6 +682,166 @@ public class UserDaO : DaO
         // Return with the result string
         return result;
 
+    }
+
+    internal List<int> getAllPiecedata()
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // szólamok listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT darab_id FROM DARAB ORDER BY darab_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetInt32(0));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+
+    internal bool delPiecedata(int darab_id)
+    {
+
+        try
+        {
+            // Query string 
+            string strSQL = "DELETE FROM DARAB WHERE darab_id=@_darab_id;";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_darab_id", darab_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }
+
+        }
+
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return true;
+    }
+
+    
+    internal int getCountPieces()
+    {
+        MySqlDataReader rdr = null;
+
+        int result = -1;
+
+        try
+        {
+
+            // user adatok lekerdezese
+
+            string stm = "SELECT COUNT(darab_id) FROM DARAB";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result = rdr.GetInt32(0);
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+    internal List<int> getAllConcertdata()
+    {
+
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // koncertek listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT koncert_id FROM KONCERT ORDER BY koncert_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetInt32(0));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
     }
 }
 

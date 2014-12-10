@@ -147,7 +147,7 @@ public class User
     public bool readProfile(string email)
     {
         string []data;
-        data = userDaO.readUserdata(email, this.hangszerek);
+        data = userDaO.readUserdata(email, ref this.hangszerek);
         try
         {
             this.users_id = Convert.ToInt32(data[0]);
@@ -225,5 +225,79 @@ public class User
 
         return result;
     }
+
+
+    public bool addPiece(Piece darab)
+    {
+        return darab.createPiece();
+    }
+
+
+    public bool delPiece(int darab_id)
+    {
+        return userDaO.delPiecedata(darab_id);
+    }
+
+
+    public int getCountPieces()
+    {
+        return userDaO.getCountPieces();
+    }
+
+
+    public Piece getPiece(int darab_id)
+    {
+        var darab = new Piece();
+        darab.readPiece(darab_id);
+
+        return darab;
+    }
+
+
+    public List<Piece> getPieces()
+    {
+        var result = new List<Piece>();
+        var data = new List<int>();
+        data = userDaO.getAllPiecedata();
+
+        for (int i = 0; i < data.Count; i++)
+        {
+            var darab = new Piece();
+            darab.readPiece(data[i]);
+            result.Add(darab);
+        }
+
+        return result;
+
+    }
+
+    public List<Concert> getAllConcert() 
+    {
+        var data = new List<int>();
+        var result = new List<Concert>();
+
+        data = userDaO.getAllConcertdata();
+
+        for (int i=0; i<data.Count; i++) 
+        {
+            var koncert = new Concert();
+            koncert.read(data[i]);
+            result.Add(koncert);
+        }
+
+        return result;
+    }
+
+
+    public Concert getConcert(int koncert_id)
+    {
+        var result = new Concert();
+        result.read(koncert_id);
+
+        return result;
+    }
+
+
+
 }
 

@@ -387,6 +387,60 @@ public class ManagerDaO : DaO
 
 
     }
+
+
+    internal bool deleteConcertdata(int koncert_id)
+    {
+        try
+        {
+            // Query string 
+            string strSQL = "DELETE FROM KONCERT_RESZVETEL WHERE koncert_id=@_koncert_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() >= 0)
+            {
+                return false;
+            }
+
+
+            // Query string 
+            strSQL = "DELETE FROM KONCERT WHERE koncert_id=@_koncert_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return false;
+    }
+
 }
+
+
 
 

@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedCode\Concert.cs" />
+    <Compile Include="GeneratedCode\ConcertDaO.cs" />
+    <Compile Include="GeneratedCode\ConcertMaterial.cs" />
+    <Compile Include="GeneratedCode\ConcertMaterialDaO.cs" />
     <Compile Include="GeneratedCode\DaO.cs" />
     <Compile Include="GeneratedCode\Guest.cs" />
     <Compile Include="GeneratedCode\GuestDaO.cs" />
