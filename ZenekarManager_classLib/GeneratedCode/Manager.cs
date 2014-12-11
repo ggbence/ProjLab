@@ -92,5 +92,45 @@ public class Manager : User
 
     }
 
+
+    public bool addRehearsal(Rehearsal proba) 
+    {
+        return proba.create();
+    }
+
+
+    public bool deleteRehearsal(int proba_id) 
+    {
+        return managerDaO.deleteRehearsaldata(proba_id);
+    }
+
+
+    public bool addRehearsalMaterial(RehearsalMaterial probaanyag) 
+    {
+        return probaanyag.create();
+    }
+
+
+    public bool deleteRehearsalMaterial(int probaanyag_id) 
+    {
+        return managerDaO.deleteRehearsalMaterialdata(probaanyag_id);
+    }
+
+
+    public List<RehearsalMaterial> getAllInactiveRehearsalMaterial()
+    {
+        var data = new List<int>();
+        var result = new List<RehearsalMaterial>();
+
+        data = managerDaO.getAllInactiveRehearsalMaterial();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var material = new RehearsalMaterial();
+            material.read(data[i]);
+            result.Add(material);
+        }
+
+        return result;
+    }
 }
 

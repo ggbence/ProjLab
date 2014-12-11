@@ -66,12 +66,11 @@ public class ConcertMaterial
 
     }
 
-    public ConcertMaterial(int koncertanyag_id, int koncert_id, int sorszam, int tetel_id, List<KeyValuePair<int, int>> zeneszek)
+    public ConcertMaterial(int koncert_id, int sorszam, int tetel_id, List<KeyValuePair<int, int>> zeneszek)
     {
         concertMaterialDaO = new ConcertMaterialDaO();
         zeneszek = new List<KeyValuePair<int, int>>();
 
-        this.koncertanyag_id = koncertanyag_id;
         this.koncert_id = koncert_id;
         this.sorszam = sorszam;
         this.tetel_id = tetel_id;
@@ -94,10 +93,12 @@ public class ConcertMaterial
 
 	}
 
+
 	public bool modify()
 	{
         return concertMaterialDaO.modify(koncertanyag_id, koncert_id, sorszam, tetel_id, zeneszek);
 	}
+
 
 	public bool read(int koncertanyag_id)
 	{
@@ -111,9 +112,10 @@ public class ConcertMaterial
         return true;
 	}
 
+
 	public bool addZenesz(int users_id, int szolam_id)
 	{
-        if (concertMaterialDaO.addZenesz(koncertanyag_id, users_id, szolam_id))
+        if (concertMaterialDaO.addZenesz(koncertanyag_id, users_id, szolam_id, koncert_id))
         {
             zeneszek.Add(new KeyValuePair<int, int>(users_id, szolam_id));
             return true;
@@ -123,6 +125,7 @@ public class ConcertMaterial
             return false;
         }
 	}
+
 
 	public List<KeyValuePair<int, int>> getZeneszek()
 	{

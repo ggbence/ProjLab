@@ -298,6 +298,54 @@ public class User
     }
 
 
+    public RehearsalMaterial getRehearsalMaterial(int probaanyag_id) 
+    {
+        var material = new RehearsalMaterial();
+        material.read(probaanyag_id);
+
+        return material;
+    }
+
+    public List<RehearsalMaterial> getAllActiveRehearsalMaterial() 
+    {
+        var data = new List<int>();
+        var result = new List<RehearsalMaterial>();
+
+        data = userDaO.getAllActiveRehearsalMaterialdata();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var material = new RehearsalMaterial();
+            material.read(data[i]);
+            result.Add(material);
+        }
+
+        return result;
+    }
+
+    public Rehearsal getRehearsal(int proba_id) 
+    {
+        var proba = new Rehearsal();
+        proba.read(proba_id);
+
+        return proba;
+    }
+
+    public List<Rehearsal> getAllRehearsal()
+    {
+        var data = new List<int>();
+        var result = new List<Rehearsal>();
+
+        data = userDaO.getAllRehearsaldata();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var proba = new Rehearsal();
+            proba.read(data[i]);
+            result.Add(proba);
+        }
+
+        return result;
+    }
+
 
 }
 

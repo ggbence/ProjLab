@@ -10,20 +10,21 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-public class ConcertDaO : DaO
+public class RehearsalDaO : DaO
 {
-	internal int writeConcertdata(string helyszin, string idopont, int koncertfelelos, int koncert_id, string megjegyzes, 
-        List<KeyValuePair<int, KeyValuePair<bool, string>>> tervezett_reszvetel , List<KeyValuePair<int, bool>> resztvett, string vege)
-    {
+	internal int writeRehearsalData(string helyszin, string idopont, string megjegyzes, int proba_id, 
+        List<KeyValuePair<int, bool>> resztvett, List<KeyValuePair<int, KeyValuePair<bool, string>>>  tervezett_reszvetel)
+	{
+
         MySqlDataReader rdr = null;
-        int concertid = -1;
+        int probaid = -1;
 
         try
         {
-            // koncert tabla adatainak irasa
+            // proba tabla adatainak irasa
             // Query string 
-            string strSQL = "INSERT INTO KONCERT (idopont, vege, helyszin, megjegyzes, users_id) VALUES " +
-                "(@_idopont, @_vege, @_helyszin, @_megjegyzes, @_users_id); ";
+            string strSQL = "INSERT INTO PROBA (idopont, helyszin, megjegyzes) VALUES " +
+                "(@_idopont, @_helyszin, @_megjegyzes); ";
 
             // Add query text
             MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -33,44 +34,40 @@ public class ConcertDaO : DaO
 
             // Add parameter
             cmd.Parameters.AddWithValue("@_idopont", idopont);
-            cmd.Parameters.AddWithValue("@_vege", vege);
             cmd.Parameters.AddWithValue("@_helyszin", helyszin);
             cmd.Parameters.AddWithValue("@_megjegyzes", megjegyzes);
-            cmd.Parameters.AddWithValue("@_users_id", koncertfelelos);
             // Execute query
             if (cmd.ExecuteNonQuery() != 1)
             {
-                return concertid;
+                return probaid;
             }
 
 
-            // adatbazisba felvett koncert ID-janak lekerdezese
+            // adatbazisba felvett proba ID-janak lekerdezese
 
-            string stm = "SELECT koncert_id FROM KONCERT where idopont=@_idopont AND vege=@_vege " +
-                "AND helyszin=@_helyszin AND megjegyzes=@_megjegyzes AND users_id=@_users_id;";
+            string stm = "SELECT proba_id FROM PROBA where idopont=@_idopont " +
+                "AND helyszin=@_helyszin AND megjegyzes=@_megjegyzes;";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
             // Add parameter
             cmd.Parameters.AddWithValue("@_idopont", idopont);
-            cmd.Parameters.AddWithValue("@_vege", vege);
             cmd.Parameters.AddWithValue("@_helyszin", helyszin);
             cmd.Parameters.AddWithValue("@_megjegyzes", megjegyzes);
-            cmd.Parameters.AddWithValue("@_users_id", koncertfelelos);
 
             rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-                concertid = rdr.GetInt32(0);
+                probaid = rdr.GetInt32(0);
             }
 
 
             // tervezett reszvetel adatainak irasa
             // Query string 
-            strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
-                "(@_koncert_id, @_users_id, @_tervezett_reszvetel, @_indoklas); ";
+            strSQL = "INSERT INTO PROBA_RESZVETEL (proba_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
+                "(@_proba_id, @_users_id, @_tervezett_reszvetel, @_indoklas); ";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -78,13 +75,13 @@ public class ConcertDaO : DaO
             // Prepare the query
             cmd.Prepare();
 
-            
-            for (int i=0; i<tervezett_reszvetel.Count; i++) 
+
+            for (int i = 0; i < tervezett_reszvetel.Count; i++)
             {
                 // Add parameter
-                cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
-                cmd.Parameters.AddWithValue("@_users_id", tervezett_reszvetel[i].Key );
-                cmd.Parameters.AddWithValue("@_tervezett_reszvetel", tervezett_reszvetel[i].Value.Key );
+                cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+                cmd.Parameters.AddWithValue("@_users_id", tervezett_reszvetel[i].Key);
+                cmd.Parameters.AddWithValue("@_tervezett_reszvetel", tervezett_reszvetel[i].Value.Key);
                 cmd.Parameters.AddWithValue("@_indoklas", tervezett_reszvetel[i].Value.Value);
                 // Execute query
                 cmd.ExecuteNonQuery();
@@ -94,7 +91,7 @@ public class ConcertDaO : DaO
 
             // reszvetel adatainak irasa mar letezo rekordba
             // Query string
-            strSQL = "UPDATE KONCERT_RESZVETEL SET resztvett=@_resztvett WHERE users_id=@_users_id;";
+            strSQL = "UPDATE PROBA_RESZVETEL SET resztvett=@_resztvett WHERE users_id=@_users_id;";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -108,7 +105,7 @@ public class ConcertDaO : DaO
                 // Add parameter
                 cmd.Parameters.AddWithValue("@_resztvett", resztvett[i].Value);
                 cmd.Parameters.AddWithValue("@_users_id", resztvett[i].Key);
-                
+
                 // Execute query
                 cmd.ExecuteNonQuery();
 
@@ -117,8 +114,8 @@ public class ConcertDaO : DaO
 
             // reszvetel adatainak irasa azon zeneszek eseten, akiknek az adatait nem irtuk be az elozo lekerdezesekkel
             // Query string 
-            strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, resztvett) VALUES " +
-                "(@_koncert_id, @_users_id, @_resztvett); ";
+            strSQL = "INSERT INTO PROBA_RESZVETEL (proba_id, users_id, resztvett) VALUES " +
+                "(@_proba_id, @_users_id, @_resztvett); ";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -137,18 +134,18 @@ public class ConcertDaO : DaO
                 if (j < tervezett_reszvetel.Count)
                 {
                     // Add parameter
-                    cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+                    cmd.Parameters.AddWithValue("@_proba_id", proba_id);
                     cmd.Parameters.AddWithValue("@_users_id", resztvett[i].Key);
                     cmd.Parameters.AddWithValue("@_resztvett", resztvett[i].Value);
                     // Execute query
                     cmd.ExecuteNonQuery();
                 }
-                
+
 
             }
 
 
-            return concertid;
+            return probaid;
         }
         catch (MySqlException ex)
         {
@@ -164,215 +161,10 @@ public class ConcertDaO : DaO
             }
 
         }
-
-	}
-
-    internal bool deleteMaterialdata(int koncertanyag_id)
-	{
-
-        try
-        {
-            // Query string 
-            string strSQL = "DELETE FROM KONCERT_ZENESZ WHERE koncertanyag_id=@_koncertanyag_id";
-
-            // Add query text
-            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            // Add parameter
-            cmd.Parameters.AddWithValue("@_koncertanyag_id", koncertanyag_id);
-
-            // Execute query
-            if (cmd.ExecuteNonQuery() != 1)
-            {
-                return false;
-            }
-
-
-            // Query string 
-            strSQL = "DELETE FROM KONCERTANYAG WHERE koncertanyag_id=@_koncertanyag_id";
-
-            // Add query text
-            cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            // Add parameter
-            cmd.Parameters.AddWithValue("@_koncertanyag_id", koncertanyag_id);
-
-            // Execute query
-            if (cmd.ExecuteNonQuery() >= 0)
-            {
-                return true;
-            }
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("MySQL error. Number: " + ex.Number);
-        }
-
-        return false;
 	}
 
 
-    internal bool deleteAllMaterialdata(List<int> koncertanyagok)
-    {
-        for (int i=0; i<koncertanyagok.Count; i++) 
-        {
-            deleteMaterialdata(koncertanyagok[i]);
-        }
-        return true;
-    }
-
-
-    internal List<int> getAllMaterial(int koncert_id)
-	{
-        
-        MySqlDataReader rdr = null;
-
-        var result = new List<int>();
-
-        try
-        {
-
-            // user adatok lekerdezese
-            string stm = "SELECT koncertanyag_id FROM KONCERTANYAG where koncert_id=@_koncert_id";
-
-            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
-
-            cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
-
-            rdr = cmd.ExecuteReader();
-
-
-
-            while (rdr.Read())
-            { 
-                result.Add(rdr.GetInt32(0));
-            }
-
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
-        }
-        finally
-        {
-            if (rdr != null)
-            {
-                rdr.Close();
-            }
-
-        }
-
-        // Return with the result string
-        return result;
-
-	}
-
-    internal KeyValuePair<bool, string> getTervezettReszvetel(int users_id, int koncert_id)
-	{
-
-        MySqlDataReader rdr = null;
-
-        var result = new KeyValuePair<bool, string>();
-
-        try
-        {
-
-            // user adatok lekerdezese
-            string stm = "SELECT tervezett_reszvetel, indoklas FROM KONCERT_RESZVETEL where koncert_id=@_koncert_id AND users_id=@_users_id";
-
-            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
-
-            cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
-            cmd.Parameters.AddWithValue("@_users_id", users_id);
-
-            rdr = cmd.ExecuteReader();
-
-
-            while (rdr.Read())
-            {
-                result = new KeyValuePair<bool,string>(rdr.GetBoolean(0), rdr.GetString(1));
-            }
-
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
-        }
-        finally
-        {
-            if (rdr != null)
-            {
-                rdr.Close();
-            }
-
-        }
-
-        // Return with the result string
-        return result;
-	}
-
-    internal bool getReszvetel(int users_id, int koncert_id)
-    {
-
-        MySqlDataReader rdr = null;
-
-        bool result = false;
-
-        try
-        {
-
-            // user adatok lekerdezese
-            string stm = "SELECT resztvett FROM KONCERT_RESZVETEL where koncert_id=@_koncert_id AND users_id=@_users_id";
-
-            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
-
-            cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
-            cmd.Parameters.AddWithValue("@_users_id", users_id);
-
-            rdr = cmd.ExecuteReader();
-
-
-            while (rdr.Read())
-            {
-                result = rdr.GetBoolean(0);
-            }
-
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
-        }
-        finally
-        {
-            if (rdr != null)
-            {
-                rdr.Close();
-            }
-
-        }
-
-        // Return with the result string
-        return result;
-    }
-
-
-    internal List<KeyValuePair<int, bool>> getAllReszvetel(int koncert_id)
+    internal List<KeyValuePair<int, bool>> getAllReszvetel(int proba_id)
 	{
 
         MySqlDataReader rdr = null;
@@ -382,13 +174,13 @@ public class ConcertDaO : DaO
         try
         {
 
-            // user adatok lekerdezese
-            string stm = "SELECT users_id, resztvett FROM KONCERT_RESZVETEL where koncert_id=@_koncert_id";
+            // proba reszvetel adatok lekerdezese
+            string stm = "SELECT users_id, resztvett FROM PROBA_RESZVETEL where proba_id=@_proba_id";
 
             MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
 
             rdr = cmd.ExecuteReader();
 
@@ -418,31 +210,32 @@ public class ConcertDaO : DaO
         return result;
 	}
 
-    internal List<KeyValuePair<int, KeyValuePair<bool, string>>> getAllTervezettReszvetel(int koncert_id)
+
+    internal bool getReszvetel(int proba_id, int users_id)
 	{
 
         MySqlDataReader rdr = null;
 
-        var result = new List<KeyValuePair<int, KeyValuePair<bool, string>>>();
+        bool result = false;
 
         try
         {
 
             // user adatok lekerdezese
-            string stm = "SELECT users_id, tervezett_reszvetel, indoklas FROM KONCERT_RESZVETEL where koncert_id=@_koncert_id";
+            string stm = "SELECT resztvett FROM PROBA_RESZVETEL where proba_id=@_proba_id AND users_id=@_users_id";
 
             MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+            cmd.Parameters.AddWithValue("@_users_id", users_id);
 
             rdr = cmd.ExecuteReader();
 
 
             while (rdr.Read())
             {
-                var reszveteli_adatok = new KeyValuePair<bool, string>(rdr.GetBoolean(1), rdr.GetString(2));
-                result.Add( new KeyValuePair<int, KeyValuePair<bool, string>>(rdr.GetInt32(0), reszveteli_adatok) );
+                result = rdr.GetBoolean(0);
             }
 
 
@@ -465,8 +258,56 @@ public class ConcertDaO : DaO
         return result;
 	}
 
-    
-    internal List<int> getUsersParts(int users_id, int koncert_id)
+
+    internal KeyValuePair<bool, string> getTervezettReszvetel(int proba_id, int users_id)
+	{
+
+        MySqlDataReader rdr = null;
+
+        var result = new KeyValuePair<bool, string>();
+
+        try
+        {
+
+            // user adatok lekerdezese
+            string stm = "SELECT tervezett_reszvetel, indoklas FROM PROBA_RESZVETEL where proba_id=@_proba_id AND users_id=@_users_id";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+            cmd.Parameters.AddWithValue("@_users_id", users_id);
+
+            rdr = cmd.ExecuteReader();
+
+
+            while (rdr.Read())
+            {
+                result = new KeyValuePair<bool, string>(rdr.GetBoolean(0), rdr.GetString(1));
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+	}
+
+
+    internal List<int> getUsersParts(int users_id)
 	{
 
         MySqlDataReader rdr = null;
@@ -475,14 +316,14 @@ public class ConcertDaO : DaO
 
         try
         {
-            
+
             // szolam_id lekerdezese
-            string stm = "SELECT szolam_id FROM KONCERT_ZENESZ WHERE koncert_id=@_koncert_id AND users_id=@_users_id";
+            string stm = "SELECT PZ.szolam_id FROM PROBA_ZENESZ PZ INNER JOIN PROBAANYAG PA ON PZ.probaanyag_id=PA.probaanyag_id " +
+                "WHERE PZ.users_id=@_users_id AND PA.probaanyag_aktiv=true;";
 
             MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
             cmd.Parameters.AddWithValue("@_users_id", users_id);
 
             rdr = cmd.ExecuteReader();
@@ -514,18 +355,19 @@ public class ConcertDaO : DaO
         return result;
 	}
 
-    internal bool modifyConcertdata(string helyszin, string idopont, int koncertfelelos, int koncert_id, string megjegyzes, 
-        List<KeyValuePair<int, KeyValuePair<bool, string>>> tervezett_reszvetel , List<KeyValuePair<int, bool>> resztvett, string vege)
-    {
+
+    internal bool modifyRehearsalData(string helyszin, string idopont, string megjegyzes, int proba_id, 
+        List<KeyValuePair<int, bool>> resztvett, List<KeyValuePair<int, KeyValuePair<bool, string>>> tervezett_reszvetel)
+	{
 
         MySqlDataReader rdr = null;
-        
+
         try
         {
             // koncert tabla adatainak irasa
             // Query string 
-            string strSQL = "UPDATE KONCERT SET idopont=@_idopont, vege=@_vege, helyszin=@_helyszin, megjegyzes=@_megjegyzes, users_id=@_users_id " +
-                "WHERE koncert_id=@_koncert_id; ";
+            string strSQL = "UPDATE PROBA SET idopont=@_idopont, helyszin=@_helyszin, megjegyzes=@_megjegyzes " +
+                "WHERE proba_id=@_proba_id; ";
 
             // Add query text
             MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -535,11 +377,9 @@ public class ConcertDaO : DaO
 
             // Add parameter
             cmd.Parameters.AddWithValue("@_idopont", idopont);
-            cmd.Parameters.AddWithValue("@_vege", vege);
             cmd.Parameters.AddWithValue("@_helyszin", helyszin);
             cmd.Parameters.AddWithValue("@_megjegyzes", megjegyzes);
-            cmd.Parameters.AddWithValue("@_users_id", koncertfelelos);
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
             // Execute query
             if (cmd.ExecuteNonQuery() != 1)
             {
@@ -549,7 +389,7 @@ public class ConcertDaO : DaO
 
             // tervezett reszvetel adatainak irasa
             // Query string 
-            strSQL = "DELETE FROM KONCERT_RESZVETEL WHERE koncert_id=@_koncert_id;";
+            strSQL = "DELETE FROM PROBA_RESZVETEL WHERE proba_id=@_proba_id;";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -557,18 +397,18 @@ public class ConcertDaO : DaO
             // Prepare the query
             cmd.Prepare();
 
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
-               
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+
             if (cmd.ExecuteNonQuery() < 0)
             {
                 return false;
             }
 
-            
+
             // tervezett reszvetel adatainak irasa 
             // Query string 
-            strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
-                "(@_koncert_id, @_users_id, @_tervezett_reszvetel, @_indoklas); ";
+            strSQL = "INSERT INTO PROBA_RESZVETEL (proba_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
+                "(@_proba_id, @_users_id, @_tervezett_reszvetel, @_indoklas); ";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -580,7 +420,7 @@ public class ConcertDaO : DaO
             for (int i = 0; i < tervezett_reszvetel.Count; i++)
             {
                 // Add parameter
-                cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+                cmd.Parameters.AddWithValue("@_proba_id", proba_id);
                 cmd.Parameters.AddWithValue("@_users_id", tervezett_reszvetel[i].Key);
                 cmd.Parameters.AddWithValue("@_tervezett_reszvetel", tervezett_reszvetel[i].Value.Key);
                 cmd.Parameters.AddWithValue("@_indoklas", tervezett_reszvetel[i].Value.Value);
@@ -594,7 +434,7 @@ public class ConcertDaO : DaO
 
             // reszvetel adatainak irasa mar letezo rekordba
             // Query string
-            strSQL = "UPDATE KONCERT_RESZVETEL SET resztvett=@_resztvett WHERE users_id=@_users_id;";
+            strSQL = "UPDATE PROBA_RESZVETEL SET resztvett=@_resztvett WHERE users_id=@_users_id;";
 
             // Add query text
             cmd = new MySqlCommand(strSQL, this.Conn);
@@ -622,8 +462,8 @@ public class ConcertDaO : DaO
             {
                 // reszvetel adatainak irasa azon zeneszek eseten, akiknek az adatait nem irtuk be az elozo lekerdezesekkel
                 // Query string 
-                strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, resztvett) VALUES " +
-                    "(@_koncert_id, @_users_id, @_resztvett); ";
+                strSQL = "INSERT INTO PROBA_RESZVETEL (proba_id, users_id, resztvett) VALUES " +
+                    "(@_proba_id, @_users_id, @_resztvett); ";
 
                 // Add query text
                 cmd = new MySqlCommand(strSQL, this.Conn);
@@ -634,25 +474,23 @@ public class ConcertDaO : DaO
 
                 for (int i = 0; i < ujresztvett.Count; i++)
                 {
-                   
+
                     // Add parameter
-                    cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+                    cmd.Parameters.AddWithValue("@_proba_id", proba_id);
                     cmd.Parameters.AddWithValue("@_users_id", ujresztvett[i].Key);
                     cmd.Parameters.AddWithValue("@_resztvett", ujresztvett[i].Value);
                     // Execute query
                     cmd.ExecuteNonQuery();
-                    
+
                 }
             }
 
-
-            
             return true;
         }
         catch (MySqlException ex)
         {
             Console.WriteLine("MySQL error. Number: " + ex.Number);
-     
+
         }
 
         finally
@@ -664,16 +502,19 @@ public class ConcertDaO : DaO
 
         }
         return false;
+
 	}
 
-    internal bool modifyReszvetel(int users_id, bool resztvesz, string indoklas, int koncert_id)
+
+    internal bool modifyReszvetel(int proba_id, int users_id, bool resztvesz, string indoklas)
 	{
+
         try
         {
             // tervezett reszvetel adatainak irasa
             // Query string 
-            string strSQL = "UPDATE KONCERT_RESZVETEL SET tervezett_reszvetel=@_tervezett_reszvetel, indoklas=@_indoklas " +
-                "WHERE koncert_id=@_koncert_id AND users_id=@_users_id;";
+            string strSQL = "UPDATE PROBA_RESZVETEL SET tervezett_reszvetel=@_tervezett_reszvetel, indoklas=@_indoklas " +
+                "WHERE proba_id=@_proba_id AND users_id=@_users_id;";
 
             // Add query text
             MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
@@ -682,7 +523,7 @@ public class ConcertDaO : DaO
             cmd.Prepare();
 
             // Add parameter
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
             cmd.Parameters.AddWithValue("@_users_id", users_id);
             cmd.Parameters.AddWithValue("@_tervezett_reszvetel", resztvesz);
             cmd.Parameters.AddWithValue("@_indoklas", indoklas);
@@ -696,31 +537,29 @@ public class ConcertDaO : DaO
         catch (MySqlException ex)
         {
             Console.WriteLine("MySQL error. Number: " + ex.Number);
-     
+
         }
         return false;
-        
 	}
 
-    internal string[] readConcertdata(int koncert_id, ref List<KeyValuePair<int, KeyValuePair<bool, string>>> tervezett_reszvetel, ref List<KeyValuePair<int, bool>> resztvett)
+    internal String[] readRehearsalData(int proba_id, ref List<KeyValuePair<int, bool>> resztvett, ref List<KeyValuePair<int, KeyValuePair<bool, string>>> tervezett_reszvetel)
 	{
 
         MySqlDataReader rdr = null;
 
-        var result = new string[6];
+        var result = new string[4];
 
         try
         {
 
             // user adatok lekerdezese
 
-            string stm = "SELECT koncert_id, idopont, vege, helyszin, megjegyzes, " +
-             "users_id FROM KONCERT WHERE koncert_id=@_koncert_id";
+            string stm = "SELECT proba_id, idopont, helyszin, megjegyzes FROM PROBA WHERE proba_id=@_proba_id";
 
             MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
 
             rdr = cmd.ExecuteReader();
 
@@ -728,7 +567,7 @@ public class ConcertDaO : DaO
 
             while (rdr.Read())
             {
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     result[i] = rdr.GetString(i);
                 }
@@ -740,13 +579,13 @@ public class ConcertDaO : DaO
 
             var tervezett_lekerdezes = new List<KeyValuePair<int, KeyValuePair<bool, string>>>();
 
-            stm = "SELECT users_id, tervezett_reszvetel, indoklas FROM KONCERT_RESZVETEL "
-                + "WHERE koncert_id=@_koncert_id;";
+            stm = "SELECT users_id, tervezett_reszvetel, indoklas FROM PROBA_RESZVETEL "
+                + "WHERE proba_id=@_proba_id;";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
 
             rdr = cmd.ExecuteReader();
 
@@ -767,13 +606,13 @@ public class ConcertDaO : DaO
 
             var resztvevok_lekerdezes = new List<KeyValuePair<int, bool>>();
 
-            stm = "SELECT users_id, resztvett FROM KONCERT_RESZVETEL "
-                + "WHERE koncert_id=@_koncert_id;";
+            stm = "SELECT users_id, resztvett FROM PROBA_RESZVETEL "
+                + "WHERE proba_id=@_proba_id;";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
             cmd.Prepare();
-            cmd.Parameters.AddWithValue("@_koncert_id", koncert_id);
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
 
             rdr = cmd.ExecuteReader();
 
@@ -785,8 +624,8 @@ public class ConcertDaO : DaO
                 resztvevok_lekerdezes.Add(new KeyValuePair<int, bool>(user, valos_reszvetel));
             }
 
-            // user hangszerek listajanak atadasa parameterben
-            resztvett = resztvevok_lekerdezes; 
+            // reszvetel listajanak atadasa parameterben
+            resztvett = resztvevok_lekerdezes;
 
 
         }
@@ -806,7 +645,6 @@ public class ConcertDaO : DaO
 
         // Return with the result string
         return result;
-
 	}
 
 }

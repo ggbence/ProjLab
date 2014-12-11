@@ -843,5 +843,91 @@ public class UserDaO : DaO
         // Return with the result string
         return result;
     }
+
+    internal List<int> getAllActiveRehearsalMaterialdata()
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // probaanyag adatok lekerdezese
+            string stm = "SELECT probaanyag_id FROM PROBAANYAG where probaanyag_aktiv=true";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetInt32(0));
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
+    public List<int> getAllRehearsaldata() 
+    {
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // koncertek listajanak lekerdezese az adatbazisbol
+            string stm = "SELECT proba_id FROM PROBA ORDER BY proba_id ASC";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetInt32(0));
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
+
 }
 

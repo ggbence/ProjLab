@@ -439,6 +439,155 @@ public class ManagerDaO : DaO
         return false;
     }
 
+
+    internal bool deleteRehearsaldata(int proba_id)
+    {
+
+        try
+        {
+            // Query string 
+            string strSQL = "DELETE FROM PROBA_RESZVETEL WHERE proba_id=@_proba_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() >= 0)
+            {
+                return false;
+            }
+
+
+            // Query string 
+            strSQL = "DELETE FROM PROBA WHERE proba_id=@_proba_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_proba_id", proba_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                return true;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return false;
+    }
+
+
+    internal bool deleteRehearsalMaterialdata(int probaanyag_id)
+    {
+        try
+        {
+            // Query string 
+            string strSQL = "DELETE FROM PROBA_ZENESZ WHERE probaanyag_id=@_probaanyag_id";
+
+            // Add query text
+            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_probaanyag_id", probaanyag_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }
+
+
+            // Query string 
+            strSQL = "DELETE FROM PROBAANYAG WHERE probaanyag_id=@_probaanyag_id";
+
+            // Add query text
+            cmd = new MySqlCommand(strSQL, this.Conn);
+
+            // Prepare the query
+            cmd.Prepare();
+
+            // Add parameter
+            cmd.Parameters.AddWithValue("@_probaanyag_id", probaanyag_id);
+
+            // Execute query
+            if (cmd.ExecuteNonQuery() >= 0)
+            {
+                return true;
+            }
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("MySQL error. Number: " + ex.Number);
+        }
+
+        return false;
+    }
+
+
+    internal List<int> getAllInactiveRehearsalMaterial()
+    {
+
+        MySqlDataReader rdr = null;
+
+        var result = new List<int>();
+
+        try
+        {
+
+            // user adatok lekerdezese
+            string stm = "SELECT probaanyag_id FROM PROBAANYAG where probaanyag_aktiv=false";
+
+            MySqlCommand cmd = new MySqlCommand(stm, this.Conn);
+
+            cmd.Prepare();
+
+            rdr = cmd.ExecuteReader();
+
+
+
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetInt32(0));
+            }
+
+
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+
+        }
+        finally
+        {
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+        }
+
+        // Return with the result string
+        return result;
+    }
 }
 
 

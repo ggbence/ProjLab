@@ -346,9 +346,9 @@ public class ConcertMaterialDaO : DaO
 
             // szolamzeneszek listajanak lekerdezese
 
-            var szolamzeneszek = new List<KeyValuePair<int, int>();
+            var szolamzeneszek = new List<KeyValuePair<int, int>>();
 
-            stm = "SELECT users_id, szolam_idFROM KONCERT_ZENESZ "
+            stm = "SELECT users_id, szolam_id FROM KONCERT_ZENESZ "
                 + "WHERE koncertanyag_id=@_koncertanyag_id;";
 
             cmd = new MySqlCommand(stm, this.Conn);

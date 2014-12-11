@@ -58,6 +58,10 @@
     <Compile Include="GeneratedCode\PartDaO.cs" />
     <Compile Include="GeneratedCode\Piece.cs" />
     <Compile Include="GeneratedCode\PieceDaO.cs" />
+    <Compile Include="GeneratedCode\Rehearsal.cs" />
+    <Compile Include="GeneratedCode\RehearsalDaO.cs" />
+    <Compile Include="GeneratedCode\RehearsalMaterial.cs" />
+    <Compile Include="GeneratedCode\RehearsalMaterialDaO.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
