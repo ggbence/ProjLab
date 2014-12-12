@@ -117,7 +117,7 @@ public class Piece
         var data = new string[4];
 
         data = pieceDaO.readPiecedata(darab_id);
-        darab_id = Convert.ToInt32(data[0]);
+        this.darab_id = Convert.ToInt32(data[0]);
         darab_szerzo = data[1];
         darab_cim = data[2];
         tetelszam = Convert.ToInt32(data[3]);
