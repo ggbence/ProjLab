@@ -444,42 +444,40 @@ public class UserDaO : DaO
     {
         bool ok = false;
 
+    // uzenet adatbazisba toltese
+        string strSQL = "INSERT INTO UZENET (users_id, uzenet, datum, ervenyesseg) " +
+        "VALUES (@_users_id, @_uzenet, @_datum, @_ervenyesseg); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        cmd.Parameters.AddWithValue("@_users_id", sender.ToString());
+        cmd.Parameters.AddWithValue("@_uzenet", uzenet.ToString());
+        cmd.Parameters.AddWithValue("@_datum", datum.ToString());
+        cmd.Parameters.AddWithValue("@_ervenyesseg", ervenyesseg.ToString());
+
+        // Execute query
+        if (cmd.ExecuteNonQuery() == 1)
+        {
+            ok = true;
+        }
+        else 
+        {
+            return false; 
+        }
+
+
+    // feltoltott uzenet id-janak lekerdezese
         MySqlDataReader rdr = null;
 
         int result = 0;
 
         try
         {
-            // uzenet adatbazisba toltese
-            string strSQL = "INSERT INTO UZENET (users_id, uzenet, datum, ervenyesseg) " +
-            "VALUES (@_users_id, @_uzenet, @_datum, @_ervenyesseg); ";
-
-            // Add query text
-            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            // Add parameter
-            cmd.Parameters.AddWithValue("@_users_id", sender.ToString());
-            cmd.Parameters.AddWithValue("@_uzenet", uzenet.ToString());
-            cmd.Parameters.AddWithValue("@_datum", datum.ToString());
-            cmd.Parameters.AddWithValue("@_ervenyesseg", ervenyesseg.ToString());
-
-            // Execute query
-            if (cmd.ExecuteNonQuery() == 1)
-            {
-                ok = true;
-            }
-            else 
-            {
-                return false; 
-            }
-
-
-            
-            // feltoltott uzenet id-janak lekerdezese
-        
             string stm = "SELECT uzenet_id FROM UZENET where users_id=@_users_id AND uzenet=@_uzenet AND datum=@_datum AND ervenyesseg=@_ervenyesseg";
 
             cmd = new MySqlCommand(stm, this.Conn);
@@ -499,35 +497,6 @@ public class UserDaO : DaO
                 result = rdr.GetInt32(0);
             }
 
-        
-
-            //cimzettek feltoltese a megkapott uzenet id-val
-
-            // Query string 
-            strSQL = "INSERT INTO FOGADOTT_UZENET (uzenet_id, users_id) VALUES (@_uzenet_id, @_users_id); ";
-
-            // Add query text
-            cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            // Add parameter
-            for (int i = 0; i < cimzettek.Count; i++)
-            {
-                cmd.Parameters.AddWithValue("@_uzenet_id", result.ToString());
-                cmd.Parameters.AddWithValue("@_users_id", cimzettek[i].ToString());
-                // Execute query
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    ok = true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
         }
         catch (MySqlException ex)
         {
@@ -541,6 +510,33 @@ public class UserDaO : DaO
                 rdr.Close();
             }
 
+        }
+
+    //cimzettek feltoltese a megkapott uzenet id-val
+
+        // Query string 
+        strSQL = "INSERT INTO FOGADOTT_UZENET (uzenet_id, users_id) VALUES (@_uzenet_id, @_users_id); ";
+
+        // Add query text
+        cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        // Add parameter
+        for (int i = 0; i < cimzettek.Count; i++)
+        {
+            cmd.Parameters.AddWithValue("@_uzenet_id", result.ToString());
+            cmd.Parameters.AddWithValue("@_users_id", cimzettek[i].ToString());
+            // Execute query
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                ok = true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         return ok;

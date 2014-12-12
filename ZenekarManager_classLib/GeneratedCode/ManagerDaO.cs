@@ -194,87 +194,63 @@ public class ManagerDaO : DaO
 
     internal bool newInstruments(List<KeyValuePair<string, int>> hangszerek) 
     {
+        // uj hangszerek irasa
 
-        try
+        // Query string 
+        string strSQL = "INSERT INTO HANGSZER (hangszer_nev, hangszertipus_id) VALUES (@_hangszernev, @_hangszertipus_id); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        bool ok = true;
+
+        for (int i = 0; i < hangszerek.Count; i++)
         {
-            // uj hangszerek irasa
+            cmd.Parameters.AddWithValue("@_hangszernev", hangszerek[i].Key);
+            cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszerek[i].Value);
+            // Execute query
 
-            // Query string 
-            string strSQL = "INSERT INTO HANGSZER (hangszer_nev, hangszertipus_id) VALUES (@_hangszernev, @_hangszertipus_id); ";
-
-            // Add query text
-            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            bool ok = true;
-
-            for (int i = 0; i < hangszerek.Count; i++)
+            if (cmd.ExecuteNonQuery() != 1)
             {
-                cmd.Parameters.AddWithValue("@_hangszernev", hangszerek[i].Key);
-                cmd.Parameters.AddWithValue("@_hangszertipus_id", hangszerek[i].Value);
-                // Execute query
-
-                if (cmd.ExecuteNonQuery() != 1)
-                {
-                    ok = false;
-                }
-
-
+                ok = false;
             }
-
-            return ok;
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
         }
 
-        return false;
+        return ok;
+        
     }
 
 
     internal bool newInstrumentTypes(List<String> tipuslista)
     {
-        try
+        // hangszertipusok adatbazisba irasa
+
+        // Query string 
+        string strSQL = "INSERT INTO HANGSZERTIPUS (hangszertipus_nev) VALUES (@_hangszertipus_nev); ";
+
+        // Add query text
+        MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
+
+        // Prepare the query
+        cmd.Prepare();
+
+        bool ok = true;
+
+        for (int i = 0; i < tipuslista.Count; i++)
         {
-            // hangszertipusok adatbazisba irasa
+            cmd.Parameters.AddWithValue("@_hangszertipus_nev", tipuslista[i]);
+            // Execute query
 
-            // Query string 
-            string strSQL = "INSERT INTO HANGSZERTIPUS (hangszertipus_nev) VALUES (@_hangszertipus_nev); ";
-
-            // Add query text
-            MySqlCommand cmd = new MySqlCommand(strSQL, this.Conn);
-
-            // Prepare the query
-            cmd.Prepare();
-
-            bool ok = true;
-
-            for (int i = 0; i < tipuslista.Count; i++)
+            if (cmd.ExecuteNonQuery() != 1)
             {
-                cmd.Parameters.AddWithValue("@_hangszertipus_nev", tipuslista[i]);
-                // Execute query
-
-                if (cmd.ExecuteNonQuery() != 1)
-                {
-                    ok = false;
-                }
+                ok = false;
             }
-
-            return ok;
-
-        }
-        catch (MySqlException ex)
-        {
-            Console.WriteLine("Error: {0}", ex.ToString());
-
         }
 
-        return false;
-
+        return ok;
     }
 
 
