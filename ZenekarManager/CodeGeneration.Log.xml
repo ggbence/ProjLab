@@ -6,26 +6,24 @@
   <MessageClass Name="Error" Label="Error" Option="Show errors" />
   <MessageClass Name="Property" Label="Property" Option="Show metadata" />
   <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="High" Text="Code generation or text transformation started." />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="Name = ClassTemplate" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="ProjectPath = ..\ZenekarManager_classLib\ZenekarManager_classLib.csproj" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2014-12-11T21:16:38" Importance="Medium" Text="ZenekarManager_class's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'ZenekarManager_class::Rehearsal' -  (Class), 'ZenekarManager_class::RehearsalDaO' -  (Class) " />
-  <Message Timestamp="2014-12-11T21:16:39" Importance="Medium" Text="'ZenekarManager_class::Rehearsal' -  (Class) : success (file replaced) - D:\gorbe\pe\2014-15-1\proj_lab\ZenekarManager_solution\ZenekarManager_classLib\GeneratedCode\Rehearsal.cs" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Medium" Text="'ZenekarManager_class::RehearsalDaO' -  (Class) : success (file replaced) - D:\gorbe\pe\2014-15-1\proj_lab\ZenekarManager_solution\ZenekarManager_classLib\GeneratedCode\RehearsalDaO.cs" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="Name = StructTemplate" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="ProjectPath = ..\ZenekarManager_classLib\ZenekarManager_classLib.csproj" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Medium" Text="ZenekarManager_class's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'ZenekarManager_class::Rehearsal' -  (Class), 'ZenekarManager_class::RehearsalDaO' -  (Class) " />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="'ZenekarManager_class::Rehearsal' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="Diagnostic" Text="'ZenekarManager_class::RehearsalDaO' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
-  <Message Timestamp="2014-12-11T21:16:40" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="ProjectPath = ..\ZenekarManager_classLib\ZenekarManager_classLib.csproj" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2014-12-12T03:00:31" Importance="Medium" Text="ZenekarManager_class's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'ZenekarManager_class::Email' -  (Class) " />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Medium" Text="'ZenekarManager_class::Email' -  (Class) : success (file created) - D:\gorbe\pe\2014-15-1\proj_lab\ZenekarManager_solution\ZenekarManager_classLib\GeneratedCode\Email.cs" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="ProjectPath = ..\ZenekarManager_classLib\ZenekarManager_classLib.csproj" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Medium" Text="ZenekarManager_class's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'ZenekarManager_class::Email' -  (Class) " />
+  <Message Timestamp="2014-12-12T03:00:36" Importance="Diagnostic" Text="'ZenekarManager_class::Email' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2014-12-12T03:00:37" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
 </Log>

@@ -47,6 +47,7 @@
     <Compile Include="GeneratedCode\ConcertMaterial.cs" />
     <Compile Include="GeneratedCode\ConcertMaterialDaO.cs" />
     <Compile Include="GeneratedCode\DaO.cs" />
+    <Compile Include="GeneratedCode\Email.cs" />
     <Compile Include="GeneratedCode\Guest.cs" />
     <Compile Include="GeneratedCode\GuestDaO.cs" />
     <Compile Include="GeneratedCode\Manager.cs" />
