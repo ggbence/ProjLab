@@ -10,7 +10,7 @@ namespace ZenekarManagerWebApp.Site
 {
     public partial class Concert : System.Web.UI.Page
     {
-        global::Concert concert;
+        global::Concert concert = new global::Concert();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -150,10 +150,22 @@ namespace ZenekarManagerWebApp.Site
 
         protected void ConcertButton_Click(object sender, EventArgs e)
         {
+            string ID = "";
+            ID = Request.QueryString["ID"];
+            if (ID != null)
+            {
+                User usr = new User();
+                concert = usr.getConcert(Convert.ToInt32(ID));
+            }
+            else
+            {
+                concert = new global::Concert();
+            }
             concert.Helyszin = HelyszinTextBox.Text;
             concert.Idopont = TimeTextBox.Text;
             concert.Vege = TimeTextBox1.Text;
             concert.Megjegyzes = MegjegyzesTextBox.Text;
+            concert.Koncertfelelos = 21;
             if (concert.Koncert_id != -1)
             {
                 concert.modify();
