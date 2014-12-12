@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ASPSnippets.GoogleAPI">
+      <HintPath>..\lib\ASPSnippets.GoogleAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -145,6 +148,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Site\Concert.aspx" />
     <Content Include="Site\Index.aspx" />
     <Content Include="Site\Login.aspx" />
     <Content Include="Site\Admin.aspx" />
@@ -205,6 +209,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Google.cs" />
+    <Compile Include="Site\Concert.aspx.cs">
+      <DependentUpon>Concert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Concert.aspx.designer.cs">
+      <DependentUpon>Concert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

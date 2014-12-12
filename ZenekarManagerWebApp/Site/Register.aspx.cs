@@ -17,8 +17,11 @@ namespace ZenekarManagerWebApp.Site
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
             var guest = new Guest();
-            
-            if (guest.signUp(EmailTextBox.Text, NameTextBox.Text, PwTextBox.Text) != null)
+            if (PwTextBox.Text != PwConfirmTextBox.Text)
+            {
+                SuccessfulLabel.Text = "A jelszó és a megerősítése nem egyezik meg";
+            }
+            else if (guest.signUp(EmailTextBox.Text, NameTextBox.Text, PwTextBox.Text) != null)
             {
                 SuccessfulLabel.Text = "A regisztráció sikeres!";
             }

@@ -15,11 +15,16 @@ namespace ZenekarManagerWebApp.Site
         public string jogkör { get; set; }
         public string hangszerek { get; set; }
     }
+
     public partial class Admin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MultiView1.SetActiveView(View1);
+            if (!IsPostBack)
+            {
+                MultiView1.SetActiveView(UserView);
+                DropDownList1.SelectedIndex = 0;
+            }
             var ctx = Request.GetOwinContext();
             var currUser = ctx.Authentication.User;
             IEnumerable<Claim> claims2 = currUser.Claims;
@@ -85,6 +90,22 @@ namespace ZenekarManagerWebApp.Site
         protected void ListView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             Response.Redirect("~/Site/Profile?email=" + ListView2.SelectedDataKey.Value.ToString());
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (Convert.ToInt32(DropDownList1.SelectedValue))
+            {
+                case 0:
+                    MultiView1.SetActiveView(UserView);
+                    break;
+                case 1:
+                    MultiView1.SetActiveView(SheetView);
+                    break;
+                case 2:
+                    MultiView1.SetActiveView(ConcertView);
+                    break;
+            }
         }
 
 

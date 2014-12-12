@@ -30,8 +30,8 @@ namespace ZenekarManagerWebApp.Site
 
         public List<User> getUsers()
         {
-            User user = new User();
-            return user.getUserList();
+            Manager manager = new Manager();
+            return manager.getUserList();
         }
 
         protected void SendMessageButton_Click(object sender, EventArgs e)
@@ -51,8 +51,8 @@ namespace ZenekarManagerWebApp.Site
     {
         public List<User> getUsers()
         {
-            User user = new User();
-            return user.getUserList();
+            Manager manager = new Manager();
+            return manager.getUserList();
         }
     }
 }

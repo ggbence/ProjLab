@@ -2,27 +2,32 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
     
-        <asp:Label ID="Label1" runat="server" Text="E-mail:"></asp:Label>
     
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
-    
-        &nbsp;
-    
-    </div>
+        <asp:Table ID="Table1" runat="server" Width="202px">
+            <asp:TableRow>
+                <asp:TableCell><asp:Label ID="Label1" runat="server" Text="E-mail:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell><asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell><asp:TextBox ID="EmailBox" runat="server"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="PasswordBox" TextMode="password" runat="server"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
         <p>
-            <asp:TextBox ID="EmailBox" runat="server"></asp:TextBox>
-            <asp:TextBox ID="PasswordBox" TextMode="password" runat="server"></asp:TextBox>
+        <asp:Button ID="LoginButton" runat="server" OnClick="Button1_Click" Text="Login" />
+    
         </p>
         <p>
-    
-        <asp:Button ID="LoginButton" runat="server" OnClick="Button1_Click" Text="Login" />
+            <asp:Button ID="GoogleLoginButton" runat="server" OnClick="GoogleLoginButton_Click" Text="Google login" />
     
         </p>
         <p>
     
             <asp:Label ID="tesztLabel" runat="server"></asp:Label>
         </p>
-        <p>
-    
-            &nbsp;</p>
+</div>
 </asp:Content>

@@ -13,6 +13,15 @@ namespace ZenekarManagerWebApp.Site {
     public partial class Register {
         
         /// <summary>
+        /// Table1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table1;
+        
+        /// <summary>
         /// EmailTextBox control.
         /// </summary>
         /// <remarks>
@@ -47,24 +56,6 @@ namespace ZenekarManagerWebApp.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox PwConfirmTextBox;
-        
-        /// <summary>
-        /// aktiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox aktiv;
-        
-        /// <summary>
-        /// koncertrejar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox koncertrejar;
         
         /// <summary>
         /// RegisterButton control.

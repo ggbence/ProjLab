@@ -1,10 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="ZenekarManagerWebApp.Site.Admin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:DropDownList ID="DropDownList1" runat="server">
+    <br />
+    <asp:DropDownList ID="DropDownList1" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true" runat="server" Height="30px" Width="290px">
+        <asp:ListItem Text="Felhasználók" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Kották" Value="1"></asp:ListItem>
+        <asp:ListItem Text="Koncertek" Value="2"></asp:ListItem>
     </asp:DropDownList>
     <br />
+    <br />
     <asp:MultiView ID="MultiView1" runat="server">
-    <asp:View ID="View1" runat="server">
+    <asp:View ID="UserView" runat="server">
         <asp:ListView ID="ListView2" OnSelectedIndexChanged="ListView2_SelectedIndexChanged" DataKeyNames="email" runat="server" DataSourceID="Users" EnablePersistedSelection="True">
             <AlternatingItemTemplate>
                 <tr style="background-color:#FFF8DC;">
@@ -47,7 +52,11 @@
             <EmptyDataTemplate>
                 <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                     <tr>
-                        <td>No data was returned.</td></tr></table></EmptyDataTemplate><ItemTemplate>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <ItemTemplate>
                 <tr style="background-color:#DCDCDC;color: #000000;">
                     <td>
                         <asp:Label ID="Users_idLabel" runat="server" Text='<%# Eval("name") %>' />
@@ -64,7 +73,9 @@
                     <td>
                         <asp:Button ID="SelectButton" runat="server" Text="Módosítás" CommandName="Select" />
                     </td>
-                </tr></ItemTemplate><LayoutTemplate>
+                </tr>
+            </ItemTemplate>
+            <LayoutTemplate>
                 <table runat="server">
                     <tr runat="server">
                         <td runat="server">
@@ -88,6 +99,10 @@
             </LayoutTemplate>
         </asp:ListView>
         <asp:ObjectDataSource ID="Users" runat="server" SelectMethod="getUsers" TypeName="ZenekarManagerWebApp.Site.Admin"></asp:ObjectDataSource>
+    </asp:View>
+    <asp:View ID="SheetView" runat="server">
+    </asp:View>
+    <asp:View ID="ConcertView" runat="server">
     </asp:View>
 </asp:MultiView>
 </asp:Content>
