@@ -166,8 +166,8 @@
           <association
             Id="2c92772e-dcf6-47f7-9fc5-bff8dfb40975"
             isDerived="false"
-            sourceEndRoleName="User"
-            targetEndRoleName="UserDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -178,7 +178,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="7d1d873d-9a8d-40be-93b9-d7c9cdf9a8c1"
-                  name="User"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -191,7 +190,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="ea716938-261f-42d7-a349-a7f12b8d96b4"
-                  name="UserDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -199,6 +197,294 @@
                   isDerivedUnion="false"
                   aggregation="None"
                   isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1a2ced68-8add-48ca-b2eb-72d1290ae996"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="33efe2c5-21e9-4245-a236-fc66ea916daf"
+              LastKnownName="Message"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c6934a0b-1115-44c8-8643-bf291c6cd049"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="af776ab9-d329-47ab-8eae-111f2f108700"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7c3f1ae7-a0a5-49f7-affd-e4ab6c397ff4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2691b232-deaa-47b0-97bb-f3a41c690ffb"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7b98831e-37d2-4528-9d20-9e5f7de76202"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="135559ec-67b1-4985-a54a-7411c78de899"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0a91cbef-2aa0-4357-b06e-8c1b74a5e1e4"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="726d467b-ac6d-491a-8d98-c8baaf50a940"
+              LastKnownName="Piece"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9cff9236-747d-4d03-a972-6f2eb3893e11"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="069e5162-fe7f-4098-8028-1e8e5fd6e586"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d165beac-f13f-49f7-af90-e4368124c4f6"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d271618c-268f-4a10-b876-76f30db748d4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2c5fb836-1265-4e8f-a877-3ed9ada8756e"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b8d4a367-d5b2-4f6c-aa58-1983fa93bf53"
+              LastKnownName="Concert"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="72e9acd5-851a-4c16-932c-f8c7a030c5a5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="977a42fa-76bd-4530-bc42-cc2d9e32f0d0"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="bbaec883-ccfd-4495-b431-bbeb1515d63f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4e27f915-a0f7-4b3f-842c-cd43ca156738"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="59cc36b9-c174-4b69-9ad3-3fc99f662ff3"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6e1bd998-a782-479d-90d2-437032e018cb"
+              LastKnownName="Rehearsal"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="42783aba-42e2-40b8-952d-d9f7074b7ffc"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2cc0927a-5548-492f-bbc6-e44d5ea0e7d3"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1e6feba6-4c83-4753-8c6b-d40dc94f82f7"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c4c09f6b-ea97-4f69-8e21-67ec45bbae11"
+              LastKnownName="RehearsalMaterialDaO"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7e891d88-a992-482f-bb0a-0aab93686d29"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f014f56-a1a1-4807-a0a3-9f532340afc6"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="156867d2-afda-4c35-8f39-0007f0f6d274"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3628fec1-b8d1-42de-a1b7-90251900e9d0"
+              LastKnownName="Part"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bc6c9cfe-0634-4ad5-a1bd-5eccb76df0cb"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a93f1b4b-7213-4455-be99-785a61b9eced"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0a655701-01d0-44cd-9955-f269fd0365ef"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1e70e5b6-dcdc-44f3-9f4a-dcef58a2f3cd"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1806,8 +2092,8 @@
           <association
             Id="17ba87ad-a785-408a-a578-26981ab7ec1c"
             isDerived="false"
-            sourceEndRoleName="Manager"
-            targetEndRoleName="ManagerDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1818,7 +2104,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="42617f9b-6a3d-4a70-a64b-4e04f8535990"
-                  name="Manager"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1831,7 +2116,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="9cedab3e-8d56-42f4-8c7f-552bc58da401"
-                  name="ManagerDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1839,6 +2123,107 @@
                   isDerivedUnion="false"
                   aggregation="None"
                   isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b038faa9-5b16-4642-94e2-10d5ee147b2b"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="33efe2c5-21e9-4245-a236-fc66ea916daf"
+              LastKnownName="Message"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="70182e24-1d6b-4510-a9b9-ffb32b8c1b76"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b2f4de96-fbe4-4b80-ac6d-1691eab59080"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="afeda8b2-e8db-41c7-b0b1-7e840987350c"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="06620a4a-567b-4ec3-bce4-f3885962aae9"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a2d5fa8f-23ac-4989-92fb-eab410f91110"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="74c64b09-7601-4213-8a2a-b40018f24c33"
+              LastKnownName="RehearsalMaterial"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6c89d615-4957-446e-a1cc-70fb1e5582be"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="140a1d63-ceb2-49ed-ab60-16668cd7a182"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="86d681d2-29e4-407b-8c28-7415f9d908d4"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="65d5281f-a6e9-479e-aaeb-c3dbadb705df"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -2738,8 +3123,8 @@
           <association
             Id="c494beeb-4045-4e47-bc6c-f89885af281f"
             isDerived="false"
-            sourceEndRoleName="Concert"
-            targetEndRoleName="ConcertDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -2750,7 +3135,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="c60b3139-cbe1-4ceb-8d78-50ad357f9607"
-                  name="Concert"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2763,7 +3147,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="1ef775ef-8178-41cc-b184-32c5eec3e1b6"
-                  name="ConcertDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2771,6 +3154,57 @@
                   isDerivedUnion="false"
                   aggregation="None"
                   isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="64932bef-98c7-48e0-9bba-9eaffcdb21aa"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b21fbf93-4195-404d-aef1-bb3904ef3a0f"
+              LastKnownName="ConcertMaterial"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a1fe5ea1-6362-4d53-a26b-fe753c58a5ac"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="459e911a-6db0-42cf-b8ea-0b5aa00d453c"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="17181631-9cc7-4164-9d8f-4bcca91494ff"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9b95a469-2e17-48f5-b6d5-548ec2c34f5f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -4481,8 +4915,8 @@
           <association
             Id="48fc5def-0505-48c6-804d-6d4a48365e94"
             isDerived="false"
-            sourceEndRoleName="Rehearsal"
-            targetEndRoleName="Rehearsal"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -4493,7 +4927,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="7b596fd1-ba82-4d22-bd82-7734e9c9b5f5"
-                  name="Rehearsal"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -4506,7 +4939,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="4d0f7cdf-c3af-4f19-b34d-438ad06c7453"
-                  name="Rehearsal"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -4514,6 +4946,106 @@
                   isDerivedUnion="false"
                   aggregation="None"
                   isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="44cd2834-127d-4afb-91af-7d525325c07e"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3628fec1-b8d1-42de-a1b7-90251900e9d0"
+              LastKnownName="Part"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="342f9339-4ae1-4bd2-99b5-dfb651778584"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="92c91a40-c37e-4ff7-a03f-726c3ad48982"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a5e9a9d9-a26d-45bc-9296-cfdbdd553699"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="018a3033-f3db-46fb-b539-2df16d9e4604"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d383a4b6-7ffe-43fd-a714-f7384b46eb06"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="74c64b09-7601-4213-8a2a-b40018f24c33"
+              LastKnownName="RehearsalMaterial"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bc8f69d1-859a-446e-9a6b-dcaf9208c7ab"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="80d3cccd-2381-40a9-add6-f908af656efa"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9ea904a2-16af-4417-b103-e10bbea18ecc"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e7129774-c88b-44f5-bad3-d7a121003bd6"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -6411,8 +6943,8 @@
           <association
             Id="5e166da6-0e75-4f6f-93eb-3d9740c7a3e6"
             isDerived="false"
-            sourceEndRoleName="Log"
-            targetEndRoleName="LogDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -6423,7 +6955,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="f8a79a73-6150-4908-82b5-c7c3245dd4b8"
-                  name="Log"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -6436,7 +6967,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="cb8c87f5-d400-4506-a41a-e942363a4058"
-                  name="LogDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -6636,8 +7166,8 @@
           <association
             Id="882b8f10-80ee-4e83-9f7e-4f3055c10f82"
             isDerived="false"
-            sourceEndRoleName="RehearsalMaterial"
-            targetEndRoleName="RehearsalMaterialDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -6648,7 +7178,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="62df985c-85bf-489d-8d3a-6fd4145f03ee"
-                  name="RehearsalMaterial"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -6661,7 +7190,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="165ddd8d-acfe-4fdc-9162-942bdb73fe6a"
-                  name="RehearsalMaterialDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -7699,8 +8227,8 @@
           <association
             Id="c279cde4-3668-4998-aa38-77da22192b9d"
             isDerived="false"
-            sourceEndRoleName="ConcertMaterial"
-            targetEndRoleName="ConcertMaterialDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -7711,7 +8239,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="178843a3-a62f-4b24-9859-5945401d6aa5"
-                  name="ConcertMaterial"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -7724,7 +8251,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="8a513571-2554-485d-99b5-bec0856278ae"
-                  name="ConcertMaterialDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -8690,8 +9216,8 @@
           <association
             Id="74c84f0c-397d-4cd7-93d1-4d6bb17f6b74"
             isDerived="false"
-            sourceEndRoleName="Piece"
-            targetEndRoleName="PieceDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -8702,7 +9228,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="44879b23-3ed4-4792-9133-20212d3f7193"
-                  name="Piece"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -8715,7 +9240,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="4f8eb806-0f5b-4356-8203-955c44a9f3d5"
-                  name="PieceDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -9739,8 +10263,8 @@
           <association
             Id="c5de020b-dae0-415a-8fe6-e40a48d09d36"
             isDerived="false"
-            sourceEndRoleName="Movement"
-            targetEndRoleName="MovementDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -9751,7 +10275,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="b1b09291-9b37-4bab-8191-1f9d29fc8ed5"
-                  name="Movement"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -9764,7 +10287,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="f162c6c1-09ca-4dff-aa6e-de568048f52a"
-                  name="MovementDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -9778,8 +10300,8 @@
           <association
             Id="d1935efb-1b9c-40a2-b5e6-d00f5aa6c747"
             isDerived="false"
-            sourceEndRoleName="Movement"
-            targetEndRoleName="Piece"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -9790,7 +10312,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0de3ba65-bec4-478b-a685-966c88bd859a"
-                  name="Movement"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -9816,7 +10337,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="6c987a0d-fe02-42a4-9faf-c3b5e281968a"
-                  name="Piece"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -9829,7 +10349,7 @@
                     <literalString
                       Id="d0754005-0bda-464b-b30d-03c9d2690305"
                       name="Lower"
-                      value="0" />
+                      value="1" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
@@ -10928,8 +11448,8 @@
           <association
             Id="f833453b-f2de-4d27-94c1-f01c87c08287"
             isDerived="false"
-            sourceEndRoleName="Part"
-            targetEndRoleName="PartDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -10940,7 +11460,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="835d4549-5f5c-4cf6-9a64-53f552893676"
-                  name="Part"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -10953,7 +11472,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="060aaa4e-c705-4c58-bd54-34dd5c1554d3"
-                  name="PartDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -10967,8 +11485,8 @@
           <association
             Id="ba7ea9c5-f9b7-42e7-9e49-36ee198a1fd2"
             isDerived="false"
-            sourceEndRoleName="Part"
-            targetEndRoleName="Movement"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -10979,7 +11497,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="455a8b31-cd55-4235-a1a9-9f4c23f87ec3"
-                  name="Part"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -11004,7 +11521,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0ddc6bf9-a16c-4ebd-9364-136283e03fae"
-                  name="Movement"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -11016,7 +11532,7 @@
                     <literalString
                       Id="c37ba03e-3e77-49d9-810b-1806a5c3e603"
                       name="Lower"
-                      value="0" />
+                      value="1" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
@@ -13236,50 +13752,10 @@
         </appliedStereotypesInternal>
         <targetEnds>
           <association
-            Id="399f7079-ee95-4b16-8e4d-f24078ccfb44"
-            isDerived="false"
-            sourceEndRoleName="Guest"
-            targetEndRoleName="User"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="5340422b-cc3c-4be4-a720-64659338609f"
-              LastKnownName="User"
-              LastKnownLocation="ZenekarManager.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="cadfab09-8720-4a89-8b2d-e82d0c8009be"
-                  name="Guest"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="b15e85c0-3646-4569-8d2b-df12d1ddce40"
-                  name="User"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="48eef340-34d7-4bb2-937b-f9c82f98c4c3"
             isDerived="false"
-            sourceEndRoleName="Guest"
-            targetEndRoleName="GuestDaO"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -13290,7 +13766,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="4ad2e0b8-ab86-48b2-bd16-cdbb3c33b72b"
-                  name="Guest"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -13303,7 +13778,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="9283aa5b-e0f1-4ebc-9952-7aa15ab69de7"
-                  name="GuestDaO"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -13311,6 +13785,43 @@
                   isDerivedUnion="false"
                   aggregation="None"
                   isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="54a5adbc-127a-4365-930e-fc75e6cc3100"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5340422b-cc3c-4be4-a720-64659338609f"
+              LastKnownName="User"
+              LastKnownLocation="ZenekarManager.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f48375d2-7c25-4330-9955-b7c900608215"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eac9ab8e-19d2-4981-8e83-3dee921f5282"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
