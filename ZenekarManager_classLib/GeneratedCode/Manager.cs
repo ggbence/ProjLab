@@ -65,5 +65,70 @@ public class Manager : User
         return managerDaO.delInstrumentType(hangszertipus_id);
     }
 
+
+    public bool addConcert(Concert concert)
+    {
+        return concert.create();
+    }
+
+
+    public bool deleteConcert(int koncert_id)
+    {
+        var koncert = new Concert();
+        if (koncert.read(koncert_id))
+        {
+            if (koncert.deleteAllMaterial())
+            {
+                if (managerDaO.deleteConcertdata(koncert_id))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+
+    }
+
+
+    public bool addRehearsal(Rehearsal proba) 
+    {
+        return proba.create();
+    }
+
+
+    public bool deleteRehearsal(int proba_id) 
+    {
+        return managerDaO.deleteRehearsaldata(proba_id);
+    }
+
+
+    public bool addRehearsalMaterial(RehearsalMaterial probaanyag) 
+    {
+        return probaanyag.create();
+    }
+
+
+    public bool deleteRehearsalMaterial(int probaanyag_id) 
+    {
+        return managerDaO.deleteRehearsalMaterialdata(probaanyag_id);
+    }
+
+
+    public List<RehearsalMaterial> getAllInactiveRehearsalMaterial()
+    {
+        var data = new List<int>();
+        var result = new List<RehearsalMaterial>();
+
+        data = managerDaO.getAllInactiveRehearsalMaterial();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var material = new RehearsalMaterial();
+            material.read(data[i]);
+            result.Add(material);
+        }
+
+        return result;
+    }
 }
 

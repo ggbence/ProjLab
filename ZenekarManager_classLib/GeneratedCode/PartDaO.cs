@@ -180,7 +180,7 @@ public class PartDaO : DaO
 
         MySqlDataReader rdr = null;
 
-        // hangszer_id, hangszer_nev, hangszertipus_id
+        // szolamlista_id, szolamlista_nev, prioritas
         var result = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
 
         try

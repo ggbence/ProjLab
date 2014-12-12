@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedCode\Concert.cs" />
+    <Compile Include="GeneratedCode\ConcertDaO.cs" />
+    <Compile Include="GeneratedCode\ConcertMaterial.cs" />
+    <Compile Include="GeneratedCode\ConcertMaterialDaO.cs" />
     <Compile Include="GeneratedCode\DaO.cs" />
     <Compile Include="GeneratedCode\Guest.cs" />
     <Compile Include="GeneratedCode\GuestDaO.cs" />
@@ -67,6 +71,10 @@
     <Compile Include="GeneratedCode\PartDaO.cs" />
     <Compile Include="GeneratedCode\Piece.cs" />
     <Compile Include="GeneratedCode\PieceDaO.cs" />
+    <Compile Include="GeneratedCode\Rehearsal.cs" />
+    <Compile Include="GeneratedCode\RehearsalDaO.cs" />
+    <Compile Include="GeneratedCode\RehearsalMaterial.cs" />
+    <Compile Include="GeneratedCode\RehearsalMaterialDaO.cs" />
     <Compile Include="GeneratedCode\User.cs" />
     <Compile Include="GeneratedCode\UserDaO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

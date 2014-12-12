@@ -226,4 +226,126 @@ public class User
 
         return result;
     }
+
+
+    public bool addPiece(Piece darab)
+    {
+        return darab.createPiece();
+    }
+
+
+    public bool delPiece(int darab_id)
+    {
+        return userDaO.delPiecedata(darab_id);
+    }
+
+
+    public int getCountPieces()
+    {
+        return userDaO.getCountPieces();
+    }
+
+
+    public Piece getPiece(int darab_id)
+    {
+        var darab = new Piece();
+        darab.readPiece(darab_id);
+
+        return darab;
+    }
+
+
+    public List<Piece> getPieces()
+    {
+        var result = new List<Piece>();
+        var data = new List<int>();
+        data = userDaO.getAllPiecedata();
+
+        for (int i = 0; i < data.Count; i++)
+        {
+            var darab = new Piece();
+            darab.readPiece(data[i]);
+            result.Add(darab);
+        }
+
+        return result;
+
+    }
+
+    public List<Concert> getAllConcert() 
+    {
+        var data = new List<int>();
+        var result = new List<Concert>();
+
+        data = userDaO.getAllConcertdata();
+
+        for (int i=0; i<data.Count; i++) 
+        {
+            var koncert = new Concert();
+            koncert.read(data[i]);
+            result.Add(koncert);
+        }
+
+        return result;
+    }
+
+
+    public Concert getConcert(int koncert_id)
+    {
+        var result = new Concert();
+        result.read(koncert_id);
+
+        return result;
+    }
+
+
+    public RehearsalMaterial getRehearsalMaterial(int probaanyag_id) 
+    {
+        var material = new RehearsalMaterial();
+        material.read(probaanyag_id);
+
+        return material;
+    }
+
+    public List<RehearsalMaterial> getAllActiveRehearsalMaterial() 
+    {
+        var data = new List<int>();
+        var result = new List<RehearsalMaterial>();
+
+        data = userDaO.getAllActiveRehearsalMaterialdata();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var material = new RehearsalMaterial();
+            material.read(data[i]);
+            result.Add(material);
+        }
+
+        return result;
+    }
+
+    public Rehearsal getRehearsal(int proba_id) 
+    {
+        var proba = new Rehearsal();
+        proba.read(proba_id);
+
+        return proba;
+    }
+
+    public List<Rehearsal> getAllRehearsal()
+    {
+        var data = new List<int>();
+        var result = new List<Rehearsal>();
+
+        data = userDaO.getAllRehearsaldata();
+        for (int i = 0; i < data.Count; i++)
+        {
+            var proba = new Rehearsal();
+            proba.read(data[i]);
+            result.Add(proba);
+        }
+
+        return result;
+    }
+
+
 }
