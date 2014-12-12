@@ -11,7 +11,7 @@ using System.Text;
 
 public class Manager : User
 {
-	protected ManagerDaO managerDaO;
+	protected ManagerDaO managerDaO = new ManagerDaO();
 	
 
 	public bool deleteUser(int users_id)
@@ -25,12 +25,10 @@ public class Manager : User
         return managerDaO.changeRole(users_id, jogkor_id);
 	}
 
-
-	public List<User> getUserList()
-	{
+    public List<User> getUserList()
+    {
         return managerDaO.getUsers();
-	}
-
+    }
 
 	public List<KeyValuePair<int, string>> getRoles()
 	{

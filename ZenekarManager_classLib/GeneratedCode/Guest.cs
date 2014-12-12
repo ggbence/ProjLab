@@ -12,6 +12,10 @@ using System.Security.Cryptography;
 
 public class Guest
 {
+    public const int REGISZTRALT = 1;
+    public const int ZENÉSZ = 2;
+    public const int MANAGER = 3;
+
 	private string email;
 
     public string Email
@@ -74,7 +78,7 @@ public class Guest
             User user = new User();
             user.Users_email = email;
             user.Users_nev = nev;
-            user.Users_password = password;
+            user.Users_password = getHash(password);
             user.Jogkor_id = 1;
             if (user.createProfile())
             {

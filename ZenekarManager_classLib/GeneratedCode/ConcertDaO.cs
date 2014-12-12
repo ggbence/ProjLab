@@ -69,7 +69,7 @@ public class ConcertDaO : DaO
 
             // tervezett reszvetel adatainak irasa
             // Query string 
-            strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
+            /*strSQL = "INSERT INTO KONCERT_RESZVETEL (koncert_id, users_id, tervezett_reszvetel, indoklas) VALUES " +
                 "(@_koncert_id, @_users_id, @_tervezett_reszvetel, @_indoklas); ";
 
             // Add query text
@@ -145,7 +145,7 @@ public class ConcertDaO : DaO
                 }
                 
 
-            }
+            }*/
 
 
             return concertid;

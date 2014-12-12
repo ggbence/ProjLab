@@ -89,7 +89,7 @@ public class Concert
         concertDaO = new ConcertDaO();
         tervezett_reszvetel = new List<KeyValuePair<int, KeyValuePair<bool, string>>>();
         resztvett = new List<KeyValuePair<int, bool>>();
-
+        koncert_id = -1;
 
     }
 

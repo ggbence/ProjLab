@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
+
 public class User
 {
     protected int users_id;
@@ -146,7 +147,7 @@ public class User
 
     public bool readProfile(string email)
     {
-        string []data;
+        string[] data;
         data = userDaO.readUserdata(email, ref this.hangszerek);
         try
         {
@@ -348,4 +349,3 @@ public class User
 
 
 }
-

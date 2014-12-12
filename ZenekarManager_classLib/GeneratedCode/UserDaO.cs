@@ -115,7 +115,7 @@ public class UserDaO : DaO
        
         MySqlDataReader rdr = null;
 
-        var result = new string[7];
+        var result = new string[8];
 
         try
         {
@@ -142,14 +142,14 @@ public class UserDaO : DaO
                 }
             }
 
-
+            rdr.Close();
 
             //hangszerek listajanak lekerdezese
 
             var hangszerei = new List<KeyValuePair<int, string>>();
 
             stm = "SELECT H.hangszer_id, H.hangszer_nev FROM HANGSZER H INNER JOIN USERS_HANGSZER UH ON H.hangszer_id=UH.hangszer_id " 
-                + "WHERE UH.users_id=@_users_id ORDER BY H.hangszer_id ASC";
+                + "WHERE UH.users_id=@users_id ORDER BY H.hangszer_id ASC";
 
             cmd = new MySqlCommand(stm, this.Conn);
 
@@ -194,7 +194,8 @@ public class UserDaO : DaO
         bool aktiv, bool koncertre_jar, string users_password, List<KeyValuePair<int, string>> hangszerek)
 	{
         // user adatok frissitese az adatbazisban
- 
+        try
+        {
         string strSQL = "UPDATE USERS SET users_nev=@_nev, " +
         "users_email=@_email, jogkor_id=@_jogkor, aktiv=@_aktiv, " +
         "koncertre_jar=@_koncertre_jar, users_password=@_password WHERE users_id=@_id";
@@ -213,12 +214,12 @@ public class UserDaO : DaO
         cmd.Parameters.AddWithValue("@_aktiv", aktiv);
         cmd.Parameters.AddWithValue("@_koncertre_jar", koncertre_jar);
         cmd.Parameters.AddWithValue("@_password", users_password);
-
+            cmd.ExecuteNonQuery();
         // Execute query
-        if (cmd.ExecuteNonQuery() != 1)
+            /*if (cmd.ExecuteNonQuery() != 1)
         {
             return false;
-        }
+            }*/
 
 
         // user hangszereinek torlese az adatbazisbol, hogy aztan a frissitett listat be lehessen irni
@@ -235,11 +236,11 @@ public class UserDaO : DaO
         cmd.Parameters.AddWithValue("@_id", users_id);
 
         // Execute query
-        if (cmd.ExecuteNonQuery() != 1)
+            /*if (cmd.ExecuteNonQuery() != 1)
         {
             return false;
-        }
-
+            }*/
+            cmd.ExecuteNonQuery();
 
         // user hangszereinek adatbazisba irasa
 
@@ -255,6 +256,7 @@ public class UserDaO : DaO
 
         for (int i = 0; i < hangszerek.Count; i++)
         {
+                cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@usersid", users_id);
             cmd.Parameters.AddWithValue("@hangszerid", hangszerek[i].Key);
             // Execute query
@@ -263,6 +265,12 @@ public class UserDaO : DaO
             {
                 return false;
             }
+        }
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.ToString());
+            return false;
         }
 
 
@@ -354,6 +362,7 @@ public class UserDaO : DaO
             cmd.Prepare();
             for (int i = 0; i < msg_ids.Count; i++)
             {
+                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@_uzenet_id", msg_ids[i]);
                 rdr = cmd.ExecuteReader();
 
@@ -368,6 +377,7 @@ public class UserDaO : DaO
                     row.Ervenyesseg = rdr.GetString(4);
                 }
                 result.Add(row);
+                rdr.Close();
             } 
 
         }
@@ -823,7 +833,7 @@ public class UserDaO : DaO
             while (rdr.Read())
             {
                 result.Add(rdr.GetInt32(0));
-            }
+                }
 
         }
         catch (MySqlException ex)
@@ -910,7 +920,7 @@ public class UserDaO : DaO
                 result.Add(rdr.GetInt32(0));
             }
 
-        }
+    }
         catch (MySqlException ex)
         {
             Console.WriteLine("Error: {0}", ex.ToString());

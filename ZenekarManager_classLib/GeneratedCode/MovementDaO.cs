@@ -211,7 +211,7 @@ public class MovementDaO : DaO
         finally
         {
             if (rdr != null)
-            {
+	{
                 rdr.Close();
             }
 
@@ -230,7 +230,7 @@ public class MovementDaO : DaO
         int result = -1;
 
         try
-        {
+	{
 
             // user adatok lekerdezese
 
@@ -251,7 +251,7 @@ public class MovementDaO : DaO
             }
 
 
-        }
+	}
         catch (MySqlException ex)
         {
             Console.WriteLine("Error: {0}", ex.ToString());
@@ -260,7 +260,7 @@ public class MovementDaO : DaO
         finally
         {
             if (rdr != null)
-            {
+	{
                 rdr.Close();
             }
 
@@ -296,13 +296,13 @@ public class MovementDaO : DaO
 
             // Execute query
             if (cmd.ExecuteNonQuery() == 1)
-            {
+	{
                 return true;
-            }
+	}
 
         }
         catch (MySqlException ex)
-        {
+	{
             Console.WriteLine("Error: {0}", ex.ToString());
  
         }
@@ -334,7 +334,7 @@ public class MovementDaO : DaO
 
 
             while (rdr.Read())
-            {
+	{
                 for (int i = 0; i < 4; i++)
                 {
                     result[i] = rdr.GetString(i);
@@ -342,7 +342,7 @@ public class MovementDaO : DaO
             }
 
 
-        }
+	}
         catch (MySqlException ex)
         {
             Console.WriteLine("Error: {0}", ex.ToString());
@@ -351,7 +351,7 @@ public class MovementDaO : DaO
         finally
         {
             if (rdr != null)
-            {
+	{
                 rdr.Close();
             }
 
