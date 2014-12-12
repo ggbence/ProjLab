@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
- 
+
 public class RehearsalMaterialDaO : DaO
 {
 	internal bool activate(int probaanyag_id)
